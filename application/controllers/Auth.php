@@ -6,13 +6,13 @@ class Auth extends CI_Controller {
 		$data = array(
 			'title' => "Login"
 		);
-		$this->load->view('login', $data);
+		$this->load->view('v_login', $data);
 	}
 
     public function register() {
 		$data = array(
 			'title' => "Register"
 		);
-		$this->load->view('register', $data);
+		$this->load->view('v_register', $data);
 	}
 }
