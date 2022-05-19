@@ -16,12 +16,27 @@ $this->load->view('template_admin/header');
               <div class="card-header"><h4>Login</h4></div>
 
               <div class="card-body">
-                <form method="POST" action="#" class="needs-validation" novalidate="">
+                <?php if ($this->session->flashdata('message1')) : ?>
+                    <?php $message = $this->session->flashdata('message1'); ?>
+                    <?= '<div class="alert alert-success">' . $message . '</div>'; ?>
+                    <?php $this->session->unset_userdata('message1'); ?>
+                <?php endif; ?>
+                <?php if ($this->session->flashdata('message')) : ?>
+                    <?php $message = $this->session->flashdata('message'); ?>
+                    <?= '<div class="alert alert-danger">' . $message . '</div>'; ?>
+                    <?php $this->session->unset_userdata('message'); ?>
+                <?php endif; ?>
+                <?php if ($this->session->flashdata('message2')) : ?>
+                    <?php $message = $this->session->flashdata('message2'); ?>
+                    <?= '<div class="alert alert-info">' . $message . '</div>'; ?>
+                    <?php $this->session->unset_userdata('message2'); ?>
+                <?php endif; ?>
+                <form method="POST" action="<?= base_url('auth/login'); ?>" class="needs-validation" novalidate="">
                   <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
                     <div class="invalid-feedback">
-                      Please fill in your email
+                      Silakan masukan email Anda!
                     </div>
                   </div>
 
@@ -30,13 +45,13 @@ $this->load->view('template_admin/header');
                     	<label for="password" class="control-label">Password</label>
                       <div class="float-right">
                         <a href="<?php echo base_url(); ?>dist/auth_forgot_password" class="text-small">
-                          Forgot Password?
+                          Lupa password?
                         </a>
                       </div>
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
                     <div class="invalid-feedback">
-                      please fill in your password
+                      Silakan masukan password Anda!
                     </div>
                   </div>
 
@@ -72,10 +87,9 @@ $this->load->view('template_admin/header');
               </div>
             </div>
             <div class="mt-5 text-muted text-center">
-              Don't have an account? <a href="<?php echo base_url(); ?>register">Create One</a>
+              Belum punya akun? <a href="<?php echo base_url(); ?>register">Daftar</a>
             </div>
             <div class="simple-footer">
-              Copyright &copy; Stisla 2018
             </div>
           </div>
         </div>
