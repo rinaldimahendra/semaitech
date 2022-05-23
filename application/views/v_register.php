@@ -17,63 +17,77 @@ $this->load->view('template_admin/header');
               <div class="col-lg">
                 <div class="p-3">  
                   <div class="text-center">
-                  <div class="card-header"><h1 class="h4 text-black-900 mb-2">Buat Akun Baru!</h1></div>
+                    <div class="card-header">
+                      <h1 class="h4 text-black-900 mb-2">Registrasi Akun</h1>
+                    </div>
                   </div>
                     <div class="card-body">
-                      <form method="POST">
+                       <?php if ($this->session->flashdata('message1')) : ?>
+                            <?php $message = $this->session->flashdata('message1'); ?>
+                            <?= '<div class="alert alert-success">' . $message . '</div>'; ?>
+                            <?php $this->session->unset_userdata('message1'); ?>
+                        <?php endif; ?>
+                        <?php if ($this->session->flashdata('message')) : ?>
+                            <?php $message = $this->session->flashdata('message'); ?>
+                            <?= '<div class="alert alert-danger">' . $message . '</div>'; ?>
+                            <?php $this->session->unset_userdata('message'); ?>
+                        <?php endif; ?>
+                      <form action="<?= base_url('auth/registrasi'); ?>" method="post">
                         <div class="row">
                           <div class="form-group col-12">
                             <label for="name">Nama</label>
-                            <input id="name" type="text" class="form-control" name="name" autofocus>
+                            <input id="name" type="text" class="form-control" name="nama" autofocus>
                           </div>
                         </div>
 
                         <div class="form-group">
                           <label for="select your gender" class="d-block">Jenis Kelamin</label>
+                          <?= form_error('jenis-kelamin', '<small class="text-danger pl-1">', '</small>'); ?>
                           <div class="form-check">
-                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" checked>
-                          <label class="form-check-label" for="exampleRadios1">
-                          Laki-laki
-                          </label>
+                            <input class="form-check-input" type="radio" name="jenis-kelamin" id="inlineRadio1" value="L">
+                            <label class="form-check-label" for="inlineRadio1">Laki-laki</label>
+                          </div>
 
-                        </div>
+                        
+                          <?= form_error('jenis-kelamin', '<small class="text-danger pl-1">', '</small>'); ?>
                           <div class="form-check">
-                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" checked>
-                          <label class="form-check-label" for="exampleRadios2">
-                          Perempuan
-                          </label>
-
+                            <input class="form-check-input" type="radio" name="jenis-kelamin" id="inlineRadio2" value="P">
+                            <label class="form-check-label" for="inlineRadio2">Perempuan</label>
                           </div>
                         </div>
 
                         <div class="form-group">
                           <label>Tanggal Lahir</label>
-                          <input type="date" class="form-control">
+                          <?= form_error('tanggal', '<small class="text-danger pl-1">', '</small>'); ?>
+                          <input type="date" class="form-control" name="tanggal">
                         </div>
                         
                         <div class="row">
                           <div class="form-group col-6">
+                            <?= form_error('email', '<small class="text-danger pl-1">', '</small>'); ?>
                             <label for="email" class="d-block">Email</label>
                             <input id="email" type="email" class="form-control" name="email" autofocus>
                           </div>
                           <div class="form-group col-6">
                             <label for="nohandphone" class="d-block">No Handphone</label>
-                            <input id="nohandphone" type="nohandphone" class="form-control" name="nohandphone">
+                            <input id="nohandphone" type="tel" class="form-control" name="nohandphone">
                           </div>
                         </div>
 
                         <div class="row">
+                          <?= form_error('password1', '<small class="text-danger pl-1">', '</small>'); ?>
                           <div class="form-group col-6">
                             <label for="password" class="d-block">Password</label>
-                            <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password">
+                            <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password1">
                             <div id="pwindicator" class="pwindicator">
                               <div class="bar"></div>
                               <div class="label"></div>
                             </div>
                           </div>
+                          <?= form_error('password2', '<small class="text-danger pl-1">', '</small>'); ?>
                           <div class="form-group col-6">
                             <label for="password2" class="d-block">Konfirmasi Password</label>
-                            <input id="password2" type="password" class="form-control" name="password-confirm">
+                            <input id="password2" type="password" class="form-control" name="password2">
                           </div>
                         </div>
 

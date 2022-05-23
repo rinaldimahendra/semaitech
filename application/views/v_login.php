@@ -87,7 +87,7 @@ $this->load->view('template_admin/header');
               </div>
             </div>
             <div class="mt-5 text-muted text-center">
-              Belum punya akun? <a href="<?php echo base_url(); ?>register">Daftar</a>
+              Belum punya akun? <a href="<?php echo base_url(); ?>auth/registrasi">Daftar</a>
             </div>
             <div class="simple-footer">
             </div>
