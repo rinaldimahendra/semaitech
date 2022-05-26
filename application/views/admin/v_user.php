@@ -26,7 +26,6 @@ $this->load->view('template_admin/sidebar');
                         <th>Role</th>
                         <th>Status Aktif</th>
                         <th>Tanggal Daftar</th>
-                        <th width="15%"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,12 +47,6 @@ $this->load->view('template_admin/sidebar');
                             <td style="text-align: center;"><span class="badge badge-danger">Tidak Aktif</span></td>
                         <?php endif; ?>
                         <td> <?= $u['date_created']; ?> </td>
-                        <td>
-                            <center>
-                                <button type="button" onclick="edit(<?= $u['id_user']; ?>)" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-default" style="color: white;">Edit</button>
-                                <button type="button" onclick="hapus('<?= $u['id_user'] ?>', '<?= $u['nama_user']; ?>')" class="ml-1 btn btn-danger btn-sm" style=" color: white;">Hapus</button>
-                            </center>
-                        </td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
