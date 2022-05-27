@@ -10,6 +10,7 @@ class Datasayur extends CI_Controller
 		$data = array(
 			'title' => "Data Penjualan | Semaitech",
 			'datasayur1' => $this->d_datasayur->tampil_data()->result(),
+			'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
 		);
 
 		$this->load->view('admin/v_datasayur', $data);

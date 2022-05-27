@@ -6,7 +6,7 @@ class D_datasayur extends CI_Model
     public function tampil_data()
     {
         // return $this->db->get('managemen_data_sayur');
-        $query = "SELECT * FROM managemen_data_sayur WHERE Status in ('Y','N')";
+        $query = "SELECT * FROM managemen_data_sayur, kategori_sayur WHERE Status in ('Y','N') AND Kategori = Id_Kategori";
         return $this->db->query($query);
     }
 

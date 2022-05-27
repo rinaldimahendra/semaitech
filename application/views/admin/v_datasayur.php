@@ -17,56 +17,59 @@ $this->load->view('template_admin/sidebar');
                     <i class="fas fa-plus fa-sm"> TAMBAH PRODUK</i>
                 </button>&ensp;
             </div>
-            <table id="Table1" class="table table-striped">
-                <tr>
-                    <th>NO</th>
-                    <th>FOTO</th>
-                    <th>NAMA PRODUK</th>
-                    <th>KATEGORI</th>
-                    <th>KETERANGAN</th>
-                    <th>STOK PRODUK</th>
-                    <th>HARGA</th>
-                    <th>STATUS</th>
-                    <th colspan="2">AKSI</th>
-                </tr>
-
-                <?php
-
-                $no = 1;
-                foreach ($datasayur1 as $ds) : ?>
-
+            <table id="table1" class="table table-striped">
+                <thead>
                     <tr>
-
-                        <td><?php echo $no++ ?></td>
-                        <td><img class="img-thumbnail" style="height: 50px" src="<?php echo base_url() . '/assets/img/sayur/' . $ds->Foto ?>" alt="<?= $ds->Foto ?>"></td>
-                        <td><?php echo $ds->Nama ?></td>
-                        <td><?php echo $ds->Kategori ?></td>
-                        <td><?php echo $ds->Keterangan ?></td>
-                        <td><?php echo $ds->Stok ?></td>
-                        <td>Rp. <?php echo number_format($ds->Harga, 0, ',', '.') ?></td>
-                        <td>
-                            <?php
-                            if ($ds->Status == 'Y') { ?>
-                                <span class="sucsess">
-                                    Aktif
-                                </span>
-
-                            <?php } elseif ($ds->Status == 'N') { ?>
-                                <span class="danger">
-                                    Tidak Aktif
-                                </span>
-
-                            <?php } ?>
-                        </td>
-                        <td>
-                            <?php echo anchor('admin/Datasayur/edit/' . $ds->Id, '<div class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></div>') ?>
-                        </td>
-                        <td>
-                            <?php echo anchor('admin/Datasayur/hapus/' . $ds->Id, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>') ?>
-                        </td>
+                        <th>NO</th>
+                        <th>FOTO</th>
+                        <th>NAMA PRODUK</th>
+                        <th>KATEGORI</th>
+                        <th>KETERANGAN</th>
+                        <th>STOK PRODUK</th>
+                        <th>HARGA</th>
+                        <th>STATUS</th>
+                        <th colspan="2">AKSI</th>
                     </tr>
 
-                <?php endforeach; ?>
+                </thead>
+                <tbody>
+                    <?php
+
+                    $no = 1;
+                    foreach ($datasayur1 as $ds) : ?>
+
+                        <tr>
+
+                            <td><?php echo $no++ ?></td>
+                            <td><img class="img-thumbnail" style="height: 50px" src="<?php echo base_url() . '/assets/img/sayur/' . $ds->Foto ?>" alt="<?= $ds->Foto ?>"></td>
+                            <td><?php echo $ds->Nama ?></td>
+                            <td><?php echo $ds->Nama_Kategori ?></td>
+                            <td><?php echo $ds->Keterangan ?></td>
+                            <td><?php echo $ds->Stok ?></td>
+                            <td>Rp. <?php echo number_format($ds->Harga, 0, ',', '.') ?></td>
+                            <td>
+                                <?php
+                                if ($ds->Status == 'Y') { ?>
+                                    <span class="sucsess">
+                                        Aktif
+                                    </span>
+
+                                <?php } elseif ($ds->Status == 'N') { ?>
+                                    <span class="danger">
+                                        Tidak Aktif
+                                    </span>
+
+                                <?php } ?>
+                            </td>
+                            <td>
+                                <?php echo anchor('admin/Datasayur/edit/' . $ds->Id, '<div class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></div>') ?>
+                            </td>
+                            <td>
+                                <?php echo anchor('admin/Datasayur/hapus/' . $ds->Id, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>') ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
             </table>
         </div>
     </section>
@@ -77,9 +80,6 @@ $this->load->view('template_admin/sidebar');
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalCenterTitle">FORM INPUT DATA SAYUR</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-body">
                     <form action="<?php echo base_url() . 'admin/Datasayur/tambah_aksi'; ?>" method="post" enctype="multipart/form-data">
@@ -91,7 +91,12 @@ $this->load->view('template_admin/sidebar');
 
                         <div class="form-group">
                             <label>Kategori</label>
-                            <input type="text" name="kategori" class="form-control" required>
+                            <select class="form-control" name="kategori" id="kategori">
+                                <option value=''>- Pilih -</option>
+                                <?php foreach ($kategori as $ktgr) { ?>
+                                    <option value="<?php echo $ktgr['Id_Kategori']; ?>"><?php echo $ktgr['Nama_Kategori']; ?> </option>
+                                <?php } ?>
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -121,7 +126,7 @@ $this->load->view('template_admin/sidebar');
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button onclick="window.location.href='<?php echo base_url('admin/Datasayur/index/') ?>'" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
 
                     </form>
@@ -159,11 +164,6 @@ $this->load->view('template_admin/sidebar');
                                 <label>Stok Produk</label>
                                 <input type="number" name="stok" class="form-control" value="<?php echo $ds->Stok ?>" min="0" required>
                             </div>
-
-                            <!-- <div class="form-group">
-                                <label>Berat Produk</label>
-                                <input type="text" name="berat_produk" class="form-control">
-                            </div> -->
 
                             <div class="form-group">
                                 <label>Harga</label>
@@ -208,19 +208,3 @@ $this->load->view('template_admin/sidebar');
 <?php endforeach; ?>
 </div>
 <?php $this->load->view('template_admin/footer'); ?>
-
-<script>
-    $(document).ready(function() {
-        $('#Table1').DataTable();
-    });
-</script>
-<script type="text/javascript">
-    $(":radio.form-check-input").click(function() {
-        $("#inlineradio1, #inlineradio2").hide()
-        if ($(this).val() == "1") {
-            $("#inlineradio1").show();
-        } else {
-            $("#inlineradio2").show();
-        }
-    });
-</script>

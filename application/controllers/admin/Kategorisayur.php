@@ -7,51 +7,64 @@ class Kategorisayur extends CI_Controller
     {
         // echo "test";
         $data = array(
-            'title' => "Data Penjualan | Semaitech",
-            'datasayur1' => $this->d_datasayur->tampil_data()->result(),
+            'title' => "Kategori Sayur | Semaitech",
+            'kategori1' => $this->d_kategorisayur->tampil_data1()->result(),
         );
 
         $this->load->view('admin/v_kategorisayur', $data);
     }
 
-    public function hapus($id)
+    public function tambah_aksi()
     {
+        $nama_kategori                   = $this->input->post('nama_kategori');
+        $status_kategori                 = $this->input->post('status_kategori');
+
         $data = array(
-            'Status'            => 'D',
+            'Nama_Kategori'              => $nama_kategori,
+            'Status_Kategori'            => $status_kategori,
         );
-        $where = array('Id' => $id);
-        $this->d_datasayur->update_data($where, $data, 'managemen_data_sayur');
+
+        $this->d_kategorisayur->tambah_produk1($data, 'kategori_sayur');
         redirect('admin/Kategorisayur/index');
     }
 
-    public function edit($id)
+    public function hapus($id_kategori)
     {
-        $where = array('Id' => $id);
+        $data = array(
+            'Status_Kategori'            => 'D',
+        );
+        $where = array('Id_Kategori' => $id_kategori);
+        $this->d_kategorisayur->update_data1($where, $data, 'kategori_sayur');
+        redirect('admin/Kategorisayur/index');
+    }
+
+    public function edit($id_kategori)
+    {
+        $where = array('Id_Kategori' => $id_kategori);
         $data = array(
             'title' => "Data Penjualan | Semaitech",
-            'datasayur1' => $this->d_datasayur->edit_produk($where, 'managemen_data_sayur')->result(),
+            'kategori1' => $this->d_kategorisayur->edit_produk1($where, 'kategori_sayur')->result(),
         );
         $this->load->view('admin/v_kategorisayur', $data);
     }
 
-    public function update()
+    public function update1()
     {
-        $id                      = $this->input->post('id');
-        $nama                    = $this->input->post('nama');
-        $kategori                = $this->input->post('kategori');
-        $status                    = $this->input->post('status');
+        $id_kategori                     = $this->input->post('id_kategori');
+        $nama_kategori                   = $this->input->post('nama_kategori');
+        $status_kategori                 = $this->input->post('status_kategori');
 
         $data = array(
-            'Nama'               => $nama,
-            'Kategori'           => $kategori,
-            'Status'            => $status,
+            'Id_Kategori'                => $id_kategori,
+            'Nama_Kategori'              => $nama_kategori,
+            'Status_Kategori'            => $status_kategori,
         );
 
         $where = array(
-            'Id'         => $id
+            'Id_Kategori'                => $id_kategori
         );
 
-        $this->d_datasayur->update_data($where, $data, 'managemen_data_sayur');
+        $this->d_kategorisayur->update_data1($where, $data, 'kategori_sayur');
         redirect('admin/Kategorisayur/index');
     }
 
@@ -60,7 +73,7 @@ class Kategorisayur extends CI_Controller
         // echo "test";
         $data = array(
             'title' => "Data Penjualan | Semaitech",
-            'datasayur1' => $this->d_datasayur->tampil_data_edit_barang()->result(),
+            'datasayur1' => $this->d_kategorisayur->tampil_data_edit_barang1()->result(),
         );
 
         $this->load->view('admin/v_kategorisayur', $data);
