@@ -41,6 +41,7 @@ class Auth extends CI_Controller {
                 'foto_user' => 'default.jpg',
                 'jenis_kelamin' => $this->input->post('jenis-kelamin', true),
                 'tanggal_lahir' => $this->input->post('tanggal', true),
+                'no_tlpn' => $this->input->post('nohandphone'),
                 'id_role' => 2,
                 'is_active' => 0,
                 'date_created' => date('Y-m-d H:i:s')
