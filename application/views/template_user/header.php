@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Home</title>
+	<title><?= $title;?></title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="<?= base_url(); ?>assets/user/images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="<?= base_url(); ?>assets/img/logo/favicon1.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/modules/fontawesome/css/all.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
@@ -41,7 +42,7 @@
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
-			<div class="top-bar">
+			<!-- <div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
 						Free shipping for standard order over $100
@@ -65,14 +66,14 @@
 						</a>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
 					<a href="<?= base_url(); ?>" class="logo">
-						<img src="<?= base_url(); ?>assets/user/images/icons/logo-01.png" alt="IMG-LOGO">
+						<img src="<?= base_url(); ?>assets/img/logo/logo-dashboard.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
@@ -116,9 +117,27 @@
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
+						<!-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+							<i class="zmdi zmdi-account"></i>
+						</a> -->
+						<div href="#" class="main-menu dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+							<li class="active-menu">
+								<i class="zmdi zmdi-account"></i>
+								<?php if ($this->session->userdata('nama')) : ?>
+								<ul class="sub-menu">
+									<li><a href="#"><i class="zmdi zmdi-account"></i> Profile</a></li>
+									<li><a href="<?= base_url('home/cart')?>"><i class="zmdi zmdi-shopping-cart"></i> Cart</a></li>
+									<li><a href="<?= base_url('auth/logout')?>"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a></li>
+								</ul>
+								<?php else : ?>
+								<ul class="sub-menu">
+									<li><a href="<?= base_url('auth/registrasi')?>"><i class="zmdi zmdi-account"></i> Register</a></li>
+									<li><a href="<?= base_url('auth/login')?>"><i class="zmdi zmdi-sign-in"></i> Log in</a></li>
+								</ul>
+								<?php endif; ?>
+							</li>
+						</div>
+						
 					</div>
 				</nav>
 			</div>	
@@ -133,17 +152,28 @@
 
 			<!-- Icon header -->
 			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-					<i class="zmdi zmdi-search"></i>
-				</div>
 
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
+				<div href="#" class="main-menu dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+					<li class="active-menu">
+						<i class="zmdi zmdi-account"></i>
+						<?php if ($this->session->userdata('nama')) : ?>
+						<ul class="sub-menu">
+							<li><a href="#">Profile</a></li>
+							<li><a href="<?= base_url('home/cart')?>">Cart</a></li>
+							<li><a href="<?= base_url('auth/logout')?>">Log out</a></li>
+						</ul>
+						<?php else : ?>
+						<ul class="sub-menu">
+							<li><a href="<?= base_url('auth/registrasi')?>">Register</a></li>
+							<li><a href="<?= base_url('auth/login')?>">Log in</a></li>
+						</ul>
+						<?php endif; ?>
+					</li>
+				</div>
 			</div>
 
 			<!-- Button show menu -->
@@ -157,7 +187,7 @@
 
 		<!-- Menu Mobile -->
 		<div class="menu-mobile">
-			<ul class="topbar-mobile">
+			<!-- <ul class="topbar-mobile">
 				<li>
 					<div class="left-top-bar">
 						Free shipping for standard order over $100
@@ -183,7 +213,7 @@
 						</a>
 					</div>
 				</li>
-			</ul>
+			</ul> -->
 
 			<ul class="main-menu-m">
 				<li>
