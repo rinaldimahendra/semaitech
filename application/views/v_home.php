@@ -416,6 +416,7 @@ $this->load->view('template_user/header');
 					</div>
 				</div>
 			</div>
+			<?= $carttotal;?>
 			<div class="row isotope-grid">
 				<?php foreach($datasayur as $d): ?>
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
@@ -423,10 +424,19 @@ $this->load->view('template_user/header');
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="<?= base_url('assets/img/sayur/').$d['Foto']; ?>" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
+							<div class="row">
+								<div class="column col-6">
+									<a href="<?= base_url('home/AddCart/').$d['Id'] ?>" class="block2-btn flex-c-m stext-103 cl2 size-105 bg2 bor2 hov-btn1 p-lr-15 trans-04 js-addcart-sukses">
+										<i class="zmdi zmdi-shopping-cart"></i>&ensp;Add
+									</a>
+								</div>
+								<div class="column col-6">
+									<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-105 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+										<i class="zmdi zmdi-zoom-in zmdi-hc-lg"></i>&ensp;Detail
+									</a>
+								</div>
+							</div>
+							
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
@@ -441,10 +451,10 @@ $this->load->view('template_user/header');
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+								<!-- <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img class="icon-heart1 dis-block trans-04" src="<?= base_url(); ?>assets/user/images//icons/icon-heart-01.png" alt="ICON">
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="<?= base_url(); ?>assets/user/images//icons/icon-heart-02.png" alt="ICON">
-								</a>
+								</a> -->
 							</div>
 						</div>
 					</div>

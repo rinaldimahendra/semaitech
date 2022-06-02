@@ -113,7 +113,7 @@
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<?= $carttotal;?>">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
@@ -125,14 +125,14 @@
 								<i class="zmdi zmdi-account"></i>
 								<?php if ($this->session->userdata('nama')) : ?>
 								<ul class="sub-menu">
-									<li><a href="#"><i class="zmdi zmdi-account"></i> Profile</a></li>
-									<li><a href="<?= base_url('home/cart')?>"><i class="zmdi zmdi-shopping-cart"></i> Cart</a></li>
-									<li><a href="<?= base_url('auth/logout')?>"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a></li>
+									<li><a href="#"><i class="zmdi zmdi-account"></i>&ensp;Profile</a></li>
+									<li><a href="<?= base_url('home/cart')?>"><i class="zmdi zmdi-shopping-cart"></i>&ensp;Cart</a></li>
+									<li><a href="<?= base_url('auth/logout')?>"><i class="fa-solid fa-arrow-right-from-bracket"></i>&ensp;Log out</a></li>
 								</ul>
 								<?php else : ?>
 								<ul class="sub-menu">
-									<li><a href="<?= base_url('auth/registrasi')?>"><i class="zmdi zmdi-account"></i> Register</a></li>
-									<li><a href="<?= base_url('auth/login')?>"><i class="zmdi zmdi-sign-in"></i> Log in</a></li>
+									<li><a href="<?= base_url('auth/registrasi')?>"><i class="zmdi zmdi-account"></i>&ensp;Register</a></li>
+									<li><a href="<?= base_url('auth/login')?>"><i class="zmdi zmdi-sign-in"></i>&ensp;Log in</a></li>
 								</ul>
 								<?php endif; ?>
 							</li>
@@ -163,13 +163,13 @@
 						<?php if ($this->session->userdata('nama')) : ?>
 						<ul class="sub-menu">
 							<li><a href="#">Profile</a></li>
-							<li><a href="<?= base_url('home/cart')?>">Cart</a></li>
-							<li><a href="<?= base_url('auth/logout')?>">Log out</a></li>
+							<li><a href="<?= base_url('home/cart')?>">&ensp;Cart</a></li>
+							<li><a href="<?= base_url('auth/logout')?>">&ensp;Log out</a></li>
 						</ul>
 						<?php else : ?>
 						<ul class="sub-menu">
-							<li><a href="<?= base_url('auth/registrasi')?>">Register</a></li>
-							<li><a href="<?= base_url('auth/login')?>">Log in</a></li>
+							<li><a href="<?= base_url('auth/registrasi')?>">&ensp;Register</a></li>
+							<li><a href="<?= base_url('auth/login')?>">&ensp;Log in</a></li>
 						</ul>
 						<?php endif; ?>
 					</li>

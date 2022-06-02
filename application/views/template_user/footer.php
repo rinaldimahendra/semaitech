@@ -141,7 +141,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
 							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-								Lightweight Jacket
+								test
 							</h4>
 
 							<span class="mtext-106 cl2">
@@ -318,6 +318,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+
+		$('.js-addcart-sukses').each(function(){
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "Berhasil ditambahkan ke Keranjang!", "success");
 			});
 		});
 	

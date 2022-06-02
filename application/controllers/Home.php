@@ -6,26 +6,109 @@ class Home extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Mhome');
+		$this->load->model('Mcart');
     }
     public function index() {
-		$data = array(
-			'title' => "Home",
-			'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
-			'datasayur' => $this->Mhome->getallsayur()->result_array(),
-		);
-		$this->load->view('v_home', $data);
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($user) {
+			$cart = $this->Mcart->show_cart($user['id_user'])->result_array();
+			if ($cart){
+				$totalcart = 0;
+				foreach ($cart as $c) {
+					$totalcart = $totalcart + $c['qty'];
+				}
+			
+				$data = array(
+					'title' => "Home",
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'carttotal' => $totalcart,
+				);
+				$this->load->view('v_home', $data);
+			}else{
+				$data = array(
+					'title' => "Home",
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'carttotal' => 0,
+				);
+				$this->load->view('v_home', $data);
+			}
+			
+		}else{
+			$data = array(
+				'title' => "Home",
+				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+				'datasayur' => $this->Mhome->getallsayur()->result_array(),
+				'carttotal' => 0,
+			);
+			$this->load->view('v_home', $data);
+		}
 	}
 
-    public function cart() {
+	public function Cart(){
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($user) {
+			$cart = $this->Mcart->show_cart($user['id_user'])->result_array();
+			if ($cart){
+				$totalcart = 0;
+				foreach ($cart as $c) {
+					$totalcart = $totalcart + $c['qty'];
+				}
+			
+				$data = array(
+					'title' => "Home",
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+					'carttotal' => $totalcart,
+				);
+				$this->load->view('v_cart', $data);
+			}else{
+				$data = array(
+					'title' => "Home",
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+					'carttotal' => 0,
+				);
+				$this->load->view('v_cart', $data);
+			}
+			
+		}else{
+			$this->session->set_flashdata('message2', 'Login terlebih dahulu sebelum Melihat Keranjang');
+            redirect('auth/login');
+		}
+	}
+
+    public function Addcart($id_sayur) {
 		
 		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         if ($user) {
-			$data = array(
-				'title' => "Cart"
-			);
-			$this->load->view('v_cart', $data);
+			$cart = $this->Mcart->cek_cart($id_sayur, $user['id_user'])->row_array();
+			if($cart){
+				$this->db->set('qty', $cart['qty'] + 1);
+                $this->db->where('id_keranjang', $cart['id_keranjang']);
+                $this->db->update('keranjang');
+                $this->session->set_flashdata('message', '
+                <div class="alert alert-success" role="alert">
+                    Berhasil ditambahkan ke <a href="' . base_url('home/cart') . '"><u>Keranjang!</u></a>
+                </div>');
+                redirect('home');
+			}else{
+				$data = array(
+                    'id_sayur'  => $id_sayur,
+                    'qty'     	=> 1,
+                    'status' 	=> 1,
+                    'id_user' 	=> $user['id_user'],
+                );
+                $this->db->insert('keranjang', $data);
+                $this->session->set_flashdata('message', '
+                <div class="alert alert-success" role="alert">
+                    Berhasil ditambahkan ke <a href="' . base_url('home/cart') . '"><u>Keranjang!</u></a>
+                </div>');
+                redirect('home');
+			}
 		} else{
-			$this->session->set_flashdata('message2', 'Login terlebih dahulu sebelum melihat keranjang');
+			$this->session->set_flashdata('message2', 'Login terlebih dahulu sebelum Menambahkan keranjang');
             redirect('auth/login');
 		}
 	}
