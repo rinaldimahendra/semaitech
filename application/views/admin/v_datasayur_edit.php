@@ -22,9 +22,21 @@ $this->load->view('template_admin/sidebar');
                             <input type="text" name="nama" class="form-control" value="<?php echo $ds->Nama ?>">
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>Kategori</label>
                             <input type="text" name="kategori" class="form-control" value="<?php echo $ds->Kategori ?>">
+                        </div> -->
+
+                        <div class="form-group">
+                            <label>Kategori</label>
+                            <select class="form-control" name="kategori" id="kategori">
+                                <option value=''>- Pilih -</option>
+                                <?php foreach ($kategori as $ktgr) { ?>
+                                    <option value="<?php echo $ktgr['Id_Kategori']; ?>" <?php if ($ds->Kategori == $ktgr['Id_Kategori']) { ?> selected <?php } ?>>
+                                        <?php echo $ktgr['Nama_Kategori']; ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
                         </div>
 
                         <div class="form-group">

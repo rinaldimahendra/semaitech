@@ -17,7 +17,7 @@ $this->load->view('template_admin/sidebar');
                     <i class="fas fa-plus fa-sm"> TAMBAH PRODUK</i>
                 </button>&ensp;
             </div>
-            <table id="table1" class="table table-striped">
+            <table id="table" class="table table-striped">
                 <thead>
                     <tr>
                         <th>NO</th>

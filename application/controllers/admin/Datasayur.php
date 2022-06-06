@@ -69,6 +69,7 @@ class Datasayur extends CI_Controller
 		$data = array(
 			'title' => "Data Penjualan | Semaitech",
 			'datasayur1' => $this->d_datasayur->edit_produk($where, 'managemen_data_sayur')->result(),
+			'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
 		);
 		$this->load->view('admin/v_datasayur_edit', $data);
 	}
@@ -84,7 +85,18 @@ class Datasayur extends CI_Controller
 		$status					= $this->input->post('status');
 		$foto          			= $_FILES['foto']['name'];
 
-		if ($foto = '') {
+		$data = array();
+
+		if ($foto == '') {
+			$data_temp = array(
+				'Nama'       		=> $nama,
+				'Kategori'			=> $kategori,
+				'Keterangan'        => $keterangan,
+				'Stok'       		=> $stok,
+				'Harga'      		=> $harga,
+				'Status'			=> $status
+			);
+			$data = $data_temp;
 		} else {
 			$config['upload_path'] = './assets/img/sayur';
 			$config['allowed_types'] = 'jpg|jpeg|png|gif';
@@ -99,17 +111,19 @@ class Datasayur extends CI_Controller
 				unlink($target_file);
 				$foto = $this->upload->data('file_name');
 			}
+
+			$data_temp = array(
+				'Nama'       		=> $nama,
+				'Kategori'			=> $kategori,
+				'Keterangan'        => $keterangan,
+				'Stok'       		=> $stok,
+				'Harga'      		=> $harga,
+				'Status'			=> $status,
+				'Foto'            	=> $foto
+			);
+			$data = $data_temp;
 		}
 
-		$data = array(
-			'Nama'       		=> $nama,
-			'Kategori'			=> $kategori,
-			'Keterangan'        => $keterangan,
-			'Stok'       		=> $stok,
-			'Harga'      		=> $harga,
-			'Status'			=> $status,
-			'Foto'            	=> $foto
-		);
 
 		$where = array(
 			'Id'         => $id
