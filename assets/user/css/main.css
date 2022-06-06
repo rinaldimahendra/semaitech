@@ -118,6 +118,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /*//////////////////////////////////////////////////////////////////
 [ LOADDING ]*/
 .animsition-loading-1 {
+  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1813,6 +1814,13 @@ button.mfp-close {
 
 .btn-num-product-up,
 .btn-num-product-down {
+  width: 45px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.btn-up,
+.btn-down {
   width: 45px;
   height: 100%;
   cursor: pointer;

@@ -113,6 +113,23 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function updateCart()
+    {
+        $id_keranjang = $_POST['id_keranjang'];
+        $qty = $_POST['qty'];
+
+        $query = "UPDATE keranjang SET qty = $qty WHERE id_keranjang = $id_keranjang";
+        $this->db->query($query);
+        echo json_encode($this->Mcart->get_keranjang_byid($id_keranjang)->row_array());
+    }
+
+	public function deleteCart($id_keranjang)
+    {
+        $this->db->where('id_keranjang', $id_keranjang);
+        $this->db->delete('keranjang');
+        redirect('home/cart');
+    }
+
     public function shop() {
 		$data = array(
 			'title' => "Shop"

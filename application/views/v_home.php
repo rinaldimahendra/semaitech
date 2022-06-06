@@ -416,7 +416,6 @@ $this->load->view('template_user/header');
 					</div>
 				</div>
 			</div>
-			<?= $carttotal;?>
 			<div class="row isotope-grid">
 				<?php foreach($datasayur as $d): ?>
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
@@ -427,12 +426,12 @@ $this->load->view('template_user/header');
 							<div class="row">
 								<div class="column col-6">
 									<a href="<?= base_url('home/AddCart/').$d['Id'] ?>" class="block2-btn flex-c-m stext-103 cl2 size-105 bg2 bor2 hov-btn1 p-lr-15 trans-04 js-addcart-sukses">
-										<i class="zmdi zmdi-shopping-cart"></i>&ensp;Add
+										<i class="zmdi zmdi-shopping-cart zmdi-hc-2x"></i>
 									</a>
 								</div>
 								<div class="column col-6">
 									<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-105 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-										<i class="zmdi zmdi-zoom-in zmdi-hc-lg"></i>&ensp;Detail
+										<i class="zmdi zmdi-zoom-in zmdi-hc-2x"></i>
 									</a>
 								</div>
 							</div>

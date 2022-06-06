@@ -24,11 +24,11 @@ class Mcart extends CI_Model {
         return $this->db->query($query);
     }
 
-    public function get_keranjang($id_user)
+    public function get_keranjang_byid($id_keranjang)
     {
-        $query = "SELECT keranjang_merchandise.*, foto_merchandise.*, merchandise.id_merch, merchandise.nama_merch, merchandise.stock, merchandise.harga, merchandise.diskon, merchandise.is_deliver
-        FROM keranjang_merchandise, user, merchandise, foto_merchandise
-        WHERE user.id_user = keranjang_merchandise.id_user AND keranjang_merchandise.id_user = $id_user AND merchandise.id_merch = keranjang_merchandise.id_merchandise AND foto_merchandise.id = merchandise.foto_utama";
+        $query = "SELECT *
+        FROM keranjang
+        WHERE id_keranjang = $id_keranjang";
         return $this->db->query($query);
     }
 }

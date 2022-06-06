@@ -36,37 +36,21 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/css/main.css">
 <!--===============================================================================================-->
 </head>
-<body class="animsition">
+<body>
     <!-- Header -->
 	<header>
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
-			<!-- <div class="top-bar">
+			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
-						Free shipping for standard order over $100
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
-						</a>
 					</div>
 				</div>
-			</div> -->
+			</div>
 
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
@@ -113,9 +97,9 @@
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<?= $carttotal;?>">
+						<a class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" href="<?= base_url('home/cart')?>" data-notify="<?= $carttotal;?>">				
 							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
+						</a>
 
 						<!-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
 							<i class="zmdi zmdi-account"></i>
