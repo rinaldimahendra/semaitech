@@ -53,7 +53,7 @@ $this->load->view('template_admin/sidebar');
                   <div class="card-header">
                     <h4>Total Orders</h4>
                   </div>
-                  <div class="card-body">
+                  <div class="card-body"> 
                     59
                   </div>
                 </div>
@@ -481,6 +481,7 @@ $this->load->view('template_admin/sidebar');
               </div>
             </div>
           </div>
+
         </section>
       </div>
 <?php $this->load->view('template_admin/footer'); ?>

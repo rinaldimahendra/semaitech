@@ -7,72 +7,72 @@ $this->load->view('template_user/header');
 	<section class="section-slide">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1" style="background-image: url(<?= base_url(); ?>assets/user/images//slide-01.jpg);">
+				<div class="item-slick1" style="background-image: url(<?= base_url(); ?>assets/user/images//semai_tech.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Women Collection 2018
+									Semaitechnology
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									NEW SEASON
+									Hidroponik
 								</h2>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
 								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
+									Belanja Sekarang!
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url(<?= base_url(); ?>assets/user/images//slide-02.jpg);">
+				<div class="item-slick1" style="background-image: url(<?= base_url(); ?>assets/user/images//ramadhan.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Men New-Season
+									Ramadhan Berkah
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Jackets & Coats
+									Promo Sayuran
 								</h2>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
 								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
+									Belanja Sekarang
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url(<?= base_url(); ?>assets/user/images//slide-03.jpg);">
+				<div class="item-slick1" style="background-image: url(<?= base_url(); ?>assets/user/images//hidroponik.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Men Collection 2018
+									Bagaimana Menanam ala Hidroponik?
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									New arrivals
+									Video Semai Hidroponik
 								</h2>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
 								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
+									Tonton Sekarang
 								</a>
 							</div>
 						</div>
@@ -90,22 +90,22 @@ $this->load->view('template_user/header');
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="<?= base_url(); ?>assets/user/images//banner-01.jpg" alt="IMG-BANNER">
+						<img src="<?= base_url(); ?>assets/user/images//2.png" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Women
+									Sayur 
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Hidroponik
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
+									Belanja Sekarang
 								</div>
 							</div>
 						</a>
@@ -115,22 +115,22 @@ $this->load->view('template_user/header');
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="<?= base_url(); ?>assets/user/images//banner-02.jpg" alt="IMG-BANNER">
+						<img src="<?= base_url(); ?>assets/user/images//3.png" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Men
+									Kacang
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Hidroponik
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
+									Belanja Sekarang
 								</div>
 							</div>
 						</a>
@@ -140,22 +140,22 @@ $this->load->view('template_user/header');
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="<?= base_url(); ?>assets/user/images//banner-03.jpg" alt="IMG-BANNER">
+						<img src="<?= base_url(); ?>assets/user/images//video_semai.jpg" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Accessories
+									Video Semai
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									New Trend
+									Semaitechnology
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
+									Tonton Sekarang
 								</div>
 							</div>
 						</a>
@@ -171,30 +171,30 @@ $this->load->view('template_user/header');
 		<div class="container">
 			<div class="p-b-10">
 				<h3 class="ltext-103 cl5">
-					Product Overview
+					Ulasan Produk
 				</h3>
 			</div>
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Products
+						Semua Produk
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Women
+						Sayur 
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Men
+						Kacang
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Bag
+						Umbi
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Shoes
+						Video
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
@@ -212,7 +212,7 @@ $this->load->view('template_user/header');
 					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
 						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
 						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						Search
+						Cari
 					</div>
 				</div>
 				
@@ -238,37 +238,37 @@ $this->load->view('template_user/header');
 							<ul>
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										Default
+										Umum
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										Popularity
+										Popularitas
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										Average rating
+										Penilaian Ratarata
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Newness
+										Baru
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										Price: Low to High
+										Harga: Rendah ke Tinggi
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										Price: High to Low
+										Harga: Tinggi ke Rendah
 									</a>
 								</li>
 							</ul>
@@ -276,43 +276,43 @@ $this->load->view('template_user/header');
 
 						<div class="filter-col2 p-r-15 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
-								Price
+								Harga
 							</div>
 
 							<ul>
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										All
+										Semua
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										$0.00 - $50.00
+										Rp 0 - Rp 5.000
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										$50.00 - $100.00
+										Rp 5.000 - Rp 10.000
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										$100.00 - $150.00
+										Rp 10.000 - Rp 25.000
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										$150.00 - $200.00
+										Rp 25.000 - Rp 50.000
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										$200.00+
+										Rp 50.000+
 									</a>
 								</li>
 							</ul>
@@ -320,7 +320,7 @@ $this->load->view('template_user/header');
 
 						<div class="filter-col3 p-r-15 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
-								Color
+								Warna
 							</div>
 
 							<ul>
@@ -360,7 +360,7 @@ $this->load->view('template_user/header');
 									</span>
 
 									<a href="#" class="filter-link stext-106 trans-04">
-										Green
+										Hijau
 									</a>
 								</li>
 
@@ -370,7 +370,7 @@ $this->load->view('template_user/header');
 									</span>
 
 									<a href="#" class="filter-link stext-106 trans-04">
-										Red
+										Merah
 									</a>
 								</li>
 
@@ -380,7 +380,7 @@ $this->load->view('template_user/header');
 									</span>
 
 									<a href="#" class="filter-link stext-106 trans-04">
-										White
+										Putih
 									</a>
 								</li>
 							</ul>
@@ -388,34 +388,35 @@ $this->load->view('template_user/header');
 
 						<div class="filter-col4 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
-								Tags
+								Nutrisi
 							</div>
 
 							<div class="flex-w p-t-4 m-r--5">
 								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Fashion
+									Vitamin A
 								</a>
 
 								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Lifestyle
+									Vitamin B
 								</a>
 
 								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Denim
+									Vitamin C
 								</a>
 
 								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Streetstyle
+									Vitamin E
 								</a>
 
 								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Crafts
+									Mineral
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<?= $carttotal;?>
 			<div class="row isotope-grid">
 				<?php foreach($datasayur as $d): ?>
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
@@ -426,12 +427,12 @@ $this->load->view('template_user/header');
 							<div class="row">
 								<div class="column col-6">
 									<a href="<?= base_url('home/AddCart/').$d['Id'] ?>" class="block2-btn flex-c-m stext-103 cl2 size-105 bg2 bor2 hov-btn1 p-lr-15 trans-04 js-addcart-sukses">
-										<i class="zmdi zmdi-shopping-cart zmdi-hc-2x"></i>
+										<i class="zmdi zmdi-shopping-cart"></i>&ensp;Tambah
 									</a>
 								</div>
 								<div class="column col-6">
-									<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-105 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-										<i class="zmdi zmdi-zoom-in zmdi-hc-2x"></i>
+									<a href="<?= base_url('home/Detail/').$d['Id'] ?>" class="block2-btn flex-c-m stext-103 cl2 size-105 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-detail">
+										<i class="zmdi zmdi-zoom-in zmdi-hc-lg"></i>&ensp;Detail
 									</a>
 								</div>
 							</div>
@@ -464,9 +465,10 @@ $this->load->view('template_user/header');
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
 				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
+					Tampilkan lebih banyak
 				</a>
 			</div>
 		</div>
 	</section>
 <?php $this->load->view('template_user/footer'); ?>
+
