@@ -63,33 +63,26 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
+							<li>
+								<a href="<?= base_url(); ?>">Beranda</a>
+							</li>
 							<li class="active-menu">
-								<a href="<?= base_url(); ?>">Home</a>
+								<a href="#">Kategori</a>
+								
 								<ul class="sub-menu">
-									<li><a href="index.html">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
+									<?php foreach($datakategori as $dk) : ?>
+									<li><a href="<?= base_url('home/kategori/').$dk['Id_Kategori']; ?>"><?= $dk['Nama_Kategori']; ?></a></li>
+									<?php endforeach; ?>
 								</ul>
+								
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
-							</li>
-
-							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.html">Features</a>
+								<a href="product.html">Belanja</a>
 							</li>
 
 							<li>
-								<a href="blog.html">Blog</a>
-							</li>
-
-							<li>
-								<a href="about.html">About</a>
-							</li>
-
-							<li>
-								<a href="contact.html">Contact</a>
+								<a href="about.html">Tentang</a>
 							</li>
 						</ul>
 					</div>	
@@ -110,7 +103,7 @@
 								<?php if ($this->session->userdata('nama')) : ?>
 								<ul class="sub-menu">
 									<li><a href="#"><i class="zmdi zmdi-account"></i>&ensp;Profile</a></li>
-									<li><a href="<?= base_url('home/cart')?>"><i class="zmdi zmdi-shopping-cart"></i>&ensp;Cart</a></li>
+									<li><a href="<?= base_url('home/cart')?>"><i class="zmdi zmdi-shopping-cart"></i>&ensp;Keranjang Saya</a></li>
 									<li><a href="<?= base_url('auth/logout')?>"><i class="fa-solid fa-arrow-right-from-bracket"></i>&ensp;Log out</a></li>
 								</ul>
 								<?php else : ?>
@@ -201,35 +194,25 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="index.html">Home</a>
-					<ul class="sub-menu-m">
-						<li><a href="index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
+					<a href="<?= base_url(); ?>">Beranda</a>
+				</li>
+				<li class="active-menu">
+					<a href="#">Kategori</a>
+					
+					<ul class="sub-menu">
+						<?php foreach($datakategori as $dk) : ?>
+						<li><a href="<?= base_url('home/kategori/').$dk['Id_Kategori']; ?>"><?= $dk['Nama_Kategori']; ?></a></li>
+						<?php endforeach; ?>
 					</ul>
-					<span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
+					
 				</li>
 
 				<li>
-					<a href="product.html">Shop</a>
+					<a href="product.html">Belanja</a>
 				</li>
 
 				<li>
-					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
-				</li>
-
-				<li>
-					<a href="blog.html">Blog</a>
-				</li>
-
-				<li>
-					<a href="about.html">About</a>
-				</li>
-
-				<li>
-					<a href="contact.html">Contact</a>
+					<a href="about.html">Tentang</a>
 				</li>
 			</ul>
 		</div>
