@@ -7,77 +7,31 @@ $this->load->view('template_user/header');
 	<section class="section-slide">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1" style="background-image: url(<?= base_url(); ?>assets/user/images//semai_tech.jpg);">
+				<?php foreach($slider as $sl): ?>
+				<div class="item-slick1" style="background-image: url(<?= base_url('assets/user/images/slider/').$sl['gambar_slider']; ?>);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Semaitechnology
+									<?= $sl['subjudul_slider']; ?>
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Hidroponik
+									<?= $sl['judul_slider']; ?>
 								</h2>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Belanja Sekarang!
+								<a href="<?= $sl['akses_button']; ?>" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+									<?= $sl['label_button']; ?>
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="item-slick1" style="background-image: url(<?= base_url(); ?>assets/user/images//ramadhan.jpg);">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									Ramadhan Berkah
-								</span>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Promo Sayuran
-								</h2>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Belanja Sekarang
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="item-slick1" style="background-image: url(<?= base_url(); ?>assets/user/images//hidroponik.jpg);">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									Bagaimana Menanam ala Hidroponik?
-								</span>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Video Semai Hidroponik
-								</h2>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Tonton Sekarang
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</section>
@@ -90,7 +44,7 @@ $this->load->view('template_user/header');
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="<?= base_url(); ?>assets/user/images//2.png" alt="IMG-BANNER">
+						<img src="<?= base_url(); ?>assets/user/images/2.png" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
@@ -115,7 +69,7 @@ $this->load->view('template_user/header');
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="<?= base_url(); ?>assets/user/images//3.png" alt="IMG-BANNER">
+						<img src="<?= base_url(); ?>assets/user/images/3.png" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
@@ -140,7 +94,7 @@ $this->load->view('template_user/header');
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="<?= base_url(); ?>assets/user/images//video_semai.jpg" alt="IMG-BANNER">
+						<img src="<?= base_url(); ?>assets/user/images/video_semai.jpg" alt="IMG-BANNER">
 
 						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
@@ -241,7 +195,7 @@ $this->load->view('template_user/header');
 								</div>
 								<div class="column col-6">
 									<a href="<?= base_url('home/footer/').$d['Id'] ?>" class="block2-btn flex-c-m stext-103 cl2 size-105 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-										<i class="zmdi zmdi-zoom-in zmdi-hc-lg"></i>&ensp;Detail
+										<i class="zmdi zmdi-zoom-in zmdi-hc-lg"></i>
 									</a>
 								</div>
 							</div>
@@ -250,20 +204,17 @@ $this->load->view('template_user/header');
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+								<a href="product-detail.html" class="stext-104 cl3 hov-cl1 trans-04 js-name-b2 p-b-6">
 									<?= $d['Nama']?>
 								</a>
 
 								<span class="stext-105 cl3">
-									Rp <?= $d['Harga']?>
+									Rp <?= number_format($d['Harga'], 0, ',', '.');?>
 								</span>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
-								<!-- <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="<?= base_url(); ?>assets/user/images//icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="<?= base_url(); ?>assets/user/images//icons/icon-heart-02.png" alt="ICON">
-								</a> -->
+								Stok <?= $d['Stok']?>
 							</div>
 						</div>
 					</div>

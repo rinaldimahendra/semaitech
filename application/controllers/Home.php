@@ -7,6 +7,7 @@ class Home extends CI_Controller {
         parent::__construct();
         $this->load->model('Mhome');
 		$this->load->model('Mcart');
+		$this->load->model('Mkonten');
     }
     public function index() {
 		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -21,6 +22,7 @@ class Home extends CI_Controller {
 				$data = array(
 					'title' => "Home",
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => $totalcart,
@@ -30,6 +32,7 @@ class Home extends CI_Controller {
 				$data = array(
 					'title' => "Home",
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => 0,
@@ -41,6 +44,7 @@ class Home extends CI_Controller {
 			$data = array(
 				'title' => "Home",
 				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+				'slider' => $this->Mkonten->getslider_aktif()->result_array(),
 				'datasayur' => $this->Mhome->getallsayur()->result_array(),
 				'datakategori' => $this->Mhome->getallkategori()->result_array(),
 				'carttotal' => 0,
