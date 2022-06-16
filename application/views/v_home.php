@@ -151,15 +151,19 @@ $this->load->view('template_user/header');
 				</div>
 				
 				<!-- Search product -->
+				
 				<div class="dis-none panel-search w-full p-t-10 p-b-15">
-					<div class="bor8 dis-flex p-l-15">
-						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-							<i class="zmdi zmdi-search"></i>
-						</button>
+					<form class="form-horizontal" method="post" action="<?= base_url('home/search#s') ?>">
+						<div class="bor8 dis-flex p-l-15">
+							<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+								<i class="zmdi zmdi-search"></i>
+							</button>
 
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
-					</div>	
+							<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search" placeholder="Pencarian Produk">
+						</div>
+					</form>
 				</div>
+				
 
 				<!-- Filter -->
 				<div class="dis-none panel-filter w-full p-t-10">
@@ -180,7 +184,7 @@ $this->load->view('template_user/header');
 					</div>
 				</div>
 			</div>
-			<div class="row isotope-grid">
+			<div class="row isotope-grid" id="s">
 				<?php foreach($datasayur as $d): ?>
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 					<!-- Block2 -->
