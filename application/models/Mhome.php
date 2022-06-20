@@ -18,6 +18,15 @@ class Mhome extends CI_Model {
         return $this->db->query($query);
     }
 
+    public function detailsayur($where,$table)
+    {
+        // $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga
+        // FROM managemen_data_sayur, kategori_sayur
+        // WHERE Kategori = Id_Kategori AND Stok > 0
+        // "; 
+        return $this->db->get_where($table,$where);
+    }
+
     public function getsayurbykategori($id_kategori){
         $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga 
         FROM managemen_data_sayur, kategori_sayur

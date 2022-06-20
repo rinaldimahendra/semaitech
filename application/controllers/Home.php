@@ -181,4 +181,54 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function Detailsayur($id) 
+	{
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		if ($user) {
+			$cart = $this->Mcart->show_cart($user['id_user'])->result_array();
+			if ($cart) {
+				$totalcart = 0;
+				foreach ($cart as $c) {
+					$totalcart = $totalcart + $c['qty'];
+				}
+				$where = array('Id' => $id);
+				$data = array(
+					'title' => 'Detail Sayur',
+					'datasayur' => $this->Mhome->detailsayur($where,'managemen_data_sayur')->result_array(),
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+					'carttotal' => $totalcart,
+					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
+				);
+
+				$this->load->view('v_detail_sayur', $data);
+				
+			} else {
+				$where = array('Id' => $id);
+				$data = array(
+					'title' => 'Detail Sayur',
+					'datasayur' => $this->Mhome->detailsayur($where,'managemen_data_sayur')->result_array(),
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+					'carttotal' => 0,
+					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
+				);
+
+				$this->load->view('v_detail_sayur', $data);
+			}
+		} else {
+			$this->session->set_flashdata('message2', 'Login terlebih dahulu sebelum Melihat Keranjang');
+			redirect('auth/login');
+		}
+		// $where = array('Id' => $id);
+		// $data = array(
+		// 	'title' => 'Detail Sayur',
+		// 	'datasayur' => $this->Mhome->detailsayur($where,'managemen_data_sayur')->result_array(),
+		// 	'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+		// 	'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+		// );
+
+		// $this->load->view('v_detail_sayur', $data);
+	}
+
 }
