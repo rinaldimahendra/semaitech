@@ -185,25 +185,16 @@ class Home extends CI_Controller {
 		}
 	}
 
-<<<<<<< HEAD
 	public function Detailsayur($id) 
 	{
 		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		if ($user) {
 			$cart = $this->Mcart->show_cart($user['id_user'])->result_array();
 			if ($cart) {
-=======
-	public function search(){
-		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        if ($user) {
-			$cart = $this->Mcart->show_cart($user['id_user'])->result_array();
-			if ($cart){
->>>>>>> 1422e04ab0be996c6014b662da7dd7bb6e453fec
 				$totalcart = 0;
 				foreach ($cart as $c) {
 					$totalcart = $totalcart + $c['qty'];
 				}
-<<<<<<< HEAD
 				$where = array('Id' => $id);
 				$data = array(
 					'title' => 'Detail Sayur',
@@ -242,42 +233,6 @@ class Home extends CI_Controller {
 		// );
 
 		// $this->load->view('v_detail_sayur', $data);
-=======
-			
-				$data = array(
-					'title' => "Home",
-					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
-					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
-					// 'search' => $this->input->post('search'),
-					'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
-					'datakategori' => $this->Mhome->getallkategori()->result_array(),
-					'carttotal' => $totalcart,
-				);
-				$this->load->view('v_home', $data);
-			}else{
-				$data = array(
-					'title' => "Home",
-					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
-					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
-					'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
-					'datakategori' => $this->Mhome->getallkategori()->result_array(),
-					'carttotal' => 0,
-				);
-				$this->load->view('v_home', $data);
-			}
-			
-		}else{
-			$data = array(
-				'title' => "Home",
-				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
-				'slider' => $this->Mkonten->getslider_aktif()->result_array(),
-				'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
-				'datakategori' => $this->Mhome->getallkategori()->result_array(),
-				'carttotal' => 0,
-			);
-			$this->load->view('v_home', $data);
-		}
->>>>>>> 1422e04ab0be996c6014b662da7dd7bb6e453fec
 	}
 
 }
