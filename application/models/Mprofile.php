@@ -4,6 +4,7 @@ class Mprofile extends CI_Model {
         $data=array(
             'nama' => htmlspecialchars($this->security->xss_clean($this->input->post('nama')),ENT_QUOTES),
             'tentang' => htmlspecialchars($this->security->xss_clean($this->input->post('tentang')),ENT_QUOTES),
+            'detail' => htmlspecialchars($this->security->xss_clean($this->input->post('tentang')),ENT_QUOTES),
             'logo' => htmlspecialchars($logo, ENT_QUOTES),
             'email' => htmlspecialchars($this->security->xss_clean($this->input->post('email')),ENT_QUOTES),
             'alamat' => htmlspecialchars($this->security->xss_clean($this->input->post('alamat')),ENT_QUOTES),
