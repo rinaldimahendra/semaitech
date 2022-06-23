@@ -5,13 +5,19 @@ class Kategorisayur extends CI_Controller
 {
     public function index()
     {
-        // echo "test";
-        $data = array(
-            'title' => "Kategori Sayur | Semaitech",
-            'kategori1' => $this->d_kategorisayur->tampil_data1()->result(),
-        );
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($user) {
+            if ($user['id_role'] == 2) {
+                redirect('home');
+            } else {
+                $data = array(
+                    'title' => "Kategori Sayur | Semaitech",
+                    'kategori1' => $this->d_kategorisayur->tampil_data1()->result(),
+                );
 
-        $this->load->view('admin/v_kategorisayur', $data);
+                $this->load->view('admin/v_kategorisayur', $data);
+            }
+        }
     }
 
     public function tambah_aksi()
@@ -40,12 +46,19 @@ class Kategorisayur extends CI_Controller
 
     public function edit($id_kategori)
     {
-        $where = array('Id_Kategori' => $id_kategori);
-        $data = array(
-            'title' => "Data Penjualan | Semaitech",
-            'kategori1' => $this->d_kategorisayur->edit_produk1($where, 'kategori_sayur')->result(),
-        );
-        $this->load->view('admin/v_kategorisayur', $data);
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($user) {
+            if ($user['id_role'] == 2) {
+                redirect('home');
+            } else {
+                $where = array('Id_Kategori' => $id_kategori);
+                $data = array(
+                    'title' => "Data Penjualan | Semaitech",
+                    'kategori1' => $this->d_kategorisayur->edit_produk1($where, 'kategori_sayur')->result(),
+                );
+                $this->load->view('admin/v_kategorisayur', $data);
+            }
+        }
     }
 
     public function update1()

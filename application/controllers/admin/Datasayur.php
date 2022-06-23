@@ -6,14 +6,20 @@ class Datasayur extends CI_Controller
 
 	public function index()
 	{
-		// echo "test";
-		$data = array(
-			'title' => "Data Penjualan | Semaitech",
-			'datasayur1' => $this->d_datasayur->tampil_data()->result(),
-			'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
-		);
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($user) {
+            if ($user['id_role'] == 2) {
+                redirect('home');
+            } else {
+				$data = array(
+					'title' => "Data Penjualan | Semaitech",
+					'datasayur1' => $this->d_datasayur->tampil_data()->result(),
+					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
+				);
 
-		$this->load->view('admin/v_datasayur', $data);
+				$this->load->view('admin/v_datasayur', $data);
+			}
+		}
 	}
 
 	public function tambah_aksi()
@@ -65,13 +71,20 @@ class Datasayur extends CI_Controller
 
 	public function edit($id)
 	{
-		$where = array('Id' => $id);
-		$data = array(
-			'title' => "Data Penjualan | Semaitech",
-			'datasayur1' => $this->d_datasayur->edit_produk($where, 'managemen_data_sayur')->result(),
-			'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
-		);
-		$this->load->view('admin/v_datasayur_edit', $data);
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($user) {
+            if ($user['id_role'] == 2) {
+                redirect('home');
+            } else {
+				$where = array('Id' => $id);
+				$data = array(
+					'title' => "Data Penjualan | Semaitech",
+					'datasayur1' => $this->d_datasayur->edit_produk($where, 'managemen_data_sayur')->result(),
+					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
+				);
+				$this->load->view('admin/v_datasayur_edit', $data);
+			}
+		}
 	}
 
 	public function update()

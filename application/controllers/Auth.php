@@ -254,7 +254,7 @@ class Auth extends CI_Controller {
                     }
                 }
             } else {
-                $this->session->set_flashdata('message', 'Akun Anda Belum Diaktivasi');
+                $this->session->set_flashdata('message', 'Akun Anda Tidak Aktif');
                 redirect('auth/login');
             }
         } else {

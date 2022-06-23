@@ -9,12 +9,19 @@ class Companyprofile extends CI_Controller {
     }
 
     public function index() {
-		$data = array(
-			'title' => "Company Profile | Semaitech",
-			'profile' => $this->db->get('profile_perusahaan')->row(),
-			'js' => array("companyprofile.js?r=" . rand()),
-		);
-		$this->load->view('admin/v_companyprofile', $data);
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($user) {
+            if ($user['id_role'] == 2) {
+                redirect('home');
+            } else {
+                $data = array(
+                    'title' => "Company Profile | Semaitech",
+                    'profile' => $this->db->get('profile_perusahaan')->row(),
+                    'js' => array("companyprofile.js?r=" . rand()),
+                );
+                $this->load->view('admin/v_companyprofile', $data);
+            }
+        }
 	}
 
 	function update_perusahaan()
