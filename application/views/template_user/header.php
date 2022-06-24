@@ -63,10 +63,10 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li>
+							<li class="active-menu">
 								<a href="<?= base_url(); ?>">Beranda</a>
 							</li>
-							<li class="active-menu">
+							<li>
 								<a href="#">Kategori</a>
 								
 								<ul class="sub-menu">
@@ -104,7 +104,8 @@
 								<ul class="sub-menu">
 									<li><a href="#"><i class="zmdi zmdi-account"></i>&ensp;Profile</a></li>
 									<li><a href="<?= base_url('home/cart')?>"><i class="zmdi zmdi-shopping-cart"></i>&ensp;Keranjang Saya</a></li>
-									<li><a href="<?= base_url('auth/logout')?>"><i class="fa-solid fa-arrow-right-from-bracket"></i>&ensp;Log out</a></li>
+									<li><a href="<?= base_url('riwayat')?>"><i class="zmdi zmdi-assignment"></i>&ensp;Pesanan Saya</a></li>
+									<li><a href="<?= base_url('auth/logout')?>"><i class="zmdi zmdi-power"></i>&ensp;Log out</a></li>
 								</ul>
 								<?php else : ?>
 								<ul class="sub-menu">
