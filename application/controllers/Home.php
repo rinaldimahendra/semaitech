@@ -441,14 +441,14 @@ class Home extends CI_Controller
 		}
 	}
 
-	public function pembayaran()
+	public function pembayaran($id_order)
 	{
 		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$rek_pembayaran = "SELECT * FROM rek_pembayaran";
 		$rek = $this->db->query($rek_pembayaran)->result_array();
 		$id_user = $user['id_user'];
 		$checkout = "SELECT * FROM `order`,rek_pembayaran WHERE order.bank = rek_pembayaran.id_rek AND
-		id_user = $id_user ORDER BY id_order DESC LIMIT 1";
+		id_user = $id_user AND id_order = $id_order ORDER BY id_order DESC LIMIT 1";
 		$checkout2 = $this->db->query($checkout)->row_array();
 
 		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();

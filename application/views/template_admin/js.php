@@ -253,6 +253,22 @@ if ($this->uri->segment(2) == "" || $this->uri->segment(2) == "index") { ?>
     });
   });
 </script>
+<script>
+  $(function() {
+    $("#table2").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  });
+</script>
+<script>
+  $(function() {
+    $("#table3").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  });
+</script>
 <!-- Template JS File -->
 <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>

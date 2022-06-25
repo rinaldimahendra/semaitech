@@ -34,4 +34,40 @@ class Mhome extends CI_Model {
         ";
         return $this->db->query($query);
     }
+
+    public function getRiwayatPesanan_MenungguVerifikasi($id){
+        $query = "SELECT *
+        FROM user, `order`
+        WHERE order.id_user = $id
+        AND user.id_user = order.id_user AND order.status = 1
+        ";
+        return $this->db->query($query);
+    }
+
+    public function getRiwayatPesanan_Dikemas($id){
+        $query = "SELECT *
+        FROM user, `order`
+        WHERE order.id_user = $id
+        AND user.id_user = order.id_user AND order.status = 2
+        ";
+        return $this->db->query($query);
+    }
+
+    public function getRiwayatPesanan_Dikirim($id){
+        $query = "SELECT *
+        FROM user, `order`
+        WHERE order.id_user = $id
+        AND user.id_user = order.id_user AND order.status = 3
+        ";
+        return $this->db->query($query);
+    }
+
+    public function getRiwayatPesanan_Selesai($id){
+        $query = "SELECT *
+        FROM user, `order`
+        WHERE order.id_user = $id
+        AND user.id_user = order.id_user AND order.status = 4
+        ";
+        return $this->db->query($query);
+    }
 }

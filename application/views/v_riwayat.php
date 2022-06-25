@@ -9,16 +9,16 @@ $this->load->view('template_user/header');
             <div class="card-header py-3">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#VerifikasiPembayaran" role="tab" aria-controls="#VerifikasiPembayaran" aria-selected="true">Verifikasi Pembayaran (  )</a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#VerifikasiPembayaran" role="tab" aria-controls="#VerifikasiPembayaran" aria-selected="true">Verifikasi Pembayaran (<?= $p_menungguverifikasi; ?>)</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Dikemas" role="tab" aria-controls="#Dikemas" aria-selected="false">Dikemas (  )</a>
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Dikemas" role="tab" aria-controls="#Dikemas" aria-selected="false">Dikemas (<?= $p_dikemas; ?>)</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Dikirim" role="tab" aria-controls="#Dikirim" aria-selected="false">Dikirim ( )</a>
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Dikirim" role="tab" aria-controls="#Dikirim" aria-selected="false">Dikirim (<?= $p_dikirim; ?>)</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Selesai" role="tab" aria-controls="#Selesai" aria-selected="false">Selesai ( )</a>
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Selesai" role="tab" aria-controls="#Selesai" aria-selected="false">Selesai (<?= $p_selesai; ?>)</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -31,25 +31,25 @@ $this->load->view('template_user/header');
                                             <tr>
                                                 <th class="text-center">ID</th>
                                                 <th class="text-center">Tgl Pemesanan</th>
-                                                <th class="text-center">Tagihan</th>
+                                                <th class="text-center">Grand Total</th>
                                                 <th class="text-center">Status</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-    
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td class="text-center">
+                                            <?php foreach ($pesanan_menungguverifikasi as $ps1) : ?>
+                                            <tr class="text-center">
+                                                <td><?= $ps1['id_order']; ?></td>
+                                                <td><?= $ps1['tanggal_pesan']; ?></td>
+                                                <td>Rp <?= number_format($ps1['grandtotal'], 0, ',', '.');?></td>
+                                                <td>
                                                     <span class='badge badge-primary text-light'>Menunggu Verifikasi</span>
                                                 </td>
                                                 <td>
-                                                
+                                                    <a class="flex-c-s stext-60 cl0 size-100 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer text-light" href="<?= base_url('home/pembayaran/').$ps1['id_order']; ?>">Detail</a>
                                                 </td>
                                             </tr>
-
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -66,27 +66,25 @@ $this->load->view('template_user/header');
                                             <tr>
                                                 <th class="text-center">ID</th>
                                                 <th class="text-center">Tgl Pemesanan</th>
-                                                <th class="text-center">Tagihan</th>
+                                                <th class="text-center">Grand Total</th>
                                                 <th class="text-center">Status</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
-                                                <tr>
-                                                    <td></td>
+                                            <?php foreach ($pesanan_dikemas as $ps2) : ?>
+                                                <tr class="text-center">
+                                                    <td><?= $ps2['id_order']; ?></td>
+                                                    <td><?= $ps2['tanggal_pesan']; ?></td>
+                                                    <td>Rp <?= number_format($ps2['grandtotal'], 0, ',', '.');?></td>
                                                     <td>
-
-                                                    </td>
-                                                    <td></td>
-                                                    <td class="text-center">
                                                         <span class='badge badge-danger text-light'>Dikemas</span>
                                                     </td>
                                                     <td>
-                                                        
+                                                        <a class="flex-c-s stext-60 cl0 size-100 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer text-light" href="<?= base_url('home/pembayaran/').$ps2['id_order']; ?>">Detail</a>
                                                     </td>
                                                 </tr>
-                                                
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -103,29 +101,28 @@ $this->load->view('template_user/header');
                                             <tr>
                                                 <th class="text-center">ID</th>
                                                 <th class="text-center">Tgl Pemesanan</th>
-                                                <th class="text-center">Tagihan</th>
+                                                <th class="text-center">Grand Total</th>
                                                 <th class="text-center">Tanggal Kirim</th>
                                                 <th class="text-center">Status</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
-                                                <tr>
+                                            <?php foreach ($pesanan_dikirim as $ps3) : ?>
+                                                <tr class="text-center">
+                                                    <td><?= $ps3['id_order']; ?></td>
+                                                    <td><?= $ps3['tanggal_pesan']; ?></td>
+                                                    <td>Rp <?= number_format($ps3['grandtotal'], 0, ',', '.');?></td>
                                                     <td></td>
                                                     <td>
-                                                        
-                                                    </td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td class="text-center">
                                                         <span class='badge badge-info text-light'>Dikirim</span>
                                                     </td>
                                                     <td>
-                                                    
+                                                        <a class="flex-c-s stext-60 cl0 size-100 bg1 bor14 hov-btn1 p-lr-15 trans-04 pointer text-light" href="<?= base_url('riwayat/to_selesai/').$ps3['id_order']; ?>">Pesanan Diterima</a>
+                                                        <a class="flex-c-s stext-60 cl0 size-100 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer text-light" href="<?= base_url('home/pembayaran/').$ps3['id_order']; ?>">Detail</a>
                                                     </td>
                                                 </tr>
-                                                
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -142,26 +139,27 @@ $this->load->view('template_user/header');
                                             <tr>
                                                 <th class="text-center">ID</th>
                                                 <th class="text-center">Tgl Pemesanan</th>
-                                                <th class="text-center">Tagihan</th>
+                                                <th class="text-center">Grand Total</th>
                                                 <th class="text-center">Tanggal Kirim</th>
                                                 <th class="text-center">Status</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                <tr>
+                                            <?php foreach ($pesanan_selesai as $ps4) : ?>
+                                                <tr class="text-center">
+                                                    <td><?= $ps4['id_order']; ?></td>
+                                                    <td><?= $ps4['tanggal_pesan']; ?></td>
+                                                    <td>Rp <?= number_format($ps4['grandtotal'], 0, ',', '.');?></td>
                                                     <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td class="text-center">
+                                                    <td>
                                                         <span class='badge badge-success text-light'>Selesai</span>
                                                     </td>
                                                     <td>
-                                                    
+                                                        <a class="flex-c-s stext-60 cl0 size-100 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer text-light" href="<?= base_url('home/pembayaran/').$ps4['id_order']; ?>">Detail</a>
                                                     </td>
                                                 </tr>
-                                            
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
