@@ -32,9 +32,47 @@ class D_datasayur extends CI_Model
         $this->db->update($table, $data);
     }
 
+    public function update_status($where, $data, $table)
+    {
+        $this->db->where($where);
+        return $this->db->update($table, $data);
+    }
+
     public function tampil_data_edit_barang()
     {
         $query = "SELECT * FROM managemen_data_sayur WHERE Status in ('Y','N')";
+        return $this->db->query($query);
+    }
+
+    public function getRiwayatPesanan_MenungguVerifikasiADMIN($id){
+        $query = "SELECT *
+        FROM user, `order`
+        WHERE user.id_user = order.id_user AND order.status = 1
+        ";
+        return $this->db->query($query);
+    }
+
+    public function getRiwayatPesanan_DikemasADMIN($id){
+        $query = "SELECT *
+        FROM user, `order`
+        WHERE user.id_user = order.id_user AND order.status = 2
+        ";
+        return $this->db->query($query);
+    }
+
+    public function getRiwayatPesanan_DikirimADMIN($id){
+        $query = "SELECT *
+        FROM user, `order`
+        WHERE user.id_user = order.id_user AND order.status = 3
+        ";
+        return $this->db->query($query);
+    }
+
+    public function getRiwayatPesanan_SelesaiADMIN($id){
+        $query = "SELECT *
+        FROM user, `order`
+        WHERE user.id_user = order.id_user AND order.status = 4
+        ";
         return $this->db->query($query);
     }
 }
