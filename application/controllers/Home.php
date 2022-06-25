@@ -440,4 +440,81 @@ class Home extends CI_Controller
 			redirect('home/profil');
 		}
 	}
+
+	public function pembayaran()
+	{
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$rek_pembayaran = "SELECT * FROM rek_pembayaran";
+		$rek = $this->db->query($rek_pembayaran)->result_array();
+		$id_user = $user['id_user'];
+		$checkout = "SELECT * FROM `order`,rek_pembayaran WHERE order.bank = rek_pembayaran.id_rek AND
+		id_user = $id_user ORDER BY id_order DESC LIMIT 1";
+		$checkout2 = $this->db->query($checkout)->row_array();
+
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		if ($user) {
+			$cart = $this->Mcart->show_cart($user['id_user'])->result_array();
+			if ($cart) {
+				$totalcart = 0;
+				foreach ($cart as $c) {
+					$totalcart = $totalcart + $c['qty'];
+				}
+
+				$data = array(
+					'title' => "Pembayaran",
+					'user' => $user,
+					'rek' => $rek,
+					'checkout' => $checkout2,
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'carttotal' => $totalcart,
+				);
+				$this->load->view('v_pembayaran', $data);
+			} else {
+				$data = array(
+					'title' => "Pembayaran",
+					'user' => $user,
+					'rek' => $rek,
+					'checkout' => $checkout,
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'carttotal' => 0,
+				);
+				$this->load->view('v_pembayaran', $data);
+			}
+		} else {
+			$data = array(
+				'title' => "Pembayaran",
+				'user' => $user,
+				'rek' => $rek,
+				'checkout' => $checkout,
+				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+				'datasayur' => $this->Mhome->getallsayur()->result_array(),
+				'carttotal' => 0,
+			);
+			$this->load->view('v_pembayaran', $data);
+		}
+	}
+
+	public function checkout()
+	{
+
+		$this->form_validation->set_rules('id_user', 'Pembeli', 'required');
+		if ($this->form_validation->run() == false) {
+			$this->session->set_flashdata('message', 'Gagal Checkout');
+			redirect('home/cart');
+		} else {
+			date_default_timezone_set('Asia/Jakarta');
+			// $data = [
+			// 	'id_user' => htmlspecialchars($this->input->post('id_user', true)),
+			// 	'waktu_order' => date('Y-m-d H:i:s'),
+			// 	'total_belanja' => $this->input->post('grand', true),
+			// 	'id_statuspembayaran' => 4
+			// ];
+			// $this->db->insert('orders', $data);
+			$this->session->set_flashdata('message', 'Berhasil Checkout');
+
+			redirect('home/pembayaran');
+		}
+	}
 }
