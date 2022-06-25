@@ -64,7 +64,7 @@ class Checkout extends CI_Controller
         $gambar                      = $_FILES['foto']['name'];
         if ($gambar = '') {
         } else {
-            $config['upload_path'] = './assets/user/images/slider';
+            $config['upload_path'] = './assets/img/bukti_bayar';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
             $config['encrypt_name']     = TRUE;
 
@@ -107,7 +107,7 @@ class Checkout extends CI_Controller
                 'qty' => $k['qty']
             );
             $this->Mcheckout->tambah_detail_order($data_keranjang, 'detail_order');
-            
+
             // Hapus keranjang 
             $this->Mcheckout->hapus_data(['id_keranjang' => $k['id_keranjang']], 'keranjang');
         }
