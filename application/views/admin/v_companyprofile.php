@@ -60,6 +60,13 @@ $this->load->view('template_admin/sidebar');
         </div>
 
         <div class="form-group row mb-4">
+          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">E-mail</label>
+          <div class="col-sm-12 col-md-7">
+            <input type="email" class="form-control" name="email" value="<?= $profile->email ?>"></input>
+          </div>
+        </div>
+
+        <div class="form-group row mb-4">
           <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Logo perusahaan</label>
           <div class="col-sm-12 col-md-7">
             <input type="file" name="logo" accept="image/*" onchange="preview_image(event)">
