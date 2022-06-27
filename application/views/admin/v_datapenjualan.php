@@ -56,7 +56,7 @@ $this->load->view('template_admin/sidebar');
                                             </td>
                                             <td class="text-center">
                                             <a class="btn btn-info" href="<?= base_url('admin/datapenjualan/to_dikemas/').$ps1['id_order'];?>">Verifikasi</a>
-                                            <button class="btn btn-primary">Detail</button>
+                                            <a class="btn btn-primary" href="<?= base_url('admin/datapenjualan/detail/').$ps1['id_order'];?>">Detail</a>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>
@@ -92,7 +92,7 @@ $this->load->view('template_admin/sidebar');
                                                 </td>
                                                 <td class="text-center">
                                                     <a class="btn btn-info" href="<?= base_url('admin/datapenjualan/to_dikirim/').$ps2['id_order'];?>">Kirim</a>
-                                                    <button class="btn btn-primary">Detail</button>
+                                                    <a class="btn btn-primary" href="<?= base_url('admin/datapenjualan/detail/').$ps2['id_order'];?>">Detail</a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -129,7 +129,7 @@ $this->load->view('template_admin/sidebar');
                                                     <span class='badge badge-info'>Dikirim</span>
                                                 </td>
                                                 <td class="text-center">
-                                                    <button class="btn btn-primary">Detail</button>
+                                                    <a class="btn btn-primary" href="<?= base_url('admin/datapenjualan/detail/').$ps3['id_order'];?>">Detail</a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -166,7 +166,7 @@ $this->load->view('template_admin/sidebar');
                                                     <span class='badge badge-success'>Selesai</span>
                                                 </td>
                                                 <td class="text-center">
-                                                    <button class="btn btn-primary">Detail</button>
+                                                    <a class="btn btn-primary" href="<?= base_url('admin/datapenjualan/detail/').$ps4['id_order'];?>">Detail</a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

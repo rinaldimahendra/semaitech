@@ -16,7 +16,7 @@ class Datapenjualan extends CI_Controller {
                 redirect('home');
             } else {
                 $data = array(
-                    'title' => "Kategori Sayur | Semaitech",
+                    'title' => "Data Penjualan",
                     'kategori1' => $this->d_kategorisayur->tampil_data1()->result(),
 					'pesanan_menungguverifikasi' => $this->d_datasayur->getRiwayatPesanan_MenungguVerifikasiADMIN($user['id_user'])->result_array(),
 					'pesanan_dikemas' => $this->d_datasayur->getRiwayatPesanan_DikemasADMIN($user['id_user'])->result_array(),
@@ -73,4 +73,22 @@ class Datapenjualan extends CI_Controller {
             }
         }
 	}
+
+    public function detail($id){
+
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($user) {
+            if ($user['id_role'] == 2) {
+                redirect('home');
+            } else {
+                $data = array(
+				'title'		  => 'Detail Pesanan',
+                'pesanan'     => $this->d_datasayur->detailpesanan($id)->result_array(),
+                'order'       => $this->d_datasayur->order($id)->row_array(),
+                );
+
+                $this->load->view('admin/v_detailpesanan', $data);
+            }
+        }
+    }
 }

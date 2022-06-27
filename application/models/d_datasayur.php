@@ -44,6 +44,23 @@ class D_datasayur extends CI_Model
         return $this->db->query($query);
     }
 
+    public function detailpesanan($id){
+        $query = "SELECT *
+        FROM managemen_data_sayur, `order`, detail_order, user
+        WHERE order.id_order = detail_order.id_order AND user.id_user = order.id_user
+        AND detail_order.id_sayur = managemen_data_sayur.Id AND order.id_order = $id";
+        return $this->db->query($query);
+    }
+
+    public function order($id){
+        $query = "SELECT *, order.alamat AS alamat_kirim, order.kota AS kota_kirim, order.provinsi AS provinsi_kirim,
+        order.kode_pos AS kode_pos_kirim
+        FROM `order`, detail_order, user, rek_pembayaran
+        WHERE order.id_order = detail_order.id_order AND user.id_user = order.id_user
+        AND rek_pembayaran.id_rek = bank AND order.id_order = $id";
+        return $this->db->query($query);
+    }
+
     public function getRiwayatPesanan_MenungguVerifikasiADMIN($id){
         $query = "SELECT *
         FROM user, `order`
