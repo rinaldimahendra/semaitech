@@ -69,6 +69,7 @@ class Home extends CI_Controller
 					'title' => "Home",
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => $totalcart,
 				);
 				$this->load->view('v_cart', $data);
@@ -77,6 +78,7 @@ class Home extends CI_Controller
 					'title' => "Home",
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => 0,
 				);
 				$this->load->view('v_cart', $data);

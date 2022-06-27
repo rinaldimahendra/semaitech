@@ -83,10 +83,16 @@ $this->load->view('template_user/header');
                             </span>
                         </div>
                     </div>
-
+                    
+                    <?php if($carttotal != 0): ?>
                     <a href="<?= base_url('Checkout/index/') ?>" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                         Checkout
                     </a>
+                    <?php else: ?>
+                    <a href="<?= base_url('home') ?>" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                        Lanjut Belanja
+                    </a>
+                    <?php endif; ?>
 
                 </div>
             </div>
