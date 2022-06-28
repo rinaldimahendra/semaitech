@@ -120,7 +120,7 @@ $this->load->view('template_user/header');
                                             <th scope="row"><?= $i ?></th>
                                             <td><?= $p['Nama']; ?></td>
                                             <td><?= $p['qty']; ?></td>
-                                            <td>Rp. <?= number_format($p['Harga'], 0, ',', '.'); ?></td>
+                                            <td>Rp <?= number_format($p['Harga'], 0, ',', '.'); ?></td>
                                         </tr>
 
                                     <?php
@@ -140,7 +140,7 @@ $this->load->view('template_user/header');
 
                             <div class="size-209">
                                 <span class="mtext-110 cl2">
-                                    Rp. <?= number_format($subtotal, 0, ',', '.'); ?>
+                                    Rp <?= number_format($subtotal, 0, ',', '.'); ?>
                                 </span>
                             </div>
                             <?php $ongkir =  $checkout['ongkir'] ?>
@@ -152,7 +152,7 @@ $this->load->view('template_user/header');
 
                             <div class="size-209">
                                 <span class="mtext-110 cl2">
-                                    Rp. <?= number_format($ongkir, 0, ',', '.'); ?>
+                                    Rp <?= number_format($ongkir, 0, ',', '.'); ?>
                                 </span>
                             </div>
                         </div>
@@ -165,7 +165,7 @@ $this->load->view('template_user/header');
                             </div>
                             <div class="size-209 p-t-1">
                                 <span class="mtext-110 cl2">
-                                    Rp. <?= number_format($grand_total, 0, ',', '.'); ?>
+                                    Rp <?= number_format($grand_total, 0, ',', '.'); ?>
                                 </span>
                             </div>
                         </div>
@@ -179,7 +179,7 @@ $this->load->view('template_user/header');
                             <div class="size-209">
                                 <span class="mtext-110 cl2">
                                     <div class="logo">
-                                        <img style="align: right;" alt="" src="<?= base_url(); ?>assets/img/logo/logo-dashboard.png" alt="IMG-LOGO">
+                                        <img style="align: right;" alt="" src="<?= base_url('assets/img/bukti_bayar/') . $checkout['bukti_bayar'] ?>" alt="IMG-LOGO">
                                     </div>
                                 </span>
                             </div>
@@ -190,7 +190,12 @@ $this->load->view('template_user/header');
                             </div>
                             <div class="size-208 mb-2 mt-2">
                                 <span class="stext-110 cl2">
-                                    Berhasil
+                                    <?php if ($checkout['status'] == 2) {
+                                        echo "Berhasil";
+                                    } else {
+                                        echo "Menunggu Verifikasi";
+                                    }
+                                    ?>
                                 </span>
                             </div>
                         </div>

@@ -92,7 +92,7 @@ class Checkout extends CI_Controller
             'bukti_bayar'       => $gambar,
             'bank'              => $this->input->post('bank'),
             'tanggal_pesan'     => date('Y-m-d H:i:s')
-            
+
         );
 
         $this->Mcheckout->tambah_order($data, 'order');
@@ -111,6 +111,13 @@ class Checkout extends CI_Controller
             // Hapus keranjang 
             $this->Mcheckout->hapus_data(['id_keranjang' => $k['id_keranjang']], 'keranjang');
         }
-        redirect('home');
+
+        // $this->home / pembayaran(51);
+        $id_user = $user['id_user'];
+        $checkout = "SELECT * FROM `order`,rek_pembayaran WHERE order.bank = rek_pembayaran.id_rek AND
+        id_user = $id_user ORDER BY id_order DESC LIMIT 1";
+        $checkout2 = $this->db->query($checkout)->row_array();
+
+        redirect('home/pembayaran/' . $checkout2['id_order']);
     }
 }

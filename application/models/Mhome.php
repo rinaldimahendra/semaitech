@@ -1,5 +1,6 @@
 <?php
-class Mhome extends CI_Model {
+class Mhome extends CI_Model
+{
 
     public function getallsayur()
     {
@@ -10,7 +11,8 @@ class Mhome extends CI_Model {
         return $this->db->query($query);
     }
 
-    public function getallkategori(){
+    public function getallkategori()
+    {
         $query = "SELECT Nama_Kategori, Id_Kategori
         FROM managemen_data_sayur, kategori_sayur
         WHERE Kategori = Id_Kategori AND Stok > 0 AND Status_Kategori = 'Y'
@@ -18,7 +20,8 @@ class Mhome extends CI_Model {
         return $this->db->query($query);
     }
 
-    public function getsayurbykategori($id_kategori){
+    public function getsayurbykategori($id_kategori)
+    {
         $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga 
         FROM managemen_data_sayur, kategori_sayur
         WHERE Kategori = Id_Kategori AND Stok > 0 AND Status = 'Y' AND Id_Kategori = $id_kategori
@@ -26,7 +29,8 @@ class Mhome extends CI_Model {
         return $this->db->query($query);
     }
 
-    function search($search){
+    function search($search)
+    {
         $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga 
         FROM managemen_data_sayur, kategori_sayur
         WHERE Kategori = Id_Kategori AND Stok > 0 AND Status = 'Y'
@@ -35,7 +39,8 @@ class Mhome extends CI_Model {
         return $this->db->query($query);
     }
 
-    public function getRiwayatPesanan_MenungguVerifikasi($id){
+    public function getRiwayatPesanan_MenungguVerifikasi($id)
+    {
         $query = "SELECT *
         FROM user, `order`
         WHERE order.id_user = $id
@@ -44,7 +49,8 @@ class Mhome extends CI_Model {
         return $this->db->query($query);
     }
 
-    public function getRiwayatPesanan_Dikemas($id){
+    public function getRiwayatPesanan_Dikemas($id)
+    {
         $query = "SELECT *
         FROM user, `order`
         WHERE order.id_user = $id
@@ -53,7 +59,8 @@ class Mhome extends CI_Model {
         return $this->db->query($query);
     }
 
-    public function getRiwayatPesanan_Dikirim($id){
+    public function getRiwayatPesanan_Dikirim($id)
+    {
         $query = "SELECT *
         FROM user, `order`
         WHERE order.id_user = $id
@@ -62,7 +69,8 @@ class Mhome extends CI_Model {
         return $this->db->query($query);
     }
 
-    public function getRiwayatPesanan_Selesai($id){
+    public function getRiwayatPesanan_Selesai($id)
+    {
         $query = "SELECT *
         FROM user, `order`
         WHERE order.id_user = $id
