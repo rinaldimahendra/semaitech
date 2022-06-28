@@ -24,7 +24,7 @@ $this->load->view('template_user/header');
                                 </span>
                             </div>
                             <div class="wrap-input1 p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="nama" placeholder="Nama Lengkap" value="<?= $data_user['nama_user'] ?>">
+                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="nama" placeholder="Nama Lengkap" value="<?= $data_user['nama_user'] ?>" required>
                                 <div class="focus-input1 trans-04"></div>
                             </div><br>
 
@@ -34,7 +34,7 @@ $this->load->view('template_user/header');
                                 </span>
                             </div>
                             <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="alamat" placeholder="Alamat Lengkap" value="<?= $data_user['alamat']; ?>">
+                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="alamat" placeholder="Alamat Lengkap" value="<?= $data_user['alamat']; ?>" required>
                                 <div class="focus-input1 trans-04"></div>
                             </div><br>
 
@@ -44,17 +44,17 @@ $this->load->view('template_user/header');
                                 </span>
                             </div>
                             <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="provinsi" placeholder="Provinsi" value="<?= $data_user['provinsi']; ?>">
+                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="provinsi" placeholder="Provinsi" value="<?= $data_user['provinsi']; ?>" required>
                                 <div class="focus-input1 trans-04"></div>
                             </div><br>
 
                             <div class="size-208">
                                 <span class="stext-110 cl2">
-                                    Tinggal
+                                    Kota
                                 </span>
                             </div>
                             <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="kota" placeholder="Kota" value="<?= $data_user['kota']; ?>">
+                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="kota" placeholder="Kota" value="<?= $data_user['kota']; ?>" required>
                                 <div class="focus-input1 trans-04"></div>
                             </div><br>
 
@@ -64,7 +64,7 @@ $this->load->view('template_user/header');
                                 </span>
                             </div>
                             <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="kode_pos" placeholder="Kode Pos" value="<?= $data_user['kode_pos']; ?>">
+                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="kode_pos" placeholder="Kode Pos" value="<?= $data_user['kode_pos']; ?>" required>
                                 <div class="focus-input1 trans-04"></div>
                             </div><br>
 
@@ -74,7 +74,7 @@ $this->load->view('template_user/header');
                                 </span>
                             </div>
                             <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="no_tlp" placeholder="No. Handphone" value="<?= $data_user['no_tlpn']; ?>">
+                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="no_tlp" placeholder="No. Handphone" value="<?= $data_user['no_tlpn']; ?>" required>
                                 <div class="focus-input1 trans-04"></div>
                             </div><br>
 
@@ -84,7 +84,7 @@ $this->load->view('template_user/header');
                                 </span>
                             </div>
                             <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="catatan_pembelian" placeholder="Catatan Pembelian">
+                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="catatan_pembelian" placeholder="Catatan Pembelian (opsional)">
                                 <div class="focus-input1 trans-04"></div>
                             </div><br>
                         </div>
@@ -109,10 +109,10 @@ $this->load->view('template_user/header');
                                     Nama Produk:
                                 </span>
                             </div>
-                            <div class="size-209 p-t-1">
+                            <div class="size-230 p-t-1">
                                 <span class="stext-115 cl2" id="nama_produk">
                                     <input id="grand" value="<?= $k['Nama']; ?>" name="nama_produk" hidden>
-                                    <?= $k['Nama']; ?> | Rp. <?= number_format($k['Harga'], 0, ',', '.') ?> X <?= $k['qty']; ?>
+                                    <?= $k['Nama']; ?> | Rp <?= number_format($k['Harga'], 0, ',', '.') ?> / <?= $k['satuan'] ?> X <?= $k['qty']; ?>
                                 </span>
                             </div><br>
 
@@ -151,7 +151,7 @@ $this->load->view('template_user/header');
 
                             <div class="size-209 p-t-1">
                                 <span class="mtext-110 cl2" id="grand_total">
-                                    Rp. <?= number_format($grand_total, 0, ',', '.'); ?>
+                                    Rp <?= number_format($grand_total, 0, ',', '.'); ?>
                                     <input id="grand" value="<?= $grand_total ?>" name="grand_total" hidden>
                                 </span>
                             </div>
@@ -168,7 +168,7 @@ $this->load->view('template_user/header');
                             ?>
                             <div class="size-209 p-t-1">
                                 <span class="mtext-110 cl2" id="ongkir">
-                                    Rp. <?= number_format($ongkir, 0, ',', '.'); ?>
+                                    Rp <?= number_format($ongkir, 0, ',', '.'); ?>
                                     <input id="grand" value="<?= $ongkir ?>" name="ongkir" hidden>
                                 </span>
                             </div>
@@ -222,7 +222,7 @@ $this->load->view('template_user/header');
                             endforeach ?>
                             <div class="size-209 p-t-1">
                                 <span class="mtext-110 cl2" id="total_bayar">
-                                    Rp. <?= number_format($total_bayar, 0, ',', '.'); ?>
+                                    Rp <?= number_format($total_bayar, 0, ',', '.'); ?>
                                     <input id="grand" value="<?= $total_bayar ?>" name="total_bayar" hidden>
                                 </span>
                             </div>

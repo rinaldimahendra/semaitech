@@ -30,6 +30,7 @@ class Datasayur extends CI_Controller
 		$stok	           		= $this->input->post('stok');
 		$harga            		= $this->input->post('harga');
 		$status					= 'Y';
+		$satuan            		= $this->input->post('satuan');
 		$foto          			= $_FILES['foto']['name'];
 		if ($foto = '') {
 		} else {
@@ -52,7 +53,8 @@ class Datasayur extends CI_Controller
 			'Stok'       		=> $stok,
 			'Harga'      		=> $harga,
 			'Status'			=> $status,
-			'Foto'            	=> $foto
+			'Foto'            	=> $foto,
+			'satuan'			=> $satuan
 		);
 
 		$this->d_datasayur->tambah_produk($data, 'managemen_data_sayur');
@@ -96,6 +98,7 @@ class Datasayur extends CI_Controller
 		$stok	           		= $this->input->post('stok');
 		$harga            		= $this->input->post('harga');
 		$status					= $this->input->post('status');
+		$satuan            		= $this->input->post('satuan');
 		$foto          			= $_FILES['foto']['name'];
 
 		$data = array();
@@ -107,7 +110,8 @@ class Datasayur extends CI_Controller
 				'Keterangan'        => $keterangan,
 				'Stok'       		=> $stok,
 				'Harga'      		=> $harga,
-				'Status'			=> $status
+				'Status'			=> $status,
+				'satuan'			=> $satuan   
 			);
 			$data = $data_temp;
 		} else {
@@ -132,7 +136,8 @@ class Datasayur extends CI_Controller
 				'Stok'       		=> $stok,
 				'Harga'      		=> $harga,
 				'Status'			=> $status,
-				'Foto'            	=> $foto
+				'Foto'            	=> $foto,
+				'satuan'			=> $satuan            
 			);
 			$data = $data_temp;
 		}
