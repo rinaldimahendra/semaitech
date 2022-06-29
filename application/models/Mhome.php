@@ -4,7 +4,7 @@ class Mhome extends CI_Model
 
     public function getallsayur()
     {
-        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga, satuan 
+        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga 
         FROM managemen_data_sayur, kategori_sayur
         WHERE Kategori = Id_Kategori AND Stok > 0 AND Status = 'Y'
         ";
@@ -20,18 +20,9 @@ class Mhome extends CI_Model
         return $this->db->query($query);
     }
 
-    public function getkategori()
-    {
-        $query = "SELECT Nama_Kategori, Id_Kategori
-        FROM kategori_sayur
-        WHERE Status_Kategori = 'Y'
-        ";
-        return $this->db->query($query);
-    }
-
     public function getsayurbykategori($id_kategori)
     {
-        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga, satuan 
+        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga 
         FROM managemen_data_sayur, kategori_sayur
         WHERE Kategori = Id_Kategori AND Stok > 0 AND Status = 'Y' AND Id_Kategori = $id_kategori
         ";
@@ -40,7 +31,7 @@ class Mhome extends CI_Model
 
     function search($search)
     {
-        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga, satuan 
+        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga 
         FROM managemen_data_sayur, kategori_sayur
         WHERE Kategori = Id_Kategori AND Stok > 0 AND Status = 'Y'
         AND (Nama LIKE '%$search%' OR Nama_Kategori LIKE '%$search%' OR Keterangan LIKE '%$search%')

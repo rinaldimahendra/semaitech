@@ -33,7 +33,7 @@ $this->load->view('template_user/header');
                                         </div>
                                     </td>
                                     <td class="column-2"><?= $k['Nama']; ?></td>
-                                    <td class="column-3">Rp. <?= number_format($k['Harga'], 0, ',', '.') ?> /<br> <?= $k['satuan'] ?></td>
+                                    <td class="column-3">Rp. <?= number_format($k['Harga'], 0, ',', '.') ?></td>
                                     <td class="column-4">
                                         <div class="wrap-num-product flex-w m-l-auto m-r-0">
                                             <button class="btn-down cl8 hov-btn3 trans-04 flex-c-m" onclick="kurang_qty(<?= $k['id_keranjang']; ?>)">
@@ -83,15 +83,15 @@ $this->load->view('template_user/header');
                             </span>
                         </div>
                     </div>
-
-                    <?php if ($carttotal != 0) : ?>
-                        <a href="<?= base_url('Checkout/index/') ?>" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                            Checkout
-                        </a>
-                    <?php else : ?>
-                        <a href="<?= base_url('home') ?>" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                            Lanjut Belanja
-                        </a>
+                    
+                    <?php if($carttotal != 0): ?>
+                    <a href="<?= base_url('Checkout/index/') ?>" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                        Checkout
+                    </a>
+                    <?php else: ?>
+                    <a href="<?= base_url('home') ?>" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                        Lanjut Belanja
+                    </a>
                     <?php endif; ?>
 
                 </div>

@@ -27,7 +27,6 @@ $this->load->view('template_admin/sidebar');
                         <th>KETERANGAN</th>
                         <th>STOK PRODUK</th>
                         <th>HARGA</th>
-                        <th>SATUAN</th>
                         <th>STATUS</th>
                         <th colspan="2">AKSI</th>
                     </tr>
@@ -48,7 +47,6 @@ $this->load->view('template_admin/sidebar');
                             <td><?php echo $ds->Keterangan ?></td>
                             <td><?php echo $ds->Stok ?></td>
                             <td>Rp. <?php echo number_format($ds->Harga, 0, ',', '.') ?></td>
-                            <td><?php echo $ds->satuan ?></td>
                             <td>
                                 <?php
                                 if ($ds->Status == 'Y') { ?>
@@ -111,27 +109,10 @@ $this->load->view('template_admin/sidebar');
                             <input type="number" name="stok" class="form-control" required>
                         </div>
 
-                        <div class="form-group">
-                            <label class="d-block">Satuan</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="satuan" value="Ons" checked>
-                                <label class="form-check-label" for="Ons">
-                                    Ons
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="satuan" value="Gram" checked="">
-                                <label class="form-check-label" for="Gram">
-                                    Gram
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="satuan" value="Kilogram" checked="">
-                                <label class="form-check-label" for="Kilogram">
-                                    Kilogram
-                                </label>
-                            </div>
-                        </div>
+                        <!-- <div class="form-group">
+                            <label>Berat Produk</label>
+                            <input type="text" name="berat_produk" class="form-control">
+                        </div> -->
 
                         <div class="form-group">
                             <label>Harga</label>

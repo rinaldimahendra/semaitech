@@ -26,7 +26,7 @@ class Home extends CI_Controller
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
-					'datakategori' => $this->Mhome->getkategori()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => $totalcart,
 				);
 				$this->load->view('v_home', $data);
@@ -36,7 +36,7 @@ class Home extends CI_Controller
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
-					'datakategori' => $this->Mhome->getkategori()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => 0,
 				);
 				$this->load->view('v_home', $data);
@@ -47,7 +47,7 @@ class Home extends CI_Controller
 				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 				'slider' => $this->Mkonten->getslider_aktif()->result_array(),
 				'datasayur' => $this->Mhome->getallsayur()->result_array(),
-				'datakategori' => $this->Mhome->getkategori()->result_array(),
+				'datakategori' => $this->Mhome->getallkategori()->result_array(),
 				'carttotal' => 0,
 			);
 			$this->load->view('v_home', $data);
@@ -70,7 +70,6 @@ class Home extends CI_Controller
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
 					'carttotal' => $totalcart,
-					'datakategori' => $this->Mhome->getkategori()->result_array(),
 				);
 				$this->load->view('v_cart', $data);
 			} else {
@@ -79,7 +78,6 @@ class Home extends CI_Controller
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
 					'carttotal' => 0,
-					'datakategori' => $this->Mhome->getkategori()->result_array(),
 				);
 				$this->load->view('v_cart', $data);
 			}
@@ -164,7 +162,7 @@ class Home extends CI_Controller
 					'title' => "Home",
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'datasayur' => $this->Mhome->getsayurbykategori($id_kategori)->result_array(),
-					'datakategori' => $this->Mhome->getkategori()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => $totalcart,
 				);
 				$this->load->view('v_kategori', $data);
@@ -173,7 +171,7 @@ class Home extends CI_Controller
 					'title' => "Home",
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'datasayur' => $this->Mhome->getsayurbykategori($id_kategori)->result_array(),
-					'datakategori' => $this->Mhome->getkategori()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => 0,
 				);
 				$this->load->view('v_kategori', $data);
@@ -183,7 +181,7 @@ class Home extends CI_Controller
 				'title' => "Home",
 				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 				'datasayur' => $this->Mhome->getsayurbykategori($id_kategori)->result_array(),
-				'datakategori' => $this->Mhome->getkategori()->result_array(),
+				'datakategori' => $this->Mhome->getallkategori()->result_array(),
 				'carttotal' => 0,
 			);
 			$this->load->view('v_kategori', $data);
@@ -207,7 +205,7 @@ class Home extends CI_Controller
 					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
 					// 'search' => $this->input->post('search'),
 					'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
-					'datakategori' => $this->Mhome->getkategori()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => $totalcart,
 					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
 				);
@@ -219,7 +217,7 @@ class Home extends CI_Controller
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
 					'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
-					'datakategori' => $this->Mhome->getkategori()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => 0,
 					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
 				);
@@ -232,7 +230,7 @@ class Home extends CI_Controller
 				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 				'slider' => $this->Mkonten->getslider_aktif()->result_array(),
 				'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
-				'datakategori' => $this->Mhome->getkategori()->result_array(),
+				'datakategori' => $this->Mhome->getallkategori()->result_array(),
 				'carttotal' => 0,
 			);
 			$this->load->view('v_home', $data);
@@ -481,7 +479,7 @@ class Home extends CI_Controller
 					'rek' => $rek,
 					'checkout' => $checkout2,
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
-					'datakategori' => $this->Mhome->getkategori()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
 					'carttotal' => $totalcart,
 				);
@@ -493,7 +491,7 @@ class Home extends CI_Controller
 					'rek' => $rek,
 					'checkout' => $checkout2,
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
-					'datakategori' => $this->Mhome->getkategori()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
 					'carttotal' => 0,
 				);
@@ -506,7 +504,7 @@ class Home extends CI_Controller
 				'rek' => $rek,
 				'checkout' => $checkout2,
 				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
-				'datakategori' => $this->Mhome->getkategori()->result_array(),
+				'datakategori' => $this->Mhome->getallkategori()->result_array(),
 				'datasayur' => $this->Mhome->getallsayur()->result_array(),
 				'carttotal' => 0,
 			);
