@@ -9,15 +9,21 @@ class Konten extends CI_Controller {
     }
 
     public function index() {
-		$data = array(
-			'title'  => "Konten Slider | Semaitech",
-            'konten' => $this->Mkonten->getallslider()->result_array(),
-            // 'gambar' => $this->db->get('slider')->row(),
-            'js' => array("slider.js?r=" . rand()),
-		);
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($user) {
+            if ($user['id_role'] == 2) {
+                redirect('home');
+            } else {
+				$data = array(
+					'title'  => "Konten Slider | Semaitech",
+					'konten' => $this->Mkonten->getallslider()->result_array(),
+					// 'gambar' => $this->db->get('slider')->row(),
+					'js' => array("slider.js?r=" . rand()),
+				);
 
-		$this->load->view('admin/v_slider', $data);
-		
+				$this->load->view('admin/v_slider', $data);
+			}
+		}
 	}
 
     public function tambah_slider(){

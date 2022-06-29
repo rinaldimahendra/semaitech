@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 $this->load->view('template_user/header');
 ?>
 
@@ -18,40 +18,40 @@ $this->load->view('template_user/header');
                                 <th class="column-4">Quantity</th>
                                 <th class="column-5">Total</th>
                             </tr>
-                            <?php 
+                            <?php
                             $grand_total = 0;
-                            foreach($keranjang as $k): 
-                            $total_harga = $k['Harga'] * $k['qty'];  ?>
-                            <?php if ($k['Stok'] == 0) {
-                                redirect('home/deleteCart/' . $k['id_keranjang']);
-                            } ?>
-                            
-                            <tr class="table_row">
-                                <td class="column-1">
-                                    <div class="how-itemcart1" onclick="window.location='<?= base_url('home/deleteCart/').$k['id_keranjang']; ?>'">
-                                        <img src="<?= base_url('assets/img/sayur/').$k['Foto']; ?>" alt="IMG">
-                                    </div>
-                                </td>
-                                <td class="column-2"><?= $k['Nama']; ?></td>
-                                <td class="column-3">Rp. <?= number_format($k['Harga'], 0, ',', '.') ?></td>
-                                <td class="column-4">
-                                    <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                        <button class="btn-down cl8 hov-btn3 trans-04 flex-c-m" onclick="kurang_qty(<?= $k['id_keranjang']; ?>)">
-                                            <i class="fs-16 zmdi zmdi-minus"></i>
-                                        </button>
+                            foreach ($keranjang as $k) :
+                                $total_harga = $k['Harga'] * $k['qty'];  ?>
+                                <?php if ($k['Stok'] == 0) {
+                                    redirect('home/deleteCart/' . $k['id_keranjang']);
+                                } ?>
 
-                                        <input class="mtext-104 cl3 txt-center num-product" id="qty_<?= $k['id_keranjang']; ?>" type="text" value="<?= $k['qty']; ?>" readonly>
+                                <tr class="table_row">
+                                    <td class="column-1">
+                                        <div class="how-itemcart1" onclick="window.location='<?= base_url('home/deleteCart/') . $k['id_keranjang']; ?>'">
+                                            <img src="<?= base_url('assets/img/sayur/') . $k['Foto']; ?>" alt="IMG">
+                                        </div>
+                                    </td>
+                                    <td class="column-2"><?= $k['Nama']; ?></td>
+                                    <td class="column-3">Rp. <?= number_format($k['Harga'], 0, ',', '.') ?> /<br> <?= $k['satuan'] ?></td>
+                                    <td class="column-4">
+                                        <div class="wrap-num-product flex-w m-l-auto m-r-0">
+                                            <button class="btn-down cl8 hov-btn3 trans-04 flex-c-m" onclick="kurang_qty(<?= $k['id_keranjang']; ?>)">
+                                                <i class="fs-16 zmdi zmdi-minus"></i>
+                                            </button>
 
-                                        <button class="btn-up cl8 hov-btn3 trans-04 flex-c-m" onclick="tambah_qty(<?= $k['id_keranjang']; ?>)">
-                                            <i class="fs-16 zmdi zmdi-plus"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                                <input type="hidden" id="harga_<?= $k['id_keranjang']; ?>" value="<?= $total_harga; ?>">
-                                <td class="column-5" id="total_harga_<?= $k['id_keranjang']; ?>">Rp. <?= number_format($total_harga, 0, ',', '.') ?></td>
-                            </tr>
-                            <?php 
-                            $grand_total = $grand_total + $total_harga;
+                                            <input class="mtext-104 cl3 txt-center num-product" id="qty_<?= $k['id_keranjang']; ?>" type="text" value="<?= $k['qty']; ?>" readonly>
+
+                                            <button class="btn-up cl8 hov-btn3 trans-04 flex-c-m" onclick="tambah_qty(<?= $k['id_keranjang']; ?>)">
+                                                <i class="fs-16 zmdi zmdi-plus"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <input type="hidden" id="harga_<?= $k['id_keranjang']; ?>" value="<?= $total_harga; ?>">
+                                    <td class="column-5" id="total_harga_<?= $k['id_keranjang']; ?>">Rp. <?= number_format($total_harga, 0, ',', '.') ?></td>
+                                </tr>
+                            <?php
+                                $grand_total = $grand_total + $total_harga;
                             endforeach; ?>
 
                         </table>
@@ -66,7 +66,7 @@ $this->load->view('template_user/header');
                     </h4>
 
                     <div class="flex-w flex-t bor12 p-b-13">
-                
+
                     </div>
 
                     <div class="flex-w flex-t p-t-27 p-b-33">
@@ -84,9 +84,16 @@ $this->load->view('template_user/header');
                         </div>
                     </div>
 
-                    <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                        Checkout
-                    </button>
+                    <?php if ($carttotal != 0) : ?>
+                        <a href="<?= base_url('Checkout/index/') ?>" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                            Checkout
+                        </a>
+                    <?php else : ?>
+                        <a href="<?= base_url('home') ?>" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                            Lanjut Belanja
+                        </a>
+                    <?php endif; ?>
+
                 </div>
             </div>
         </div>
@@ -121,7 +128,7 @@ $this->load->view('template_user/header');
                 location.reload();
             }
         });
-    }   
+    }
 
     function tambah_qty(id_keranjang) {
         if ($('#status_' + id_keranjang).val() == 0) {

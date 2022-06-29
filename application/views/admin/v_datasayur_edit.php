@@ -22,11 +22,6 @@ $this->load->view('template_admin/sidebar');
                             <input type="text" name="nama" class="form-control" value="<?php echo $ds->Nama ?>">
                         </div>
 
-                        <!-- <div class="form-group">
-                            <label>Kategori</label>
-                            <input type="text" name="kategori" class="form-control" value="<?php echo $ds->Kategori ?>">
-                        </div> -->
-
                         <div class="form-group">
                             <label>Kategori</label>
                             <select class="form-control" name="kategori" id="kategori">
@@ -40,14 +35,50 @@ $this->load->view('template_admin/sidebar');
                         </div>
 
                         <div class="form-group">
+                            <label>Stok</label>
+                            <input type="text" name="stok" class="form-control" value="<?php echo $ds->Stok ?>">
+                        </div>
+
+                        <div class="form-group">
                             <label>Keterangan</label>
                             <input type="hidden" name="id" class="form-control" value="<?php echo $ds->Id ?>">
                             <input type="text" name="keterangan" class="form-control" value="<?php echo $ds->Keterangan ?>">
                         </div>
 
-                        <div class="form-group">
-                            <label>Stok</label>
-                            <input type="number" name="stok" class="form-control" value="<?php echo $ds->Stok ?>">
+                        <div class="form-group" method="get">
+                            <label class="d-block">Satuan</label>
+                            <div class="form-check form-check-inline">
+                                <?php
+                                if ($ds->satuan == 'Ons') { ?>
+                                    <input class="form-check-input" type="radio" name="satuan" value="Ons" checked>
+                                    <label class="form-check-label" for="satuan">Ons</label>
+
+                                    &ensp;<input class="form-check-input" type="radio" name="satuan" value="Gram">
+                                    <label class="form-check-label" for="satuan">Gram</label>
+
+                                    &ensp;<input class="form-check-input" type="radio" name="satuan" value="Kilogram">
+                                    <label class="form-check-label" for="satuan">Kilogram</label>
+                                <?php } elseif ($ds->satuan == 'Gram') { ?>
+                                    <input class="form-check-input" type="radio" name="satuan" value="Ons">
+                                    <label class="form-check-label" for="satuan">Ons</label>
+
+                                    &ensp;<input class="form-check-input" type="radio" name="satuan" value="Gram" checked>
+                                    <label class="form-check-label" for="satuan">Gram</label>
+
+                                    &ensp;<input class="form-check-input" type="radio" name="satuan" value="Kilogram">
+                                    <label class="form-check-label" for="satuan">Kilogram</label>
+                                <?php } elseif ($ds->satuan == 'Kilogram') { ?>
+                                    <input class="form-check-input" type="radio" name="satuan" value="Ons">
+                                    <label class="form-check-label" for="satuan">Ons</label>
+
+                                    &ensp;<input class="form-check-input" type="radio" name="satuan" value="Gram">
+                                    <label class="form-check-label" for="satuan">Gram</label>
+
+                                    &ensp;<input class="form-check-input" type="radio" name="satuan" value="Kilogram" checked>
+                                    <label class="form-check-label" for="satuan">Kilogram</label>
+
+                                <?php } ?>
+                            </div>
                         </div>
 
                         <div class="form-group">

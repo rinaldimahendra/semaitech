@@ -10,13 +10,19 @@ class Rekening extends CI_Controller {
     }
 
     public function index() {
-		$data = array(
-			'title' => "Rekening Pembayaran | Semaitech",
-            'rekening' => $this->Mrekening->getallrek()->result_array(),
-		);
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        if ($user) {
+            if ($user['id_role'] == 2) {
+                redirect('home');
+            } else {
+				$data = array(
+					'title' => "Rekening Pembayaran | Semaitech",
+					'rekening' => $this->Mrekening->getallrek()->result_array(),
+				);
 
-		$this->load->view('admin/v_rekening', $data);
-		
+				$this->load->view('admin/v_rekening', $data);
+			}
+		}
 	}
 
      public function tambah_rek(){

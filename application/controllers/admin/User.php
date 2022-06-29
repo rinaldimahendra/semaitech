@@ -16,7 +16,8 @@ class User extends CI_Controller {
             } else {
                 $data = array(
                     'title' => "Data User | Semaitech",
-                    'user' => $this->Muser->getalldata()->result_array()
+                    'user' => $this->Muser->getalldata()->result_array(),
+                    'admin' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array()
                 );
                 $this->load->view('admin/v_user', $data);
             }
@@ -26,13 +27,27 @@ class User extends CI_Controller {
 		
 	}
 
+    public function update()
+    {
+        $data = array(
+            'id_user'          => $this->input->post('id_user'),
+            'nama_user'        => $this->input->post('nama_user'),
+            'is_active'        => $this->input->post('status_user'),
+        );
+
+        // var_dump($data);
+        // die;
+        $where = array(
+            'id_user'                => $this->input->post('id_user')
+        );
+        $this->Muser->update($where, $data, 'user');
+        redirect('admin/user');
+    }
+
     public function add_admin(){
         $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         if ($user) {
-            if ($user['id_role'] == 2) {
-                redirect('home');
-            } else {
-                
+            if ($user['id_role'] == 0) {
                 $this->form_validation->set_rules('nama', 'Name', 'required|trim');
                 $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
                     'is_unique' => 'Email sudah pernah digunakan!'
@@ -71,6 +86,9 @@ class User extends CI_Controller {
                     $this->session->set_flashdata('message', 'Akun Sudah Berhasil Dibuat!');
                     redirect('admin/user');
                 }
+            } else {
+                $this->session->set_flashdata('message', 'Anda Tidak Memiliki Akses!');
+                redirect('admin/user');
             }
         } else {
             redirect('home');

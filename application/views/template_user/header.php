@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title><?= $title;?></title>
+	<title><?= $title; ?></title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="<?= base_url(); ?>assets/img/logo/favicon1.png"/>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="<?= base_url(); ?>assets/img/logo/favicon1.png" />
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/modules/fontawesome/css/all.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/fonts/linearicons-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/vendor/animate/animate.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/vendor/slick/slick.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/vendor/MagnificPopup/magnific-popup.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/css/main.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 </head>
+
 <body>
-    <!-- Header -->
+	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
@@ -54,8 +56,8 @@
 
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
-					
-					<!-- Logo desktop -->		
+
+					<!-- Logo desktop -->
 					<a href="<?= base_url(); ?>" class="logo">
 						<img src="<?= base_url(); ?>assets/img/logo/logo-dashboard.png" alt="IMG-LOGO">
 					</a>
@@ -63,18 +65,18 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li>
+							<li class="active-menu">
 								<a href="<?= base_url(); ?>">Beranda</a>
 							</li>
-							<li class="active-menu">
+							<li>
 								<a href="#">Kategori</a>
-								
+
 								<ul class="sub-menu">
-									<?php foreach($datakategori as $dk) : ?>
-									<li><a href="<?= base_url('home/kategori/').$dk['Id_Kategori']; ?>"><?= $dk['Nama_Kategori']; ?></a></li>
+									<?php foreach ($datakategori as $dk) : ?>
+										<li><a href="<?= base_url('home/kategori/') . $dk['Id_Kategori']; ?>"><?= $dk['Nama_Kategori']; ?></a></li>
 									<?php endforeach; ?>
 								</ul>
-								
+
 							</li>
 
 							<li>
@@ -85,12 +87,12 @@
 								<a href="about.html">Tentang</a>
 							</li>
 						</ul>
-					</div>	
+					</div>
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
 
-						<a class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" href="<?= base_url('home/cart')?>" data-notify="<?= $carttotal;?>">				
+						<a class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" href="<?= base_url('home/cart') ?>" data-notify="<?= $carttotal; ?>">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</a>
 
@@ -101,28 +103,29 @@
 							<li class="active-menu">
 								<i class="zmdi zmdi-account"></i>
 								<?php if ($this->session->userdata('nama')) : ?>
-								<ul class="sub-menu">
-									<li><a href="#"><i class="zmdi zmdi-account"></i>&ensp;Profile</a></li>
-									<li><a href="<?= base_url('home/cart')?>"><i class="zmdi zmdi-shopping-cart"></i>&ensp;Keranjang Saya</a></li>
-									<li><a href="<?= base_url('auth/logout')?>"><i class="fa-solid fa-arrow-right-from-bracket"></i>&ensp;Log out</a></li>
-								</ul>
+									<ul class="sub-menu">
+										<li><a href="<?= base_url('home/profil') ?>"><i class="zmdi zmdi-account"></i>&ensp;Profile</a></li>
+										<li><a href="<?= base_url('home/cart') ?>"><i class="zmdi zmdi-shopping-cart"></i>&ensp;Keranjang Saya</a></li>
+										<li><a href="<?= base_url('riwayat') ?>"><i class="zmdi zmdi-assignment"></i>&ensp;Pesanan Saya</a></li>
+										<li><a href="<?= base_url('auth/logout') ?>"><i class="zmdi zmdi-power"></i>&ensp;Log out</a></li>
+									</ul>
 								<?php else : ?>
-								<ul class="sub-menu">
-									<li><a href="<?= base_url('auth/registrasi')?>"><i class="zmdi zmdi-account"></i>&ensp;Register</a></li>
-									<li><a href="<?= base_url('auth/login')?>"><i class="zmdi zmdi-sign-in"></i>&ensp;Log in</a></li>
-								</ul>
+									<ul class="sub-menu">
+										<li><a href="<?= base_url('auth/registrasi') ?>"><i class="zmdi zmdi-account"></i>&ensp;Register</a></li>
+										<li><a href="<?= base_url('auth/login') ?>"><i class="zmdi zmdi-sign-in"></i>&ensp;Log in</a></li>
+									</ul>
 								<?php endif; ?>
 							</li>
 						</div>
-						
+
 					</div>
 				</nav>
-			</div>	
+			</div>
 		</div>
 
 		<!-- Header Mobile -->
 		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->		
+			<!-- Logo moblie -->
 			<div class="logo-mobile">
 				<a href="index.html"><img src="<?= base_url(); ?>assets/user/images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
@@ -138,16 +141,16 @@
 					<li class="active-menu">
 						<i class="zmdi zmdi-account"></i>
 						<?php if ($this->session->userdata('nama')) : ?>
-						<ul class="sub-menu">
-							<li><a href="#">Profile</a></li>
-							<li><a href="<?= base_url('home/cart')?>">&ensp;Cart</a></li>
-							<li><a href="<?= base_url('auth/logout')?>">&ensp;Log out</a></li>
-						</ul>
+							<ul class="sub-menu">
+								<li><a href="<?= base_url('home/profil') ?>"><i class="zmdi zmdi-account"></i>&ensp;Profile</a></li>
+								<li><a href="<?= base_url('home/cart') ?>">&ensp;Cart</a></li>
+								<li><a href="<?= base_url('auth/logout') ?>">&ensp;Log out</a></li>
+							</ul>
 						<?php else : ?>
-						<ul class="sub-menu">
-							<li><a href="<?= base_url('auth/registrasi')?>">&ensp;Register</a></li>
-							<li><a href="<?= base_url('auth/login')?>">&ensp;Log in</a></li>
-						</ul>
+							<ul class="sub-menu">
+								<li><a href="<?= base_url('auth/registrasi') ?>">&ensp;Register</a></li>
+								<li><a href="<?= base_url('auth/login') ?>">&ensp;Log in</a></li>
+							</ul>
 						<?php endif; ?>
 					</li>
 				</div>
@@ -198,13 +201,13 @@
 				</li>
 				<li class="active-menu">
 					<a href="#">Kategori</a>
-					
+
 					<ul class="sub-menu">
-						<?php foreach($datakategori as $dk) : ?>
-						<li><a href="<?= base_url('home/kategori/').$dk['Id_Kategori']; ?>"><?= $dk['Nama_Kategori']; ?></a></li>
+						<?php foreach ($datakategori as $dk) : ?>
+							<li><a href="<?= base_url('home/kategori/') . $dk['Id_Kategori']; ?>"><?= $dk['Nama_Kategori']; ?></a></li>
 						<?php endforeach; ?>
 					</ul>
-					
+
 				</li>
 
 				<li>
@@ -217,7 +220,7 @@
 			</ul>
 		</div>
 	</header>
-    <!-- Cart -->
+	<!-- Cart -->
 	<div class="wrap-header-cart js-panel-cart">
 		<div class="s-full js-hide-cart"></div>
 
@@ -231,7 +234,7 @@
 					<i class="zmdi zmdi-close"></i>
 				</div>
 			</div>
-			
+
 			<div class="header-cart-content flex-w js-pscroll">
 				<ul class="header-cart-wrapitem w-full">
 					<li class="header-cart-item flex-w flex-t m-b-12">
@@ -282,7 +285,7 @@
 						</div>
 					</li>
 				</ul>
-				
+
 				<div class="w-full">
 					<div class="header-cart-total w-full p-tb-40">
 						Total: $75.00
