@@ -87,4 +87,14 @@ class Mhome extends CI_Model
         ";
         return $this->db->query($query);
     }
+
+    public function detailsayur($where)
+    {
+        $query = "SELECT Id, Foto, Nama, Keterangan, Stok, Harga, Nama_Kategori, Id_Kategori
+        FROM managemen_data_sayur, kategori_sayur
+        WHERE Kategori = Id_Kategori AND Stok > 0 AND Id = $where
+        ";
+        return $this->db->query($query);
+    }
+
 }
