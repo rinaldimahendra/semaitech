@@ -12,10 +12,11 @@ $this->load->view('template_user/header');
                     <div class="wrap-table-shopping-cart">
                         <table class="table-shopping-cart">
                             <tr class="table_head">
-                                <th class="column-1">Produk</th>
-                                <th class="column-2"></th>
+                                <th class="column-1"></th>
+                                <th class="column-2 text-right">Produk</th>
+                                <th></th>
                                 <th class="column-3">Harga</th>
-                                <th class="column-4">Quantity</th>
+                                <th class="column-4 text-center">Quantity</th>
                                 <th class="column-5">Total</th>
                             </tr>
                             <?php
@@ -28,6 +29,10 @@ $this->load->view('template_user/header');
 
                                 <tr class="table_row">
                                     <td class="column-1">
+                                        <a class="flex-c-m stext-101 cl0 size-116 bg10 bor14 hov-btn2 p-lr-15 trans-04 pointer" onclick="window.location='<?= base_url('home/deleteCart/') . $k['id_keranjang']; ?>'"><i class="zmdi zmdi-delete"></i></a>
+                                    </td>
+                                    <td class="column-1">
+                                        
                                         <div class="how-itemcart1" onclick="window.location='<?= base_url('home/deleteCart/') . $k['id_keranjang']; ?>'">
                                             <img src="<?= base_url('assets/img/sayur/') . $k['Foto']; ?>" alt="IMG">
                                         </div>

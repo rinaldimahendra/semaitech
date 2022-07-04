@@ -38,7 +38,8 @@ $this->load->view('template_admin/sidebar');
                                 <table class="table table-bordered" id="table" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">ID</th>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">Invoice</th>
                                             <th class="text-center">Tgl Pemesanan</th>
                                             <th class="text-center">Grand Total</th>
                                             <th class="text-center">Status</th>
@@ -46,8 +47,11 @@ $this->load->view('template_admin/sidebar');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($pesanan_menungguverifikasi as $ps1) : ?>
+                                        <?php 
+                                        $number_ps1 = 1; 
+                                        foreach ($pesanan_menungguverifikasi as $ps1) : ?>
                                         <tr>
+                                            <td class="text-center"><?= $number_ps1++; ?></td>
                                             <td class="text-center"><?= $ps1['id_order']; ?></td>
                                             <td><?= $ps1['tanggal_pesan']; ?></td>
                                             <td>Rp <?= number_format($ps1['grandtotal'], 0, ',', '.');?></td>
@@ -74,7 +78,8 @@ $this->load->view('template_admin/sidebar');
                                 <table class="table table-bordered" id="table1" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">ID</th>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">Invoice</th>
                                             <th class="text-center">Tgl Pemesanan</th>
                                             <th class="text-center">Grand Total</th>
                                             <th class="text-center">Status</th>
@@ -82,8 +87,10 @@ $this->load->view('template_admin/sidebar');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($pesanan_dikemas as $ps2) : ?>
+                                        <?php $number_ps2 = 1;
+                                        foreach ($pesanan_dikemas as $ps2) : ?>
                                             <tr>
+                                                <td class="text-center"><?= $number_ps2++; ?></td>
                                                 <td class="text-center"><?= $ps2['id_order']; ?></td>
                                                 <td><?= $ps2['tanggal_pesan']; ?></td>
                                                 <td>Rp <?= number_format($ps2['grandtotal'], 0, ',', '.');?></td>
@@ -110,7 +117,8 @@ $this->load->view('template_admin/sidebar');
                                 <table class="table table-bordered" id="table2" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">ID</th>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">Invoice</th>
                                             <th class="text-center">Tgl Pemesanan</th>
                                             <th class="text-center">Grand Total</th>
                                             <th class="text-center">Tanggal Kirim</th>
@@ -119,8 +127,10 @@ $this->load->view('template_admin/sidebar');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($pesanan_dikirim as $ps3) : ?>
+                                        <?php $number_ps3 = 1;
+                                        foreach ($pesanan_dikirim as $ps3) : ?>
                                             <tr>
+                                                <td class="text-center"><?= $number_ps3++; ?></td>
                                                 <td class="text-center"><?= $ps3['id_order']; ?></td>
                                                 <td><?= $ps3['tanggal_pesan']; ?></td>
                                                 <td>Rp <?= number_format($ps3['grandtotal'], 0, ',', '.');?></td>
@@ -147,7 +157,8 @@ $this->load->view('template_admin/sidebar');
                                 <table class="table table-bordered" id="table3" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">ID</th>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">Invoice</th>
                                             <th class="text-center">Tgl Pemesanan</th>
                                             <th class="text-center">Grand Total</th>
                                             <th class="text-center">Tanggal Kirim</th>
@@ -156,8 +167,10 @@ $this->load->view('template_admin/sidebar');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($pesanan_selesai as $ps4) : ?>
+                                        <?php $number_ps4 = 1;
+                                        foreach ($pesanan_selesai as $ps4) : ?>
                                             <tr>
+                                                <td class="text-center"><?= $number_ps4++; ?></td>
                                                 <td class="text-center"><?= $ps4['id_order']; ?></td>
                                                 <td><?= $ps4['tanggal_pesan']; ?></td>
                                                 <td>Rp <?= number_format($ps4['grandtotal'], 0, ',', '.');?></td>
