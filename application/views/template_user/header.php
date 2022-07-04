@@ -36,6 +36,8 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/css/main.css">
 	<!--===============================================================================================-->
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/datatables/datatables.min.css">
+  	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body>
@@ -87,7 +89,7 @@
 								<a href="about.html">Tentang</a>
 							</li>
 						</ul>
-					</div>
+					</div>	
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
