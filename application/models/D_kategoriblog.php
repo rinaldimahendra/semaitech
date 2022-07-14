@@ -1,23 +1,23 @@
 <?php
-class Mkonten extends CI_Model {
+class D_kategoriblog extends CI_Model {
 
-    public function getallslider(){
+    public function getallblog(){
         $query = "SELECT *
-        FROM slider
-        WHERE status_slider in ('Y','N')
+        FROM kategori_blog
+        WHERE status_kategoriblog in ('Y','N')
         ";
         return $this->db->query($query);
     }
 
-    public function getslider_aktif(){
+    public function getblog_aktif(){
         $query = "SELECT *
-        FROM slider
-        WHERE status_slider = 'Y'
+        FROM kategori_blog
+        WHERE status_kategoriblog = 'Y'
         ";
         return $this->db->query($query);
     }
 
-    public function tambah($data, $table)
+    public function tambah_blog($data, $table)
     {
         $this->db->insert($table, $data);
     }
@@ -30,9 +30,14 @@ class Mkonten extends CI_Model {
 
     public function tambah_kategori(){
         $query = "SELECT *
-        FROM slider
-        WHERE status_slider = 'Y'
+        FROM kategori_blog
+        WHERE status_kategoriblog = 'Y'
         ";
         return $this->db->query($query);
+    }
+    
+    public function edit_kategoriblog($where, $table)
+    {
+        return $this->db->get_where($table, $where);
     }
 }
