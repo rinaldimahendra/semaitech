@@ -195,5 +195,14 @@ class Blog extends CI_Controller {
             echo json_encode($r);
         }
     }
+
+    function delete_image()
+    {
+        $src = $this->input->post('src');
+        $file_name = str_replace(base_url(), '', $src);
+        if (unlink($file_name)) {
+            echo 'File Delete Successfully';
+        }
+    }
    
 }

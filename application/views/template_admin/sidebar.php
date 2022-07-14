@@ -20,6 +20,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <li class="<?php echo $this->uri->segment(2) == 'blank' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/rekening"><i class="far fa-file-alt"></i> <span>Rekening Pembayaran</span></a></li>
       <li class="<?php echo $this->uri->segment(2) == 'blank' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/kategorisayur"><i class="far fa-file-alt"></i> <span>Kategori Sayur</span></a></li>
       <li class="dropdown">
+        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-th"></i><span>Blog</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="<?= base_url('admin/blog') ?>">Data Blog</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-th"></i><span>Konten</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="<?= base_url('admin/Konten') ?>">Slider</a></li>
