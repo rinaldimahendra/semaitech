@@ -34,7 +34,9 @@ class Blog extends CI_Controller {
             } else {
 				$data = array(
 					'title' => "Tambah Blog | Semaitech",
-                    'js' => array("blog_create.js?r=" . rand())
+                    'js' => array("blog_create.js?r=" . rand()),
+                    'kategori' => $this->Mblog->get_kategori(),
+                    
 				);
 				
 				$this->load->view('admin/v_blog_create', $data);
@@ -172,7 +174,7 @@ class Blog extends CI_Controller {
     }
 
     public function konten_delete($id)
-    {
+    {   
         $cekid = $this->db->get_where('blog_data', ['id_blog' => $id]);
         if ($cekid->num_rows() == 0) {
             echo 'Error';

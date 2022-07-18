@@ -41,9 +41,9 @@ $this->load->view('template_admin/sidebar');
                             <div class="col-sm-10">
                                 
                                 <select class="form-control select2" id="kategori" multiple="" name="kategori[]" data-placeholder="Pilih kategori" style="width: 100%;">
-                                    <!-- <?php foreach ($kategori as $k) : ?>
-                                    <option value="<?= $k->id_kategori ?>"><?= $k->nama_kategori ?></option>
-                                    <?php endforeach; ?> -->
+                                    <?php foreach ($kategori as $k) : ?>
+                                    <option value="<?= $k->id_kategoriblog ?>"><?= $k->nama_kategoriblog ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>

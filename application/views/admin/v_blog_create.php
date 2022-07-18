@@ -16,7 +16,7 @@ $this->load->view('template_admin/sidebar');
                 <div class="card-header">
                     <h5 class="card-title">
                         Buat Konten Blog
-                    </h5>
+                    </h5> 
                 </div>
 
                 <form class="form-horizontal" enctype="multipart/form-data" action="<?= base_url('admin/blog/create_') ?>" method="POST">
@@ -40,7 +40,7 @@ $this->load->view('template_admin/sidebar');
                   <div class="col-sm-10">
                     <select class="form-control select2" multiple="multiple" name="kategori[]" data-placeholder="Select a State" style="width: 100%;">
                       <?php foreach ($kategori as $k) : ?>
-                        <option value="<?= $k->id_kategori ?>"><?= $k->nama_kategori ?></option>
+                        <option value="<?= $k->id_kategoriblog ?>"><?= $k->nama_kategoriblog ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>

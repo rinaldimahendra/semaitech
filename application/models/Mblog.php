@@ -29,9 +29,9 @@ class Mblog extends CI_Model {
     }
     
     public function kategori(){
-        $this->db->where('status', 1);
-        $this->db->order_by('nama_kategori', 'asc');
-        $query = $this->db->get('blog_kategori');
+        $this->db->where('status_kategoriblog', 'Y');
+        $this->db->order_by('nama_kategoriblog', 'asc');
+        $query = $this->db->get('kategori_blog');
         return $query->result();
     }
 
@@ -208,10 +208,10 @@ class Mblog extends CI_Model {
 	}
 
     //KATEGORI BLOG
-    var $table = 'blog_kategori'; //nama tabel dari database
-    var $column_order = array('nama_kategori', 'status'); //field yang ada di table
-    var $column_search = array('nama_kategori'); //field yang diizin untuk pencarian
-    var $order = array('nama_kategori' => 'asc'); // default order
+    var $table = 'kategori_blog'; //nama tabel dari database
+    var $column_order = array('nama_kategoriblog', 'status_kategoriblog'); //field yang ada di table
+    var $column_search = array('nama_kategoriblog'); //field yang diizin untuk pencarian
+    var $order = array('nama_kategoriblog' => 'asc'); // default order
 
     public function kategori_data()
     {
@@ -227,14 +227,14 @@ class Mblog extends CI_Model {
     {
         $this->db->select('*');
         $this->db->from($this->table);
-        $this->db->where_in('id_kategori', explode(',', $id));
+        $this->db->where_in('id_kategoriblog', explode(',', $id));
         $query = $this->db->get();
         if($return == 'data'){
             return $query->result();
         }else{
             $kategori='';
             foreach($query->result() as $kt){
-                $kategori.='<a href="'.base_url('blog/kategori/'.$kt->id_kategori).'" class="entry-meta meta-0 mr-2"><span class="post-in bg-warning text-white font-x-small">'.$kt->nama_kategori.'</span></a>';
+                $kategori.='<a href="'.base_url('blog/kategori/'.$kt->id_kategoriblog).'" class="entry-meta meta-0 mr-2"><span class="post-in bg-warning text-white font-x-small">'.$kt->nama_kategoriblog.'</span></a>';
             }
             return $kategori;
         }
@@ -319,6 +319,6 @@ class Mblog extends CI_Model {
     }
 
     public function get_kategori(){
-        return $this->db->get_where('blog_kategori', ['status' => 1])->result();
+        return $this->db->get_where('kategori_blog', ['status_kategoriblog' => 'Y'])->result();
     }
 }
