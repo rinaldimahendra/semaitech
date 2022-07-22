@@ -49,6 +49,50 @@ class Mhome extends CI_Model
         return $this->db->query($query);
     }
 
+    public function getDetailPesanan_MenungguVerifikasi($id)
+    {
+        $query = "SELECT *
+        FROM user, `order`, detail_order, managemen_data_sayur
+        WHERE order.id_user = $id AND detail_order.id_order = order.id_order
+        AND managemen_data_sayur.Id = detail_order.id_sayur
+        AND user.id_user = order.id_user AND order.status = 1
+        ";
+        return $this->db->query($query);
+    }
+
+    public function getDetailPesanan_Dikemas($id)
+    {
+        $query = "SELECT *
+        FROM user, `order`, detail_order, managemen_data_sayur
+        WHERE order.id_user = $id AND detail_order.id_order = order.id_order
+        AND managemen_data_sayur.Id = detail_order.id_sayur
+        AND user.id_user = order.id_user AND order.status = 2
+        ";
+        return $this->db->query($query);
+    }
+
+    public function getDetailPesanan_Dikirim($id)
+    {
+        $query = "SELECT *
+        FROM user, `order`, detail_order, managemen_data_sayur
+        WHERE order.id_user = $id AND detail_order.id_order = order.id_order
+        AND managemen_data_sayur.Id = detail_order.id_sayur
+        AND user.id_user = order.id_user AND order.status = 3
+        ";
+        return $this->db->query($query);
+    }
+
+    public function getDetailPesanan_Selesai($id)
+    {
+        $query = "SELECT *
+        FROM user, `order`, detail_order, managemen_data_sayur
+        WHERE order.id_user = $id AND detail_order.id_order = order.id_order
+        AND managemen_data_sayur.Id = detail_order.id_sayur
+        AND user.id_user = order.id_user AND order.status = 4
+        ";
+        return $this->db->query($query);
+    }
+
     public function getRiwayatPesanan_Dikemas($id)
     {
         $query = "SELECT *

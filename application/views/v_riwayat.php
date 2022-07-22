@@ -30,11 +30,11 @@ $this->load->view('template_user/header');
                                         <thead>
                                             <tr>
                                                 <th class="text-center">No</th>
-                                                <th class="text-center">Invoice</th>
+                                                <th class="text-center">Produk</th>
                                                 <th class="text-center">Tgl Pemesanan</th>
-                                                <th class="text-center">Grand Total</th>
+                                                <th class="text-center">Total Bayar</th>
                                                 <th class="text-center">Status</th>
-                                                <th class="text-center">Action</th>
+                                                <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -43,9 +43,24 @@ $this->load->view('template_user/header');
                                             foreach ($pesanan_menungguverifikasi as $ps1) : ?>
                                             <tr class="text-center">
                                                 <td><?= $number_ps1++; ?></td>
-                                                <td><?= $ps1['id_order']; ?></td>
+                                                <td>
+                                                <?php foreach ($detail_menungguverifikasi as $d1):
+                                                    if ($d1['id_order'] == $ps1['id_order']){ ?>
+                                                    <div class="table_row">
+                                                        <div class="column-1">
+                                                            <img src="<?= base_url('assets/img/sayur/') . $d1['Foto']; ?>" style="height: 50px" alt="IMG">&nbsp;<?= $d1['Nama']; ?>
+                                                        </div>
+                                                        <div class="column-2">
+                                                        </div>
+                                                        
+                                                    </div>
+                                                        
+                                                <?php }else{} endforeach;?>
+                                                </td>
+                                            
+                                                <!-- <td><?= $ps1['id_order']; ?></td> -->
                                                 <td><?= $ps1['tanggal_pesan']; ?></td>
-                                                <td>Rp <?= number_format($ps1['grandtotal'], 0, ',', '.');?></td>
+                                                <td>Rp <?= number_format($ps1['total_bayar'], 0, ',', '.');?></td>
                                                 <td>
                                                     <span class='badge badge-primary text-light'>Menunggu Verifikasi</span>
                                                 </td>
@@ -69,11 +84,11 @@ $this->load->view('template_user/header');
                                         <thead>
                                             <tr>
                                                 <th class="text-center">No</th>
-                                                <th class="text-center">Invoice</th>
+                                                <th class="text-center">Produk</th>
                                                 <th class="text-center">Tgl Pemesanan</th>
-                                                <th class="text-center">Grand Total</th>
+                                                <th class="text-center">Total Bayar</th>
                                                 <th class="text-center">Status</th>
-                                                <th class="text-center">Action</th>
+                                                <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -82,9 +97,22 @@ $this->load->view('template_user/header');
                                             foreach ($pesanan_dikemas as $ps2) : ?>
                                                 <tr class="text-center">
                                                     <td><?= $number_ps2++; ?></td>
-                                                    <td><?= $ps2['id_order']; ?></td>
+                                                    <td>
+                                                        <?php foreach ($detail_dikemas as $d2):
+                                                            if ($d2['id_order'] == $ps2['id_order']){ ?>
+                                                            <div class="table_row">
+                                                                <div class="column-1">
+                                                                    <img src="<?= base_url('assets/img/sayur/') . $d2['Foto']; ?>" style="height: 50px" alt="IMG">&nbsp;<?= $d2['Nama']; ?>
+                                                                </div>
+                                                                <div class="column-2">
+                                                                </div>
+                                                                
+                                                            </div>
+                                                                
+                                                        <?php }else{} endforeach;?>
+                                                    </td>
                                                     <td><?= $ps2['tanggal_pesan']; ?></td>
-                                                    <td>Rp <?= number_format($ps2['grandtotal'], 0, ',', '.');?></td>
+                                                    <td>Rp <?= number_format($ps2['total_bayar'], 0, ',', '.');?></td>
                                                     <td>
                                                         <span class='badge badge-danger text-light'>Dikemas</span>
                                                     </td>
@@ -108,12 +136,12 @@ $this->load->view('template_user/header');
                                         <thead>
                                             <tr>
                                                 <th class="text-center">No</th>
-                                                <th class="text-center">Invoice</th>
+                                                <th class="text-center">Produk</th>
                                                 <th class="text-center">Tgl Pemesanan</th>
-                                                <th class="text-center">Grand Total</th>
+                                                <th class="text-center">Total Bayar</th>
                                                 <th class="text-center">Tanggal Kirim</th>
                                                 <th class="text-center">Status</th>
-                                                <th class="text-center">Action</th>
+                                                <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -122,9 +150,22 @@ $this->load->view('template_user/header');
                                             foreach ($pesanan_dikirim as $ps3) : ?>
                                                 <tr class="text-center">
                                                     <td><?= $number_ps3++; ?></td>
-                                                    <td><?= $ps3['id_order']; ?></td>
+                                                    <td>
+                                                        <?php foreach ($detail_dikirim as $d3):
+                                                            if ($d3['id_order'] == $ps3['id_order']){ ?>
+                                                            <div class="table_row">
+                                                                <div class="column-1">
+                                                                    <img src="<?= base_url('assets/img/sayur/') . $d3['Foto']; ?>" style="height: 50px" alt="IMG">&nbsp;<?= $d3['Nama']; ?>
+                                                                </div>
+                                                                <div class="column-2">
+                                                                </div>
+                                                                
+                                                            </div>
+                                                                
+                                                        <?php }else{} endforeach;?>
+                                                    </td>
                                                     <td><?= $ps3['tanggal_pesan']; ?></td>
-                                                    <td>Rp <?= number_format($ps3['grandtotal'], 0, ',', '.');?></td>
+                                                    <td>Rp <?= number_format($ps3['total_bayar'], 0, ',', '.');?></td>
                                                     <td></td>
                                                     <td>
                                                         <span class='badge badge-info text-light'>Dikirim</span>
@@ -150,12 +191,12 @@ $this->load->view('template_user/header');
                                         <thead>
                                             <tr>
                                                 <th class="text-center">No</th>
-                                                <th class="text-center">Invoice</th>
+                                                <th class="text-center">Produk</th>
                                                 <th class="text-center">Tgl Pemesanan</th>
-                                                <th class="text-center">Grand Total</th>
+                                                <th class="text-center">Total Bayar</th>
                                                 <th class="text-center">Tanggal Kirim</th>
                                                 <th class="text-center">Status</th>
-                                                <th class="text-center">Action</th>
+                                                <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -164,9 +205,22 @@ $this->load->view('template_user/header');
                                             foreach ($pesanan_selesai as $ps4) : ?>
                                                 <tr class="text-center">
                                                     <td><?= $number_ps4++; ?></td>
-                                                    <td><?= $ps4['id_order']; ?></td>
+                                                    <td>
+                                                        <?php foreach ($detail_selesai as $d4):
+                                                            if ($d4['id_order'] == $ps4['id_order']){ ?>
+                                                            <div class="table_row">
+                                                                <div class="column-1">
+                                                                    <img src="<?= base_url('assets/img/sayur/') . $d4['Foto']; ?>" style="height: 50px" alt="IMG">&nbsp;<?= $d4['Nama']; ?>
+                                                                </div>
+                                                                <div class="column-2">
+                                                                </div>
+                                                                
+                                                            </div>
+                                                                
+                                                        <?php }else{} endforeach;?>
+                                                    </td>
                                                     <td><?= $ps4['tanggal_pesan']; ?></td>
-                                                    <td>Rp <?= number_format($ps4['grandtotal'], 0, ',', '.');?></td>
+                                                    <td>Rp <?= number_format($ps4['total_bayar'], 0, ',', '.');?></td>
                                                     <td></td>
                                                     <td>
                                                         <span class='badge badge-success text-light'>Selesai</span>
