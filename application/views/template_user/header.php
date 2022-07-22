@@ -86,7 +86,7 @@
 							</li>
 
 							<li>
-								<a href="about.html">Tentang</a>
+								<a href="tentang">Tentang</a>
 							</li>
 						</ul>
 					</div>	
@@ -217,7 +217,7 @@
 				</li>
 
 				<li>
-					<a href="about.html">Tentang</a>
+					<a href="tentang">Tentang</a>
 				</li>
 			</ul>
 		</div>
