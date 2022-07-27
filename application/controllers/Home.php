@@ -202,27 +202,31 @@ class Home extends CI_Controller
 				foreach ($cart as $c) {
 					$totalcart = $totalcart + $c['qty'];
 				}
-
 				$data = array(
-					'title' => "Home",
+					'title' => 'Detail Sayur',
+					'datasayur' => $this->Mhome->detailsayur('managemen_data_sayur')->result_array(),
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
 					// 'search' => $this->input->post('search'),
 					'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => $totalcart,
+					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
 				);
 				$this->load->view('v_home', $data);
 			} else {
 				$data = array(
-					'title' => "Home",
+					'title' => 'Detail Sayur',
+					'datasayur' => $this->Mhome->detailsayur('managemen_data_sayur')->result_array(),
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
 					'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => 0,
+					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
 				);
-				$this->load->view('v_home', $data);
+
+				$this->load->view('v_detail_sayur', $data);
 			}
 		} else {
 			$data = array(
@@ -235,6 +239,15 @@ class Home extends CI_Controller
 			);
 			$this->load->view('v_home', $data);
 		}
+		// $where = array('Id' => $id);
+		// $data = array(
+		// 	'title' => 'Detail Sayur',
+		// 	'datasayur' => $this->Mhome->detailsayur($where,'managemen_data_sayur')->result_array(),
+		// 	'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+		// 	'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+		// );
+
+		// $this->load->view('v_detail_sayur', $data);
 	}
 
 	public function profil()

@@ -13,6 +13,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script src="<?php echo base_url(); ?>assets/modules/datatables/datatables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/modules/select2/dist/js/select2.full.min.js"></script>
 
 <!-- JS Libraies -->
 <?php
@@ -272,6 +273,21 @@ if ($this->uri->segment(2) == "" || $this->uri->segment(2) == "index") { ?>
 <!-- Template JS File -->
 <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    let base_url = '<?php echo base_url(); ?>';
+    
+    $('#kategori').val([<?php if(isset($selected)){echo $selected;};?>]).change();
+    $(function() {
+      $('.select2').select2();
+      var timeout = 3000; // in miliseconds (3*1000)
+      $('.tutup').delay(timeout).fadeOut(300);
+    })
+  </script>
+ <?php if (isset($js)) : foreach ($js as $j) : ?>
+      <script src="<?= base_url('assets/js/' . $j) ?>"></script>
+  <?php endforeach;
+  endif; ?>
 </body>
 
 </html>

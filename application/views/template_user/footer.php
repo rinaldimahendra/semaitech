@@ -348,6 +348,42 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</script>
 <!--===============================================================================================-->
 	<script src="<?= base_url(); ?>assets/user/js/main.js"></script>
+	<script src="<?php echo base_url(); ?>assets/modules/datatables/datatables.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
+
+	<script>
+	$(function() {
+		$("#table").DataTable({
+		"responsive": true,
+		"autoWidth": false,
+		});
+	});
+	</script>
+	<script>
+	$(function() {
+		$("#table1").DataTable({
+		"responsive": true,
+		"autoWidth": false,
+		});
+	});
+	</script>
+	<script>
+	$(function() {
+		$("#table2").DataTable({
+		"responsive": true,
+		"autoWidth": false,
+		});
+	});
+	</script>
+	<script>
+	$(function() {
+		$("#table3").DataTable({
+		"responsive": true,
+		"autoWidth": false,
+		});
+	});
+	</script>
 
 </body>
 </html>

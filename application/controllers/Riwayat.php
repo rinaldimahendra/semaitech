@@ -28,6 +28,10 @@ class Riwayat extends CI_Controller {
 					'pesanan_dikemas' => $this->Mhome->getRiwayatPesanan_Dikemas($user['id_user'])->result_array(),
 					'pesanan_dikirim' => $this->Mhome->getRiwayatPesanan_Dikirim($user['id_user'])->result_array(),
 					'pesanan_selesai' => $this->Mhome->getRiwayatPesanan_Selesai($user['id_user'])->result_array(),
+					'detail_menungguverifikasi' => $this->Mhome->getDetailPesanan_MenungguVerifikasi($user['id_user'])->result_array(),
+					'detail_dikemas' => $this->Mhome->getDetailPesanan_Dikemas($user['id_user'])->result_array(),
+					'detail_dikirim' => $this->Mhome->getDetailPesanan_Dikirim($user['id_user'])->result_array(),
+					'detail_selesai' => $this->Mhome->getDetailPesanan_Selesai($user['id_user'])->result_array(),
 					'p_menungguverifikasi' => count($this->Mhome->getRiwayatPesanan_MenungguVerifikasi($user['id_user'])->result_array()),
 					'p_dikemas' => count($this->Mhome->getRiwayatPesanan_Dikemas($user['id_user'])->result_array()),
 					'p_dikirim' => count($this->Mhome->getRiwayatPesanan_Dikirim($user['id_user'])->result_array()),
@@ -44,6 +48,10 @@ class Riwayat extends CI_Controller {
 					'pesanan_dikemas' => $this->Mhome->getRiwayatPesanan_Dikemas($user['id_user'])->result_array(),
 					'pesanan_dikirim' => $this->Mhome->getRiwayatPesanan_Dikirim($user['id_user'])->result_array(),
 					'pesanan_selesai' => $this->Mhome->getRiwayatPesanan_Selesai($user['id_user'])->result_array(),
+					'detail_menungguverifikasi' => $this->Mhome->getDetailPesanan_MenungguVerifikasi($user['id_user'])->result_array(),
+					'detail_dikemas' => $this->Mhome->getDetailPesanan_Dikemas($user['id_user'])->result_array(),
+					'detail_dikirim' => $this->Mhome->getDetailPesanan_Dikirim($user['id_user'])->result_array(),
+					'detail_selesai' => $this->Mhome->getDetailPesanan_Selesai($user['id_user'])->result_array(),
 					'p_menungguverifikasi' => count($this->Mhome->getRiwayatPesanan_MenungguVerifikasi($user['id_user'])->result_array()),
 					'p_dikemas' => count($this->Mhome->getRiwayatPesanan_Dikemas($user['id_user'])->result_array()),
 					'p_dikirim' => count($this->Mhome->getRiwayatPesanan_Dikirim($user['id_user'])->result_array()),
@@ -56,22 +64,7 @@ class Riwayat extends CI_Controller {
 			}
 			
 		}else{
-			$data = array(
-				'title' => "Riwayat Pesanan",
-				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
-				'pesanan_menungguverifikasi' => $this->Mhome->getRiwayatPesanan_MenungguVerifikasi($user['id_user'])->result_array(),
-				'pesanan_dikemas' => $this->Mhome->getRiwayatPesanan_Dikemas($user['id_user'])->result_array(),
-				'pesanan_dikirim' => $this->Mhome->getRiwayatPesanan_Dikirim($user['id_user'])->result_array(),
-				'pesanan_selesai' => $this->Mhome->getRiwayatPesanan_Selesai($user['id_user'])->result_array(),
-				'p_menungguverifikasi' => count($this->Mhome->getRiwayatPesanan_MenungguVerifikasi($user['id_user'])->result_array()),
-				'p_dikemas' => count($this->Mhome->getRiwayatPesanan_Dikemas($user['id_user'])->result_array()),
-				'p_dikirim' => count($this->Mhome->getRiwayatPesanan_Dikirim($user['id_user'])->result_array()),
-				'p_selesai' => count($this->Mhome->getRiwayatPesanan_Selesai($user['id_user'])->result_array()),
-				'datasayur' => $this->Mhome->getallsayur()->result_array(),
-				'datakategori' => $this->Mhome->getallkategori()->result_array(),
-				'carttotal' => 0,
-			);
-			$this->load->view('v_riwayat', $data);
+			redirect('home');
 		}
 	}
 
