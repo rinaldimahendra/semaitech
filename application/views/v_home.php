@@ -222,7 +222,7 @@ $this->load->view('template_user/header');
 	<div class="container">
 		<div class="p-b-10">
 			<h3 class="ltext-103 cl5">
-				Product Overview
+				Produk
 			</h3>
 		</div>
 
