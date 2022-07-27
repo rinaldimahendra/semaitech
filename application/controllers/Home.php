@@ -665,4 +665,44 @@ class Home extends CI_Controller
 			$this->load->view('v_rekomenproduk', $data);
 		}
 	}
+
+	public function belanja()
+	{
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		if ($user) {
+			$cart = $this->Mcart->show_cart($user['id_user'])->result_array();
+			if ($cart) {
+				$totalcart = 0;
+				foreach ($cart as $c) {
+					$totalcart = $totalcart + $c['qty'];
+				}
+
+				$data = array(
+					'title' => "Home",
+					'datasayur' => $this->Mhome->belanja()->result_array(),
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+					// 'search' => $this->input->post('search'),
+					'carttotal' => $totalcart,
+                    'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
+					'datakategori' => $this->Mhome->getkategori()->result_array(),
+				);
+				$this->load->view('v_belanja', $data);
+			} else {
+				$data = array(
+					'title' => "Home",
+					'datasayur' => $this->Mhome->belanja()->result_array(),
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+					'carttotal' => $totalcart,
+                    'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
+					'datakategori' => $this->Mhome->getkategori()->result_array(),
+				);
+				$this->load->view('v_belanja', $data);
+			}
+		} else {
+			$this->session->set_flashdata('message1', 'Login sebelum melihat Belanja!');
+			redirect('auth/login');
+		}
+	}
 }

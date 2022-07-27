@@ -82,7 +82,7 @@
 							</li>
 
 							<li>
-								<a href="product.html">Belanja</a>
+								<a href="<?= base_url('home/belanja'); ?>">Belanja</a>
 							</li>
 
 							<li>
