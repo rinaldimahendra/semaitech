@@ -21,6 +21,7 @@ class Home extends CI_Controller
 					$totalcart = $totalcart + $c['qty'];
 				}
 
+
 				$data = array(
 					'title' => "Home",
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
@@ -28,6 +29,7 @@ class Home extends CI_Controller
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => $totalcart,
+					'bs' => $this->Mhome->bestseller()->result_array()
 				);
 				$this->load->view('v_home', $data);
 			} else {
@@ -38,6 +40,7 @@ class Home extends CI_Controller
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => 0,
+					'bs' => $this->Mhome->bestseller()->result_array()
 				);
 				$this->load->view('v_home', $data);
 			}
@@ -49,6 +52,7 @@ class Home extends CI_Controller
 				'datasayur' => $this->Mhome->getallsayur()->result_array(),
 				'datakategori' => $this->Mhome->getallkategori()->result_array(),
 				'carttotal' => 0,
+				'bs' => $this->Mhome->bestseller()->result_array()
 			);
 			$this->load->view('v_home', $data);
 		}
@@ -245,7 +249,7 @@ class Home extends CI_Controller
 				}
 
 				$data = array(
-					'title' => "Profil",
+					'title' => "Edit Profil",
 					'user' => $user,
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
@@ -254,7 +258,7 @@ class Home extends CI_Controller
 				$this->load->view('v_profil', $data);
 			} else {
 				$data = array(
-					'title' => "Profil",
+					'title' => "Edit Profil",
 					'user' => $user,
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
@@ -264,7 +268,7 @@ class Home extends CI_Controller
 			}
 		} else {
 			$data = array(
-				'title' => "Profil",
+				'title' => "Edit Profil",
 				'user' => $user,
 				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 				'datasayur' => $this->Mhome->getallsayur()->result_array(),
@@ -298,7 +302,7 @@ class Home extends CI_Controller
 							'datasayur' => $this->Mhome->getallsayur()->result_array(),
 							'carttotal' => $totalcart,
 						);
-						$this->load->view('v_profil', $data);
+						$this->load->view('v_profilcard', $data);
 					} else {
 						$data = array(
 							'title' => "Profil",
@@ -307,7 +311,7 @@ class Home extends CI_Controller
 							'datasayur' => $this->Mhome->getallsayur()->result_array(),
 							'carttotal' => 0,
 						);
-						$this->load->view('v_profil', $data);
+						$this->load->view('v_profilcard', $data);
 					}
 				} else {
 					$data = array(
@@ -317,7 +321,7 @@ class Home extends CI_Controller
 						'datasayur' => $this->Mhome->getallsayur()->result_array(),
 						'carttotal' => 0,
 					);
-					$this->load->view('v_profil', $data);
+					$this->load->view('v_profilcard', $data);
 				}
 			} else {
 				date_default_timezone_set('Asia/Jakarta');
@@ -336,7 +340,7 @@ class Home extends CI_Controller
 				$this->db->where('id_user', $this->input->post('id_user'));
 				$this->db->update('user', $data);
 				$this->session->set_flashdata('message1', 'Update Berhasil!');
-				redirect('home/profil');
+				redirect('home/profilcard');
 			}
 		} else {
 			// $this->form_validation->set_rules('nama', 'Name', 'required|trim');
@@ -362,7 +366,7 @@ class Home extends CI_Controller
 							'datasayur' => $this->Mhome->getallsayur()->result_array(),
 							'carttotal' => $totalcart,
 						);
-						$this->load->view('v_profil', $data);
+						$this->load->view('v_profilcard', $data);
 					} else {
 						$data = array(
 							'title' => "Profil",
@@ -371,7 +375,7 @@ class Home extends CI_Controller
 							'datasayur' => $this->Mhome->getallsayur()->result_array(),
 							'carttotal' => 0,
 						);
-						$this->load->view('v_profil', $data);
+						$this->load->view('v_profilcard', $data);
 					}
 				} else {
 					$data = array(
@@ -381,7 +385,7 @@ class Home extends CI_Controller
 						'datasayur' => $this->Mhome->getallsayur()->result_array(),
 						'carttotal' => 0,
 					);
-					$this->load->view('v_profil', $data);
+					$this->load->view('v_profilcard', $data);
 				}
 			} else {
 				date_default_timezone_set('Asia/Jakarta');
@@ -404,7 +408,7 @@ class Home extends CI_Controller
 				$this->db->where('id_user', $this->input->post('id_user'));
 				$this->db->update('user', $data);
 				$this->session->set_flashdata('message1', 'Update Berhasil!');
-				redirect('home/profil');
+				redirect('home/profilcard');
 			}
 		}
 	}
@@ -423,7 +427,7 @@ class Home extends CI_Controller
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('foto')) {
 				$this->session->set_flashdata('message4', 'Update Foto Gagal!');
-				redirect('home/profil');
+				redirect('home/profilcard');
 			} else {
 				$this->session->set_flashdata('message3', 'Update Foto Berhasil!');
 				$item = $this->db->get_where('user', array('id_user' => $id_user))->row();
@@ -437,7 +441,7 @@ class Home extends CI_Controller
 			$this->db->set('foto_user', $foto_user);
 			$this->db->where('id_user', $id_user);
 			$this->db->update('user');
-			redirect('home/profil');
+			redirect('home/profilcard');
 		}
 	}
 
@@ -518,6 +522,88 @@ class Home extends CI_Controller
 			$this->session->set_flashdata('message', 'Berhasil Checkout');
 
 			redirect('home/pembayaran');
+		}
+	}
+
+	public function profilcard()
+	{
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		if ($user) {
+			$cart = $this->Mcart->show_cart($user['id_user'])->result_array();
+			if ($cart) {
+				$totalcart = 0;
+				foreach ($cart as $c) {
+					$totalcart = $totalcart + $c['qty'];
+				}
+
+				$data = array(
+					'title' => "Profil",
+					'user' => $user,
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'carttotal' => $totalcart,
+				);
+				$this->load->view('v_profilcard', $data);
+			} else {
+				$data = array(
+					'title' => "Profil",
+					'user' => $user,
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'carttotal' => 0,
+				);
+				$this->load->view('v_profilcard', $data);
+			}
+		} else {
+			$data = array(
+				'title' => "Profil",
+				'user' => $user,
+				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+				'datasayur' => $this->Mhome->getallsayur()->result_array(),
+				'carttotal' => 0,
+			);
+			$this->load->view('v_profilcard', $data);
+		}
+	}
+
+	public function rekomenproduk()
+	{
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		if ($user) {
+			$cart = $this->Mcart->show_cart($user['id_user'])->result_array();
+			if ($cart) {
+				$totalcart = 0;
+				foreach ($cart as $c) {
+					$totalcart = $totalcart + $c['qty'];
+				}
+
+				$data = array(
+					'title' => "Rekomendasi Produk",
+					'user' => $user,
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'carttotal' => $totalcart,
+				);
+				$this->load->view('v_rekomenproduk', $data);
+			} else {
+				$data = array(
+					'title' => "Rekomendasi Produk",
+					'user' => $user,
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'carttotal' => 0,
+				);
+				$this->load->view('v_rekomenproduk', $data);
+			}
+		} else {
+			$data = array(
+				'title' => "Rekomendasi Produk",
+				'user' => $user,
+				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+				'datasayur' => $this->Mhome->getallsayur()->result_array(),
+				'carttotal' => 0,
+			);
+			$this->load->view('v_rekomenproduk', $data);
 		}
 	}
 }

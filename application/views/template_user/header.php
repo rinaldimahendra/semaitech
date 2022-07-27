@@ -104,7 +104,7 @@
 								<i class="zmdi zmdi-account"></i>
 								<?php if ($this->session->userdata('nama')) : ?>
 									<ul class="sub-menu">
-										<li><a href="<?= base_url('home/profil') ?>"><i class="zmdi zmdi-account"></i>&ensp;Profile</a></li>
+										<li><a href="<?= base_url('home/profilcard') ?>"><i class="zmdi zmdi-account"></i>&ensp;Profile</a></li>
 										<li><a href="<?= base_url('home/cart') ?>"><i class="zmdi zmdi-shopping-cart"></i>&ensp;Keranjang Saya</a></li>
 										<li><a href="<?= base_url('riwayat') ?>"><i class="zmdi zmdi-assignment"></i>&ensp;Pesanan Saya</a></li>
 										<li><a href="<?= base_url('auth/logout') ?>"><i class="zmdi zmdi-power"></i>&ensp;Log out</a></li>
@@ -142,7 +142,7 @@
 						<i class="zmdi zmdi-account"></i>
 						<?php if ($this->session->userdata('nama')) : ?>
 							<ul class="sub-menu">
-								<li><a href="<?= base_url('home/profil') ?>"><i class="zmdi zmdi-account"></i>&ensp;Profile</a></li>
+								<li><a href="<?= base_url('home/profilcard') ?>"><i class="zmdi zmdi-account"></i>&ensp;Profile</a></li>
 								<li><a href="<?= base_url('home/cart') ?>">&ensp;Cart</a></li>
 								<li><a href="<?= base_url('auth/logout') ?>">&ensp;Log out</a></li>
 							</ul>

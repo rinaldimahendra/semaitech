@@ -1,5 +1,6 @@
 <?php
-class Mcart extends CI_Model {
+class Mcart extends CI_Model
+{
 
     public function cek_cart($id_sayur, $id_user)
     {
@@ -9,14 +10,16 @@ class Mcart extends CI_Model {
         return $this->db->query($query);
     }
 
-    public function show_cart($id_user){
+    public function show_cart($id_user)
+    {
         $query = "SELECT qty
         FROM keranjang
         WHERE keranjang.id_user = $id_user";
         return $this->db->query($query);
     }
 
-    public function getcart($id_user){
+    public function getcart($id_user)
+    {
         $query = "SELECT *
         FROM keranjang, managemen_data_sayur, user
         WHERE keranjang.id_user = $id_user AND Id = id_sayur

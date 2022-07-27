@@ -78,4 +78,15 @@ class Mhome extends CI_Model
         ";
         return $this->db->query($query);
     }
+
+    public function bestseller()
+    {
+        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga, SUM(qty) as terjual 
+        FROM managemen_data_sayur, kategori_sayur, detail_order
+        WHERE Kategori = Id_Kategori AND Id = id_sayur AND Stok > 0 AND Status = 'Y'
+        GROUP BY Id 
+        ORDER BY terjual DESC
+        ";
+        return $this->db->query($query);
+    }
 }
