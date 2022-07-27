@@ -2,6 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Profil extends CI_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Muser');
+    }
+
     public function index() {
 		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         if ($user) {
@@ -10,7 +17,7 @@ class Profil extends CI_Controller {
             } else {
                 $data = array(
 					'title' => "Profil",
-					'data_user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array()
+					'data_user' => $this->Muser->getdatauser($this->session->userdata('email'))->row_array()
 				);
 				$this->load->view('admin/v_profil', $data);
             }

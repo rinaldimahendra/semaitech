@@ -169,15 +169,23 @@ $this->load->view('template_user/header');
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
-                            <!-- Form Group (phone number)-->
-                            <div class="col-md-4">
-                                <label class="small mb-1" for="kota">Kota</label>
-                                <input class="form-control" name="kota" type="text" value="<?= $user['kota']; ?>">
-                            </div>
-                            <!-- Form Group (birthday)-->
                             <div class="col-md-4">
                                 <label class="small mb-1" for="provinsi">Provinsi</label>
-                                <input class="form-control" name="provinsi" type="text" value="<?= $user['provinsi']; ?>">
+                                <div class="rs1-select2 bor8 bg0">
+                                    <select class="js-select2" name="provinsi" value="<?= $user['nama_provinsi']; ?>">
+
+                                    </select>
+                                    <div class="dropDownSelect2"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="small mb-1" for="kota">Kota</label>
+                                <div class="rs1-select2 bor8 bg0">
+                                    <select class="js-select2" name="kota" value="<?= $user['nama_kota']; ?>">
+
+                                    </select>
+                                    <div class="dropDownSelect2"></div>
+                                </div>
                             </div>
                             <div class="col-md-4">
                                 <label class="small mb-1" for="kode_pos">Kode Pos</label>
@@ -194,3 +202,32 @@ $this->load->view('template_user/header');
 </div>
 <br>
 <?php $this->load->view('template_user/footer'); ?>
+
+<Script>
+    $(document).ready(function() {
+        // Memasukkan ke option provinsi
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('RajaOngkir/provinsi') ?>",
+            success: function(hasil_provinsi) {
+                // console.log(hasil_provinsi);
+                $("select[name=provinsi]").html(hasil_provinsi);
+            }
+        });
+
+        // Memasukkan ke option kota
+        $("select[name=provinsi]").on("change", function() {
+            var id_provinsi_terpilih = $("option:selected", this).attr("id_provinsi");
+
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('RajaOngkir/kota') ?>",
+                data: 'id_provinsi=' + id_provinsi_terpilih,
+                success: function(hasil_kota) {
+                    // console.log(hasil_kota);
+                    $("select[name=kota]").html(hasil_kota);
+                }
+            });
+        });
+    });
+</Script>
