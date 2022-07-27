@@ -23,4 +23,30 @@ class Muser extends CI_Model {
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+
+    //Khusus Dashboard
+    public function total_produk()
+    {
+        $query = "SELECT Id
+        FROM managemen_data_sayur
+        WHERE Status = 'Y'
+        ";
+        return $this->db->query($query);
+    }
+
+    public function total_order()
+    {
+        $query = "SELECT id_order
+        FROM `order`
+        ";
+        return $this->db->query($query);
+    }
+
+    public function total_pemasukan()
+    {
+        $query = "SELECT SUM(grandtotal) AS total
+        FROM `order`
+        ";
+        return $this->db->query($query);
+    }
 }
