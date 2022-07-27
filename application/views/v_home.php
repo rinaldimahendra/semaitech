@@ -170,7 +170,7 @@ $this->load->view('template_user/header');
 				</div>
 			</div>
 		</div>
-		<div class="row isotope-grid" id="s">
+		<div class="row isotope-grid">
 			<?php foreach ($bs as $d) : ?>
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 					<!-- Block2 -->

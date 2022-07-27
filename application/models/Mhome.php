@@ -11,6 +11,15 @@ class Mhome extends CI_Model
         return $this->db->query($query);
     }
 
+    public function getsayurlimit()
+    {
+        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga, satuan
+        FROM managemen_data_sayur, kategori_sayur
+        WHERE Kategori = Id_Kategori AND Stok > 0 AND Status = 'Y' LIMIT 8
+        ";
+        return $this->db->query($query);
+    }
+
     public function getallkategori()
     {
         $query = "SELECT Nama_Kategori, Id_Kategori
@@ -34,7 +43,7 @@ class Mhome extends CI_Model
     {
         $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga, satuan 
         FROM managemen_data_sayur, kategori_sayur
-        WHERE Kategori = Id_Kategori AND Stok > 0 AND Status = 'Y'
+        WHERE managemen_data_sayur.Kategori = Id_Kategori AND Stok > 0 AND Status = 'Y'
         AND (Nama LIKE '%$search%' OR Nama_Kategori LIKE '%$search%' OR Keterangan LIKE '%$search%')
         ";
         return $this->db->query($query);

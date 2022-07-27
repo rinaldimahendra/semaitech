@@ -26,7 +26,7 @@ class Home extends CI_Controller
 					'title' => "Home",
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
-					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'datasayur' => $this->Mhome->getsayurlimit()->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => $totalcart,
 					'bs' => $this->Mhome->bestseller()->result_array()
@@ -37,7 +37,7 @@ class Home extends CI_Controller
 					'title' => "Home",
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
-					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'datasayur' => $this->Mhome->getsayurlimit()->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => 0,
 					'bs' => $this->Mhome->bestseller()->result_array()
@@ -49,7 +49,7 @@ class Home extends CI_Controller
 				'title' => "Home",
 				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 				'slider' => $this->Mkonten->getslider_aktif()->result_array(),
-				'datasayur' => $this->Mhome->getallsayur()->result_array(),
+				'datasayur' => $this->Mhome->getsayurlimit()->result_array(),
 				'datakategori' => $this->Mhome->getallkategori()->result_array(),
 				'carttotal' => 0,
 				'bs' => $this->Mhome->bestseller()->result_array()
@@ -206,29 +206,91 @@ class Home extends CI_Controller
 				}
 				$data = array(
 					'title' => 'Detail Sayur',
-					'datasayur' => $this->Mhome->detailsayur('managemen_data_sayur')->result_array(),
+					// 'datasayur' => $this->Mhome->detailsayur('managemen_data_sayur')->result_array(),
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
-					// 'search' => $this->input->post('search'),
+					// 'search' => $this->input->post('search'),	
 					'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => $totalcart,
 					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
+					'bs' => $this->Mhome->bestseller()->result_array()
 				);
 				$this->load->view('v_home', $data);
 			} else {
 				$data = array(
 					'title' => 'Detail Sayur',
-					'datasayur' => $this->Mhome->detailsayur('managemen_data_sayur')->result_array(),
+					// 'datasayur' => $this->Mhome->detailsayur('managemen_data_sayur')->result_array(),
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
 					'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => 0,
 					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
+					'bs' => $this->Mhome->bestseller()->result_array()
 				);
 
-				$this->load->view('v_detail_sayur', $data);
+				$this->load->view('v_home', $data);
+			}
+		} else {
+			$data = array(
+				'title' => "Home",
+				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+				'slider' => $this->Mkonten->getslider_aktif()->result_array(),
+				'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
+				'datakategori' => $this->Mhome->getallkategori()->result_array(),
+				'carttotal' => 0,
+			);
+			$this->load->view('v_home', $data);
+		}
+		// $where = array('Id' => $id);
+		// $data = array(
+		// 	'title' => 'Detail Sayur',
+		// 	'datasayur' => $this->Mhome->detailsayur($where,'managemen_data_sayur')->result_array(),
+		// 	'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+		// 	'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+		// );
+
+		// $this->load->view('v_detail_sayur', $data);
+	}
+
+	public function searchp()
+	{
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		if ($user) {
+			$cart = $this->Mcart->show_cart($user['id_user'])->result_array();
+			if ($cart) {
+				$totalcart = 0;
+				foreach ($cart as $c) {
+					$totalcart = $totalcart + $c['qty'];
+				}
+				$data = array(
+					'title' => 'Detail Sayur',
+					// 'datasayur' => $this->Mhome->detailsayur('managemen_data_sayur')->result_array(),
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
+					// 'search' => $this->input->post('search'),	
+					'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
+					'carttotal' => $totalcart,
+					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
+					'bs' => $this->Mhome->bestseller()->result_array()
+				);
+				$this->load->view('v_belanja', $data);
+			} else {
+				$data = array(
+					'title' => 'Detail Sayur',
+					// 'datasayur' => $this->Mhome->detailsayur('managemen_data_sayur')->result_array(),
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'slider' => $this->Mkonten->getslider_aktif()->result_array(),
+					'datasayur' => $this->Mhome->search($this->input->post('search'))->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
+					'carttotal' => 0,
+					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
+					'bs' => $this->Mhome->bestseller()->result_array()
+				);
+
+				$this->load->view('v_belanja', $data);
 			}
 		} else {
 			$data = array(
@@ -685,7 +747,7 @@ class Home extends CI_Controller
 					// 'search' => $this->input->post('search'),
 					'carttotal' => $totalcart,
                     'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
-					'datakategori' => $this->Mhome->getkategori()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 				);
 				$this->load->view('v_belanja', $data);
 			} else {
@@ -694,9 +756,9 @@ class Home extends CI_Controller
 					'datasayur' => $this->Mhome->belanja()->result_array(),
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
-					'carttotal' => $totalcart,
+					'carttotal' => 0,
                     'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
-					'datakategori' => $this->Mhome->getkategori()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 				);
 				$this->load->view('v_belanja', $data);
 			}
