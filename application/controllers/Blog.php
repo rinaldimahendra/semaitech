@@ -30,6 +30,7 @@ class Blog extends CI_Controller
                     'carttotal'         => $totalcart,
                     'kategori1'         => $this->D_kategoriblog->getallblog()->result(),
                     'blog_konten'       => $this->Mblog->getallblog_konten()->result(),
+                    'datakategori' => $this->Mhome->getallkategori()->result_array(),
                 );
                 $this->load->view('v_blog', $data);
             } else {
@@ -40,6 +41,7 @@ class Blog extends CI_Controller
                     'carttotal'         => 0,
                     'kategori1'         => $this->D_kategoriblog->getallblog()->result(),
                     'blog_konten'       => $this->Mblog->getallblog_konten()->result(),
+                    'datakategori' => $this->Mhome->getallkategori()->result_array(),
                 );
                 $this->load->view('v_blog', $data);
             }
@@ -68,6 +70,7 @@ class Blog extends CI_Controller
                     'kategori1'         => $this->D_kategoriblog->getallblog()->result(),
                     'blog_konten'       => $this->Mblog->getallblog_konten()->result(),                    
                     'blog_detail'       => $this->Mblog->blog_detail($where)->result(),
+                    'datakategori' => $this->Mhome->getallkategori()->result_array(),
                 );
                 $this->load->view('v_blogDetail', $data);
             } else {
@@ -79,6 +82,7 @@ class Blog extends CI_Controller
                     'kategori1'         => $this->D_kategoriblog->getallblog()->result(),
                     'blog_konten'       => $this->Mblog->getallblog_konten()->result(),                   
                     'blog_detail'       => $this->Mblog->blog_detail($where)->result(),
+                    'datakategori' => $this->Mhome->getallkategori()->result_array(),
                 );
                 $this->load->view('v_blogDetail', $data);
             }
@@ -106,6 +110,7 @@ class Blog extends CI_Controller
                     'carttotal'         => $totalcart,
                     'kategori1'         => $this->D_kategoriblog->getallblog()->result(),                   
                     'blog_konten'       => $this->Mblog->search($this->input->post('search'))->result(),
+                    'datakategori' => $this->Mhome->getallkategori()->result_array(),
                 );
                 $this->load->view('v_blog', $data);
             } else {
@@ -116,6 +121,7 @@ class Blog extends CI_Controller
                     'carttotal'         => 0,
                     'kategori1'         => $this->D_kategoriblog->getallblog()->result(),                   
                     'blog_konten'       => $this->Mblog->search($this->input->post('search'))->result(),
+                    'datakategori' => $this->Mhome->getallkategori()->result_array(),
                 );
                 $this->load->view('v_blog', $data);
             }

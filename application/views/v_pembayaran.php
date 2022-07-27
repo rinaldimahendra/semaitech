@@ -120,7 +120,7 @@ $this->load->view('template_user/header');
                                             <th scope="row"><?= $i ?></th>
                                             <td><?= $p['Nama']; ?></td>
                                             <td><?= $p['qty']; ?></td>
-                                            <td>Rp <?= number_format($p['Harga'], 0, ',', '.'); ?></td>
+                                            <td>Rp <?= number_format($p['Harga'], 0, ',', '.'); ?> / <?= $p['satuan'] ?></td>
                                         </tr>
 
                                     <?php

@@ -43,7 +43,7 @@ $this->load->view('template_user/header');
                                         </div>
                                     </td>
                                     <td class="column-2"><?= $k['Nama']; ?></td>
-                                    <td class="column-3">Rp. <?= number_format($k['Harga'], 0, ',', '.') ?></td>
+                                    <td class="column-3">Rp. <?= number_format($k['Harga'], 0, ',', '.') ?> / <?= $k['satuan'] ?></td>
                                     <td class="column-4">
                                         <div class="wrap-num-product flex-w m-l-auto m-r-0">
                                             <button class="btn-down cl8 hov-btn3 trans-04 flex-c-m" onclick="kurang_qty(<?= $k['id_keranjang']; ?>)">

@@ -4,7 +4,7 @@ class Mhome extends CI_Model
 
     public function getallsayur()
     {
-        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga 
+        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga, satuan
         FROM managemen_data_sayur, kategori_sayur
         WHERE Kategori = Id_Kategori AND Stok > 0 AND Status = 'Y'
         ";
@@ -16,13 +16,14 @@ class Mhome extends CI_Model
         $query = "SELECT Nama_Kategori, Id_Kategori
         FROM managemen_data_sayur, kategori_sayur
         WHERE Kategori = Id_Kategori AND Stok > 0 AND Status_Kategori = 'Y'
+        GROUP BY Id_Kategori
         ";
         return $this->db->query($query);
     }
 
     public function getsayurbykategori($id_kategori)
     {
-        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga 
+        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga, satuan
         FROM managemen_data_sayur, kategori_sayur
         WHERE Kategori = Id_Kategori AND Stok > 0 AND Status = 'Y' AND Id_Kategori = $id_kategori
         ";
@@ -31,7 +32,7 @@ class Mhome extends CI_Model
 
     function search($search)
     {
-        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga 
+        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga, satuan 
         FROM managemen_data_sayur, kategori_sayur
         WHERE Kategori = Id_Kategori AND Stok > 0 AND Status = 'Y'
         AND (Nama LIKE '%$search%' OR Nama_Kategori LIKE '%$search%' OR Keterangan LIKE '%$search%')
@@ -125,7 +126,7 @@ class Mhome extends CI_Model
 
     public function bestseller()
     {
-        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga, SUM(qty) as terjual 
+        $query = "SELECT Id, Foto, Nama, Nama_Kategori, Keterangan, Stok, Harga, satuan, SUM(qty) as terjual 
         FROM managemen_data_sayur, kategori_sayur, detail_order
         WHERE Kategori = Id_Kategori AND Id = id_sayur AND Stok > 0 AND Status = 'Y'
         GROUP BY Id 
@@ -136,7 +137,7 @@ class Mhome extends CI_Model
 
     public function detailsayur($where)
     {
-        $query = "SELECT Id, Foto, Nama, Keterangan, Stok, Harga, Nama_Kategori, Id_Kategori
+        $query = "SELECT Id, Foto, Nama, Keterangan, Stok, Harga, Nama_Kategori, Id_Kategori, satuan
         FROM managemen_data_sayur, kategori_sayur
         WHERE Kategori = Id_Kategori AND Stok > 0 AND Id = $where
         ";

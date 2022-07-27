@@ -73,6 +73,7 @@ class Home extends CI_Controller
 					'title' => "Home",
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => $totalcart,
 				);
 				$this->load->view('v_cart', $data);
@@ -81,6 +82,7 @@ class Home extends CI_Controller
 					'title' => "Home",
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'keranjang'	=> $this->Mcart->getcart($user['id_user'])->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => 0,
 				);
 				$this->load->view('v_cart', $data);
@@ -266,6 +268,7 @@ class Home extends CI_Controller
 					'user' => $user,
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => $totalcart,
 				);
 				$this->load->view('v_profil', $data);
@@ -275,6 +278,7 @@ class Home extends CI_Controller
 					'user' => $user,
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => 0,
 				);
 				$this->load->view('v_profil', $data);
@@ -538,6 +542,46 @@ class Home extends CI_Controller
 		}
 	}
 
+	public function Detailsayur($id)
+	{
+		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		if ($user) {
+			$cart = $this->Mcart->show_cart($user['id_user'])->result_array();
+			if ($cart) {
+				$totalcart = 0;
+				foreach ($cart as $c) {
+					$totalcart = $totalcart + $c['qty'];
+				}
+				// $where = array('Id' => $id);
+				$data = array(
+					'title' => 'Detail Sayur',
+					'datasayur' => $this->Mhome->detailsayur($id)->result_array(),
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'keranjang' => $this->Mcart->getcart($user['id_user'])->result_array(),
+					'carttotal' => $totalcart,
+					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
+				);
+
+				$this->load->view('v_detail_sayur', $data);
+			} else {
+				$where = array('Id' => $id);
+				$data = array(
+					'title' => 'Detail Sayur',
+					'datasayur' => $this->Mhome->detailsayur($id)->result_array(),
+					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
+					'keranjang' => $this->Mcart->getcart($user['id_user'])->result_array(),
+					'carttotal' => 0,
+					'kategori'   => $this->d_kategorisayur->tampil_kategori()->result_array(),
+				);
+
+				$this->load->view('v_detail_sayur', $data);
+			}
+		} else {
+			$this->session->set_flashdata('Login terlebih dahulu sebelum Melihat Detail');
+			redirect('auth/login');
+		}
+	}
+
 	public function profilcard()
 	{
 		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -554,6 +598,7 @@ class Home extends CI_Controller
 					'user' => $user,
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => $totalcart,
 				);
 				$this->load->view('v_profilcard', $data);
@@ -563,6 +608,7 @@ class Home extends CI_Controller
 					'user' => $user,
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
+					'datakategori' => $this->Mhome->getallkategori()->result_array(),
 					'carttotal' => 0,
 				);
 				$this->load->view('v_profilcard', $data);
