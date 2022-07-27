@@ -12,81 +12,82 @@ $this->load->view('template_user/header');
                         <div class="size-130 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
 
                             <h4 class="mtext-109 cl2 p-b-30">
-                                Checkout
+                                Form Checkout
                             </h4>
                             <div class="flex-w flex-t bor12 p-b-13">
 
                             </div><br>
 
-                            <div class="size-208">
+                            <div class="size-210">
                                 <span class="stext-110 cl2">
-                                    Nama Lengkap
+                                    Nama Lengkap Penerima*
                                 </span>
                             </div>
-                            <div class="wrap-input1 p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="nama" placeholder="Nama Lengkap" value="<?= $data_user['nama_user'] ?>">
-                                <div class="focus-input1 trans-04"></div>
+
+                            <div class="bor8 bg0 m-b-20">
+                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" name="nama" type="text" placeholder="Nama Lengkap Penerima" value="<?= $data_user['nama_user'] ?>" required>
+                            </div>
+
+                            <div class="size-208">
+                                <span class="stext-110 cl2">
+                                    Alamat Lengkap*
+                                </span>
+                            </div>
+
+                            <div class="bor8 bg0 m-b-20">
+                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" name="alamat" type="text" placeholder="Alamat Lengkap Penerima" value="<?= $data_user['alamat'] ?>" required>
+                            </div>
+
+                            <span class="stext-110 cl2">
+                                Provinsi*
+                            </span>
+                            <div class="size-180 respon6-next">
+                                <div class="rs1-select2 bor8 bg0">
+                                    <select class="js-select2" name="provinsi">
+
+                                    </select>
+                                    <div class="dropDownSelect2"></div>
+                                </div>
+                            </div><br>
+
+                            <span class="stext-110 cl2">
+                                Kota*
+                            </span>
+                            <div class="size-180 respon6-next">
+                                <div class="rs1-select2 bor8 bg0">
+                                    <select class="js-select2" name="kota">
+
+                                    </select>
+                                    <div class="dropDownSelect2"></div>
+                                </div>
                             </div><br>
 
                             <div class="size-208">
                                 <span class="stext-110 cl2">
-                                    Alamat Lengkap
+                                    Kode Pos*
                                 </span>
                             </div>
-                            <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="alamat" placeholder="Alamat Lengkap" value="<?= $data_user['alamat']; ?>">
-                                <div class="focus-input1 trans-04"></div>
-                            </div><br>
+                            <div class="bor8 bg0 m-b-20">
+                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" name="kode_pos" type="text" placeholder="Kode Pos" value="<?= $data_user['kode_pos'] ?>" required>
+                            </div>                           
 
                             <div class="size-208">
                                 <span class="stext-110 cl2">
-                                    Provinsi
+                                    No. Telepon*
                                 </span>
                             </div>
-                            <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="provinsi" placeholder="Provinsi" value="<?= $data_user['provinsi']; ?>">
-                                <div class="focus-input1 trans-04"></div>
-                            </div><br>
-
-                            <div class="size-208">
-                                <span class="stext-110 cl2">
-                                    Tinggal
-                                </span>
+                            <div class="bor8 bg0 m-b-20">
+                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" name="no_tlp" type="text" placeholder="No. Handphone" value="<?= $data_user['no_tlpn'] ?>" required>
                             </div>
-                            <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="kota" placeholder="Kota" value="<?= $data_user['kota']; ?>">
-                                <div class="focus-input1 trans-04"></div>
-                            </div><br>
-
-                            <div class="size-208">
-                                <span class="stext-110 cl2">
-                                    Kode Pos
-                                </span>
-                            </div>
-                            <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="kode_pos" placeholder="Kode Pos" value="<?= $data_user['kode_pos']; ?>">
-                                <div class="focus-input1 trans-04"></div>
-                            </div><br>
-
-                            <div class="size-208">
-                                <span class="stext-110 cl2">
-                                    No. Telepon
-                                </span>
-                            </div>
-                            <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="no_tlp" placeholder="No. Handphone" value="<?= $data_user['no_tlpn']; ?>">
-                                <div class="focus-input1 trans-04"></div>
-                            </div><br>
 
                             <div class="size-208">
                                 <span class="stext-110 cl2">
                                     Catatan Pembelian
                                 </span>
                             </div>
-                            <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-102 cl6" type="text" name="catatan_pembelian" placeholder="Catatan Pembelian">
-                                <div class="focus-input1 trans-04"></div>
-                            </div><br>
+                            <div class="bor8 bg0 m-b-20">
+                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" name="catatan_pembelian" placeholder="Catatan Pembelian">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -109,10 +110,10 @@ $this->load->view('template_user/header');
                                     Nama Produk:
                                 </span>
                             </div>
-                            <div class="size-209 p-t-1">
+                            <div class="size-230 p-t-1">
                                 <span class="stext-115 cl2" id="nama_produk">
                                     <input id="grand" value="<?= $k['Nama']; ?>" name="nama_produk" hidden>
-                                    <?= $k['Nama']; ?> | Rp. <?= number_format($k['Harga'], 0, ',', '.') ?> X <?= $k['qty']; ?>
+                                    <?= $k['Nama']; ?> | Rp. <?= number_format($k['Harga'], 0, ',', '.') ?> / <?= $k['satuan'] ?> X <?= $k['qty']; ?>
                                 </span>
                             </div><br>
 
@@ -131,9 +132,11 @@ $this->load->view('template_user/header');
                         <?php } ?>
 
                         <div class="flex-w flex-t bor12 p-b-13">
+
                         </div><br>
 
                         <div class="flex-w flex-t bor12 p-b-13">
+                            <br><br>
                             <div class="size-208">
                                 <span class="stext-110 cl2">
                                     Subtotal:
@@ -163,15 +166,13 @@ $this->load->view('template_user/header');
                                     Ongkir:
                                 </span>
                             </div>
-                            <?php
-                            $ongkir = 15000;
-                            ?>
+
                             <div class="size-209 p-t-1">
                                 <span class="mtext-110 cl2" id="ongkir">
-                                    Rp. <?= number_format($ongkir, 0, ',', '.'); ?>
-                                    <input id="grand" value="<?= $ongkir ?>" name="ongkir" hidden>
+                                    
                                 </span>
                             </div>
+                            <br><br>
                         </div><br>
 
                         <!-- <div class="flex-w flex-t bor12 p-b-13">
@@ -227,9 +228,9 @@ $this->load->view('template_user/header');
                                 </span>
                             </div>
                         </div>
-
-                        <button type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                            Pembayaran
+                      
+                        <button id="bayar" type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                            Pembayaran                        
                         </button>
                     </div>
                 </div>
@@ -238,3 +239,74 @@ $this->load->view('template_user/header');
     </form>
 </section>
 <?php $this->load->view('template_user/footer'); ?>
+
+<Script>
+    $(document).ready(function() {
+        var ambil_provinsi = $("select[name=provinsi]").val();
+        var ambil_kota = $("option:selected", this).attr("id_kota");
+        var subtotal = $("input[name=grand_total]").val();
+        var total_belanja = 100000;
+        var gratisongkir = "Rp 0";
+        var bogor = "Rp 15.000";
+        var nominal_byr = "Pembayaran";
+        var nominal_krng = "Maaf Nonimal Belanja Harus Lebih dari Rp 100.000";
+
+        // Memasukkan ke option provinsi
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('RajaOngkir/provinsi') ?>",
+            success: function(hasil_provinsi) {
+                // console.log(hasil_provinsi);
+                $("select[name=provinsi]").html(hasil_provinsi);
+            }
+        });
+
+        // Memasukkan ke option kota
+        $("select[name=provinsi]").on("change", function() {
+            var id_provinsi_terpilih = $("option:selected", this).attr("id_provinsi");
+
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('RajaOngkir/kota') ?>",
+                data: 'id_provinsi=' + id_provinsi_terpilih,
+                success: function(hasil_kota) {
+                    // console.log(hasil_kota);
+                    $("select[name=kota]").html(hasil_kota);
+                }
+            });
+        });
+
+        // Memasukkan ke option ongkir
+        $("select[name=kota]").on("change", function() {
+            var deskota = $("option:selected", this).attr("id_kota")
+            // Perhitungan Ongkir
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('RajaOngkir/ongkir') ?>",
+                data: {
+                    kota: deskota,
+                },
+
+
+                success: function(hasil_ongkir) {
+                    var response = JSON.parse(hasil_ongkir)
+                    
+                    var arrCost = response.rajaongkir.results[0].costs;
+
+                    if (deskota == "78" || deskota == "79") {
+                        $("#ongkir").html(bogor);
+                        
+                    } else if (deskota != "78" || deskota != "79") {
+                        $("#ongkir").html(gratisongkir);
+                        
+                        if (subtotal >= total_belanja) {
+                            $("#bayar").html(nominal_byr);
+                        }
+                    } else {
+                        $("#bayar").html(nominal_krng);
+                    }
+                },
+            });
+        });
+    });
+</Script>

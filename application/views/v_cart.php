@@ -9,6 +9,11 @@ $this->load->view('template_user/header');
         <div class="row">
             <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
                 <div class="m-l-25 m-r--38 m-lr-0-xl">
+                    <?php if ($this->session->flashdata('message2')) : ?>
+                        <?php $message = $this->session->flashdata('message2'); ?>
+                        <?= '<div class="alert alert-danger">' . $message . '</div>'; ?>
+                        <?php $this->session->unset_userdata('message2'); ?>
+                    <?php endif; ?>
                     <div class="wrap-table-shopping-cart">
                         <table class="table-shopping-cart">
                             <tr class="table_head">
@@ -32,7 +37,7 @@ $this->load->view('template_user/header');
                                         <a class="flex-c-m stext-101 cl0 size-116 bg10 bor14 hov-btn2 p-lr-15 trans-04 pointer" onclick="window.location='<?= base_url('home/deleteCart/') . $k['id_keranjang']; ?>'"><i class="zmdi zmdi-delete"></i></a>
                                     </td>
                                     <td class="column-1">
-                                        
+
                                         <div class="how-itemcart1" onclick="window.location='<?= base_url('home/deleteCart/') . $k['id_keranjang']; ?>'">
                                             <img src="<?= base_url('assets/img/sayur/') . $k['Foto']; ?>" alt="IMG">
                                         </div>
@@ -88,15 +93,15 @@ $this->load->view('template_user/header');
                             </span>
                         </div>
                     </div>
-                    
-                    <?php if($carttotal != 0): ?>
-                    <a href="<?= base_url('Checkout/index/') ?>" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                        Checkout
-                    </a>
-                    <?php else: ?>
-                    <a href="<?= base_url('home') ?>" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                        Lanjut Belanja
-                    </a>
+
+                    <?php if ($carttotal != 0) : ?>
+                        <a href="<?= base_url('Checkout/index/') ?>" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                            Checkout
+                        </a>
+                    <?php else : ?>
+                        <a href="<?= base_url('home') ?>" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                            Lanjut Belanja
+                        </a>
                     <?php endif; ?>
 
                 </div>

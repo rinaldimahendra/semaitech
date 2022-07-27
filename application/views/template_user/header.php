@@ -37,7 +37,7 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/css/main.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/datatables/datatables.min.css">
-  	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body>
@@ -86,10 +86,14 @@
 							</li>
 
 							<li>
-								<a href="tentang">Tentang</a>
+								<a href="<?= base_url('Blog') ?>">Blog</a>
+							</li>
+
+							<li>
+								<a href="<?= base_url('Tentang') ?>">Tentang</a>
 							</li>
 						</ul>
-					</div>	
+					</div>
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">

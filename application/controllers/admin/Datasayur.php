@@ -7,10 +7,10 @@ class Datasayur extends CI_Controller
 	public function index()
 	{
 		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        if ($user) {
-            if ($user['id_role'] == 2) {
-                redirect('home');
-            } else {
+		if ($user) {
+			if ($user['id_role'] == 2) {
+				redirect('home');
+			} else {
 				$data = array(
 					'title' => "Data Penjualan | Semaitech",
 					'datasayur1' => $this->d_datasayur->tampil_data()->result(),
@@ -30,6 +30,7 @@ class Datasayur extends CI_Controller
 		$stok	           		= $this->input->post('stok');
 		$harga            		= $this->input->post('harga');
 		$status					= 'Y';
+		$satuan            		= $this->input->post('satuan');
 		$foto          			= $_FILES['foto']['name'];
 		if ($foto = '') {
 		} else {
@@ -52,7 +53,8 @@ class Datasayur extends CI_Controller
 			'Stok'       		=> $stok,
 			'Harga'      		=> $harga,
 			'Status'			=> $status,
-			'Foto'            	=> $foto
+			'Foto'            	=> $foto,
+			'satuan'			=> $satuan
 		);
 
 		$this->d_datasayur->tambah_produk($data, 'managemen_data_sayur');
@@ -72,10 +74,10 @@ class Datasayur extends CI_Controller
 	public function edit($id)
 	{
 		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        if ($user) {
-            if ($user['id_role'] == 2) {
-                redirect('home');
-            } else {
+		if ($user) {
+			if ($user['id_role'] == 2) {
+				redirect('home');
+			} else {
 				$where = array('Id' => $id);
 				$data = array(
 					'title' => "Data Penjualan | Semaitech",
@@ -96,6 +98,7 @@ class Datasayur extends CI_Controller
 		$stok	           		= $this->input->post('stok');
 		$harga            		= $this->input->post('harga');
 		$status					= $this->input->post('status');
+		$satuan            		= $this->input->post('satuan');
 		$foto          			= $_FILES['foto']['name'];
 
 		$data = array();
@@ -107,7 +110,8 @@ class Datasayur extends CI_Controller
 				'Keterangan'        => $keterangan,
 				'Stok'       		=> $stok,
 				'Harga'      		=> $harga,
-				'Status'			=> $status
+				'Status'			=> $status,
+				'satuan'			=> $satuan
 			);
 			$data = $data_temp;
 		} else {
@@ -132,7 +136,8 @@ class Datasayur extends CI_Controller
 				'Stok'       		=> $stok,
 				'Harga'      		=> $harga,
 				'Status'			=> $status,
-				'Foto'            	=> $foto
+				'Foto'            	=> $foto,
+				'satuan'			=> $satuan
 			);
 			$data = $data_temp;
 		}

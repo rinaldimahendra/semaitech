@@ -27,6 +27,7 @@ $this->load->view('template_admin/sidebar');
                         <th>KETERANGAN</th>
                         <th>STOK PRODUK</th>
                         <th>HARGA</th>
+                        <th>SATUAN</th>
                         <th>STATUS</th>
                         <th colspan="2">AKSI</th>
                     </tr>
@@ -47,6 +48,7 @@ $this->load->view('template_admin/sidebar');
                             <td><?php echo $ds->Keterangan ?></td>
                             <td><?php echo $ds->Stok ?></td>
                             <td>Rp. <?php echo number_format($ds->Harga, 0, ',', '.') ?></td>
+                            <td><?php echo $ds->satuan ?></td>
                             <td>
                                 <?php
                                 if ($ds->Status == 'Y') { ?>
@@ -109,10 +111,27 @@ $this->load->view('template_admin/sidebar');
                             <input type="number" name="stok" class="form-control" required>
                         </div>
 
-                        <!-- <div class="form-group">
-                            <label>Berat Produk</label>
-                            <input type="text" name="berat_produk" class="form-control">
-                        </div> -->
+                        <div class="form-group">
+                            <label class="d-block">Satuan</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="satuan" value="Ons" checked>
+                                <label class="form-check-label" for="Ons">
+                                    Ons
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="satuan" value="Gram" checked="">
+                                <label class="form-check-label" for="Gram">
+                                    Gram
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="satuan" value="Kilogram" checked="">
+                                <label class="form-check-label" for="Kilogram">
+                                    Kilogram
+                                </label>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label>Harga</label>
@@ -134,77 +153,5 @@ $this->load->view('template_admin/sidebar');
             </div>
         </div>
     </div>
-
-
-    <!-- Modal Edit Barang-->
-    <?php foreach ($datasayur1 as $ds) : ?>
-        <div class="modal fade" id="Edit_Barang<?= $ds->Id; ?>" value="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">FORM EDIT PRODUK</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="<?php echo base_url() . 'admin/Datasayur/update'; ?>" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label>Nama Produk</label>
-                                <input type="text" name="nama" class="form-control" value="<?php echo $ds->Nama ?>" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Keterangan</label>
-                                <input type="hidden" name="id" class="form-control" value="<?php echo $ds->Id ?>">
-                                <input type="text" name="keterangan" class="form-control" value="<?php echo $ds->Keterangan ?>" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Stok Produk</label>
-                                <input type="number" name="stok" class="form-control" value="<?php echo $ds->Stok ?>" min="0" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Harga</label>
-                                <input type="number" name="harga" class="form-control" value="<?php echo $ds->Harga ?>" min="0" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Foto</label>
-                                <input type="file" name="foto" class="form-control" value="<?php echo $ds->Foto ?>">
-                            </div>
-
-                            <div class="form-group" method="get">
-                                <label class="d-block">Status</label>
-                                <div class="form-check form-check-inline">
-                                    <?php
-                                    if ($ds->Status == 'Y') { ?>
-                                        <input class="form-check-input" type="radio" name="status" value="Y" checked>
-                                        <label class="form-check-label" for="status">Aktif</label>
-
-                                        <input class="form-check-input" type="radio" name="status" value="N">
-                                        <label class="form-check-label" for="status">Tidak Aktif</label>
-                                    <?php } elseif ($ds->Status == 'N') { ?>
-                                        <input class="form-check-input" type="radio" name="status" value="Y">
-                                        <label class="form-check-label" for="status">Aktif</label>
-
-                                        <input class="form-check-input" type="radio" name="status" value="N" checked>
-                                        <label class="form-check-label" for="status">Tidak Aktif</label>
-                                    <?php } ?>
-                                </div>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
-<?php endforeach; ?>
 </div>
 <?php $this->load->view('template_admin/footer'); ?>

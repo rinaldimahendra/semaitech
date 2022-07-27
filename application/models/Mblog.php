@@ -321,4 +321,32 @@ class Mblog extends CI_Model {
     public function get_kategori(){
         return $this->db->get_where('kategori_blog', ['status_kategoriblog' => 'Y'])->result();
     }
+
+    public function getallblog_konten()
+    {
+        $query = "SELECT id_blog, judul, isi_konten, foto, kategori, slug, tanggal_dibuat, hits, penulis, sumber, nama_user, nama_kategoriblog
+        FROM blog_data, user, kategori_blog
+        WHERE penulis = id_user AND kategori = id_kategoriblog
+        ";
+        return $this->db->query($query);
+    }
+
+    public function blog_detail($where)
+    {
+        $query = "SELECT id_blog, judul, isi_konten, foto, kategori, slug, tanggal_dibuat, hits, penulis, sumber, nama_user, nama_kategoriblog, id_kategoriblog 
+        FROM blog_data, user, kategori_blog
+        WHERE penulis = id_user AND kategori = id_kategoriblog AND id_blog = $where
+        ";
+        return $this->db->query($query);
+    }
+
+    function search($search)
+    {
+        $query = "SELECT id_blog, judul, isi_konten, foto, kategori, slug, tanggal_dibuat, hits, penulis, sumber, nama_user, nama_kategoriblog, id_kategoriblog 
+        FROM blog_data, user, kategori_blog
+        WHERE penulis = id_user AND kategori = id_kategoriblog 
+        AND (judul LIKE '%$search%' OR nama_kategoriblog LIKE '%$search%' OR isi_konten LIKE '%$search%')
+        ";
+        return $this->db->query($query);
+    }
 }

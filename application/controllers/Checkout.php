@@ -57,67 +57,81 @@ class Checkout extends CI_Controller
 
     public function AddCheckout()
     {
-        date_default_timezone_set('Asia/Jakarta');
-        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $keranjang = $this->Mcart->getcart($user['id_user'])->result_array();
 
-        $gambar                      = $_FILES['foto']['name'];
-        if ($gambar = '') {
-        } else {
-            $config['upload_path'] = './assets/img/bukti_bayar';
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
-            $config['encrypt_name']     = TRUE;
+        $belanja = 100000;
+        if ($this->input->post('grand_total') <= $belanja && !in_array($this->input->post('kota'), array(78, 79))){
+            $this->session->set_flashdata('message2', 'Maaf untuk pembelian di luar kota bogor harus lebih dari Rp '.number_format($belanja, 0, ',', '.'));
+            redirect('home/cart');
+        }else {
+            date_default_timezone_set('Asia/Jakarta');
+            $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $keranjang = $this->Mcart->getcart($user['id_user'])->result_array();
 
-            $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('foto')) {
-                echo "Foto Gagal diupload!";
+            $gambar                      = $_FILES['foto']['name'];
+            if ($gambar = '') {
             } else {
-                $gambar = $this->upload->data('file_name');
+                $config['upload_path'] = './assets/img/bukti_bayar';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['encrypt_name']     = TRUE;
+
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('foto')) {
+                    echo "Foto Gagal diupload!";
+                } else {
+                    $gambar = $this->upload->data('file_name');
+                }
             }
-        }
+            if ($this->input->post('kota') == 78 || $this->input->post('kota') == 79) {
+                $ongkir = 15000;
+            } else {
+                $ongkir = 0;
+            }
 
-        $data = array(
-            'id_user'           => $user['id_user'],
-            'nama'              => $this->input->post('nama'),
-            'alamat'            => $this->input->post('alamat'),
-            'provinsi'          => $this->input->post('provinsi'),
-            'kota'              => $this->input->post('kota'),
-            'kode_pos'          => $this->input->post('kode_pos'),
-            'no_tlp'            => $this->input->post('no_tlp'),
-            'catatan_pembelian' => $this->input->post('catatan_pembelian'),
-            'grandtotal'        => $this->input->post('grand_total'),
-            'ongkir'            => $this->input->post('ongkir'),
-            'total_bayar'       => $this->input->post('total_bayar'),
-            'status'            => 1,
-            'bukti_bayar'       => $gambar,
-            'bank'              => $this->input->post('bank'),
-            'tanggal_pesan'     => date('Y-m-d H:i:s')
 
-        );
+            $data = array(
+                'id_user'           => $user['id_user'],
+                'nama'              => $this->input->post('nama'),
+                'alamat'            => $this->input->post('alamat'),
+                'provinsi'          => $this->input->post('provinsi'),
+                'kota'              => $this->input->post('kota'),
+                'kode_pos'          => $this->input->post('kode_pos'),
+                'no_tlp'            => $this->input->post('no_tlp'),
+                'catatan_pembelian' => $this->input->post('catatan_pembelian'),
+                'grandtotal'        => $this->input->post('grand_total'),
+                'ongkir'            => $ongkir,
+                'total_bayar'       => $this->input->post('total_bayar'),
+                'status'            => 1,
+                'bukti_bayar'       => $gambar,
+                'bank'              => $this->input->post('bank'),
+                'tanggal_pesan'     => date('Y-m-d H:i:s')
 
-        $this->Mcheckout->tambah_order($data, 'order');
-
-        // tambah keranjang -> detail order
-        $id_order_recently = $this->db->insert_id();
-
-        foreach ($keranjang as $k) {
-            $data_keranjang = array(
-                'id_order' => $id_order_recently,
-                'id_sayur' => $k['id_sayur'],
-                'qty' => $k['qty']
             );
-            $this->Mcheckout->tambah_detail_order($data_keranjang, 'detail_order');
 
-            // Hapus keranjang 
-            $this->Mcheckout->hapus_data(['id_keranjang' => $k['id_keranjang']], 'keranjang');
+            $this->Mcheckout->tambah_order($data, 'order');
+
+            // tambah keranjang -> detail order
+            $id_order_recently = $this->db->insert_id();
+
+            foreach ($keranjang as $k) {
+                $data_keranjang = array(
+                    'id_order' => $id_order_recently,
+                    'id_sayur' => $k['id_sayur'],
+                    'qty' => $k['qty']
+                );
+                $this->Mcheckout->tambah_detail_order($data_keranjang, 'detail_order');
+
+                // Hapus keranjang 
+                $this->Mcheckout->hapus_data(['id_keranjang' => $k['id_keranjang']], 'keranjang');
+            }
+
+            // $this->home / pembayaran(51);
+            $id_user = $user['id_user'];
+            $checkout = "SELECT * FROM `order`,rek_pembayaran WHERE order.bank = rek_pembayaran.id_rek AND
+            id_user = $id_user ORDER BY id_order DESC LIMIT 1";
+            $checkout2 = $this->db->query($checkout)->row_array();
+
+            redirect('home/pembayaran/' . $checkout2['id_order']);
         }
-
-        // $this->home / pembayaran(51);
-        $id_user = $user['id_user'];
-        $checkout = "SELECT * FROM `order`,rek_pembayaran WHERE order.bank = rek_pembayaran.id_rek AND
-        id_user = $id_user ORDER BY id_order DESC LIMIT 1";
-        $checkout2 = $this->db->query($checkout)->row_array();
-
-        redirect('home/pembayaran/' . $checkout2['id_order']);
+        
     }
 }
