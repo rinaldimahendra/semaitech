@@ -3,6 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class RajaOngkir extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Muser');
+    }
     private $api_key = '3024096a70af07ef08ef7196a26a54c7';
 
     public function provinsi()
@@ -33,8 +38,8 @@ class RajaOngkir extends CI_Controller
         } else {
             $array_response = json_decode($response, true);
 
-            $data_user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-            echo "<option value=''>" . $data_user['provinsi'] . "</option>";
+            $data_user = $this->Muser->getdatauser($this->session->userdata('id_user'))->row_array();
+            echo "<option value='".$data_user['provinsi']."'>" . $data_user['nama_provinsi'] . "</option>";
 
             $data_provinsi = $array_response['rajaongkir']['results'];
             foreach ($data_provinsi as $key => $value){
@@ -74,7 +79,7 @@ class RajaOngkir extends CI_Controller
             $array_response = json_decode($response, true);
 
             $data_user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-            echo "<option value=''>" . $data_user['kota'] . "</option>";
+            echo "<option value='".$data_user['kota']."'>" . $data_user['nama_kota'] . "</option>";
 
             $data_kota = $array_response['rajaongkir']['results'];
             foreach ($data_kota as $key => $value) {

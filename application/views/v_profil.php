@@ -182,7 +182,7 @@ $this->load->view('template_user/header');
                                 <label class="small mb-1" for="kota">Kota</label>
                                 <div class="rs1-select2 bor8 bg0">
                                     <select class="js-select2" name="kota" value="<?= $user['nama_kota']; ?>">
-
+                                        <option value="<?= $user['kota']?>"><?= $user['nama_kota']?></option>
                                     </select>
                                     <div class="dropDownSelect2"></div>
                                 </div>

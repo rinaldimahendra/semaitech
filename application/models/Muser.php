@@ -9,13 +9,12 @@ class Muser extends CI_Model {
         return $this->db->query($query);
     }
 
-    public function getdatauser($email)
+    public function getdatauser($id_user)
     {
         $query = "SELECT *
         FROM user, tb_kota, tb_provinsi
-        WHERE email = $email AND kota_id = kota AND provinsi_id = provinsi
+        WHERE id_user = $id_user AND tb_kota.kota_id = kota AND tb_provinsi.provinsi_id = provinsi
         ";
-
         return $this->db->query($query);
     }
 

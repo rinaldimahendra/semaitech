@@ -72,7 +72,7 @@ $this->load->view('template_user/header');
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
                                     <div class="col mb-3">
-                                        <p class="text-muted"><?= $user['alamat']; ?>, <?= $user['kota']; ?>, <?= $user['provinsi']; ?>. <?= $user['kode_pos']; ?>.</p>
+                                        <p class="text-muted"><?= $user['alamat']; ?>, <?= $user['nama_kota']; ?>, <?= $user['nama_provinsi']; ?>. <?= $user['kode_pos']; ?>.</p>
                                     </div>
                                 </div>
                                 <!-- <div class="d-flex justify-content-start">

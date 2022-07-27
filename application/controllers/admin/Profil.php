@@ -17,7 +17,7 @@ class Profil extends CI_Controller {
             } else {
                 $data = array(
 					'title' => "Profil",
-					'data_user' => $this->Muser->getdatauser($this->session->userdata('email'))->row_array()
+					'data_user' => $this->Muser->getdatauser($this->session->userdata('id_user'))->row_array(),
 				);
 				$this->load->view('admin/v_profil', $data);
             }

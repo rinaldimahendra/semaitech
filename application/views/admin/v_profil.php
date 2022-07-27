@@ -138,7 +138,6 @@ $this->load->view('template_admin/sidebar');
                     </div>
                   </div>
                 </div>
-
                 <div class="form-divider">
                   Alamat Kamu
                 </div>
@@ -159,7 +158,7 @@ $this->load->view('template_admin/sidebar');
                   <div class="form-group col-6">
                     <label>Kota</label>
                     <select class="form-control" name="kota" value="<?= $user['kota']; ?>">
-
+                      <option value="<?= $data_user['kota']?>"><?= $data_user['nama_kota']?></option>
                     </select>
                   </div>
                   <div class="form-group col-6">

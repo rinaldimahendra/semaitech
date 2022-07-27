@@ -9,6 +9,7 @@ class Home extends CI_Controller
 		$this->load->model('Mhome');
 		$this->load->model('Mcart');
 		$this->load->model('Mkonten');
+		$this->load->model('Muser');
 	}
 	public function index()
 	{
@@ -327,7 +328,7 @@ class Home extends CI_Controller
 
 				$data = array(
 					'title' => "Edit Profil",
-					'user' => $user,
+					'user' => $this->Muser->getdatauser($this->session->userdata('id_user'))->row_array(),
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
@@ -337,7 +338,7 @@ class Home extends CI_Controller
 			} else {
 				$data = array(
 					'title' => "Edit Profil",
-					'user' => $user,
+					'user' => $this->Muser->getdatauser($this->session->userdata('id_user'))->row_array(),
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
@@ -348,7 +349,7 @@ class Home extends CI_Controller
 		} else {
 			$data = array(
 				'title' => "Edit Profil",
-				'user' => $user,
+				'user' => $this->Muser->getdatauser($this->session->userdata('id_user'))->row_array(),
 				'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 				'datasayur' => $this->Mhome->getallsayur()->result_array(),
 				'carttotal' => 0,
@@ -530,8 +531,8 @@ class Home extends CI_Controller
 		$rek_pembayaran = "SELECT * FROM rek_pembayaran";
 		$rek = $this->db->query($rek_pembayaran)->result_array();
 		$id_user = $user['id_user'];
-		$checkout = "SELECT * FROM `order`,rek_pembayaran WHERE order.bank = rek_pembayaran.id_rek AND
-		id_user = $id_user AND id_order = $id_order ORDER BY id_order DESC LIMIT 1";
+		$checkout = "SELECT * FROM `order`,rek_pembayaran, tb_kota, tb_provinsi WHERE order.bank = rek_pembayaran.id_rek AND
+		id_user = $id_user AND id_order = $id_order AND tb_kota.kota_id = kota AND tb_provinsi.provinsi_id = provinsi ORDER BY id_order DESC LIMIT 1";
 		$checkout2 = $this->db->query($checkout)->row_array();
 
 		$user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -657,7 +658,7 @@ class Home extends CI_Controller
 
 				$data = array(
 					'title' => "Profil",
-					'user' => $user,
+					'user' => $this->Muser->getdatauser($this->session->userdata('id_user'))->row_array(),
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),
@@ -667,7 +668,7 @@ class Home extends CI_Controller
 			} else {
 				$data = array(
 					'title' => "Profil",
-					'user' => $user,
+					'user' => $this->Muser->getdatauser($this->session->userdata('id_user'))->row_array(),
 					'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
 					'datasayur' => $this->Mhome->getallsayur()->result_array(),
 					'datakategori' => $this->Mhome->getallkategori()->result_array(),

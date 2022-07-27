@@ -72,8 +72,8 @@ $this->load->view('template_user/header');
                             </div>
                             <?php
                             $alamat = $checkout['alamat'];
-                            $kota = $checkout['kota'];
-                            $provinsi = $checkout['provinsi'];
+                            $kota = $checkout['nama_kota'];
+                            $provinsi = $checkout['nama_provinsi'];
                             $kode_pos = $checkout['kode_pos'];
                             ?>
                             <div class="size-209">

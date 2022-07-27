@@ -56,7 +56,7 @@ $this->load->view('template_user/header');
                             <div class="size-180 respon6-next">
                                 <div class="rs1-select2 bor8 bg0">
                                     <select class="js-select2" name="kota">
-
+                                        <option value="<?= $data_user['kota']?>"><?= $data_user['nama_kota']?></option>
                                     </select>
                                     <div class="dropDownSelect2"></div>
                                 </div>

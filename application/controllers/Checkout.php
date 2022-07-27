@@ -11,6 +11,7 @@ class Checkout extends CI_Controller
         $this->load->model('Mkonten');
         $this->load->model('Mrekening');
         $this->load->model('Mcheckout');
+        $this->load->model('Muser');
     }
 
     public function index()
@@ -30,7 +31,7 @@ class Checkout extends CI_Controller
                     'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
                     'keranjang'         => $this->Mcart->getcart($user['id_user'])->result_array(),
                     'carttotal'         => $totalcart,
-                    'data_user'         => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
+                    'data_user'         => $this->Muser->getdatauser($this->session->userdata('id_user'))->row_array(),
                     'rekening'          => $this->Mrekening->getallrek()->result_array(),
                     // 'order1'            => $this->Mcheckout->Add($where, 'managemen_data_sayur')->result(),
                     // 'kategori'          => $this->d_kategorisayur->tampil_kategori()->result_array(),
@@ -42,7 +43,7 @@ class Checkout extends CI_Controller
                     'profil_perusahaan' => $this->db->get('profile_perusahaan')->row_array(),
                     'keranjang'         => $this->Mcart->getcart($user['id_user'])->result_array(),
                     'carttotal'         => 0,
-                    'data_user'         => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
+                    'data_user'         => $this->Muser->getdatauser($this->session->userdata('id_user'))->row_array(),
                     'rekening'          => $this->Mrekening->getallrek()->result_array(),
                     // 'order1'         => $this->Mcheckout->Add($where, 'managemen_data_sayur')->result(),
                     // 'kategori'          => $this->d_kategorisayur->tampil_kategori()->result_array(),
